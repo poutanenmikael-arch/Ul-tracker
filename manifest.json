@@ -1,0 +1,13 @@
+{
+  "id":"./",
+  "name":"UL Tracker Pro",
+  "short_name":"UL Tracker",
+  "description":"Upper/Lower hypertrophy workout tracker with RIR and progression tracking.",
+  "lang":"fi",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "orientation":"portrait",
+  "background_color":"#080c12",
+  "theme_color":"#39ffb6"
+}
