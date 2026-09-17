@@ -1,4 +1,4 @@
-const CACHE='ul-tracker-v6';
+const CACHE='ul-tracker-v7';
 const ASSETS=['./','./index.html','./manifest.json','./autosave.js','./backend.js','./program.js'];
 const inject=async r=>{try{const t=await r.text();let body=t;if(!body.includes('autosave.js'))body=body.replace('</body>','<script src="./autosave.js"></script></body>');if(!body.includes('backend.js'))body=body.replace('</body>','<script src="./backend.js"></script></body>');if(!body.includes('program.js'))body=body.replace('</body>','<script src="./program.js"></script></body>');return new Response(body,{status:r.status,headers:r.headers})}catch{return r}};
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
