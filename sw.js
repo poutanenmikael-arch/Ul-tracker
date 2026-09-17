@@ -1,6 +1,6 @@
-const CACHE='ul-tracker-v5';
-const ASSETS=['./','./index.html','./manifest.json','./autosave.js','./backend.js'];
-const inject=async r=>{try{const t=await r.text();let body=t;if(!body.includes('autosave.js'))body=body.replace('</body>','<script src="./autosave.js"></script></body>');if(!body.includes('backend.js'))body=body.replace('</body>','<script src="./backend.js"></script></body>');return new Response(body,{status:r.status,headers:r.headers})}catch{return r}};
+const CACHE='ul-tracker-v6';
+const ASSETS=['./','./index.html','./manifest.json','./autosave.js','./backend.js','./program.js'];
+const inject=async r=>{try{const t=await r.text();let body=t;if(!body.includes('autosave.js'))body=body.replace('</body>','<script src="./autosave.js"></script></body>');if(!body.includes('backend.js'))body=body.replace('</body>','<script src="./backend.js"></script></body>');if(!body.includes('program.js'))body=body.replace('</body>','<script src="./program.js"></script></body>');return new Response(body,{status:r.status,headers:r.headers})}catch{return r}};
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;if(e.request.mode==='navigate'||e.request.destination==='document'){e.respondWith(fetch(e.request).then(r=>{const q=r.clone();caches.open(CACHE).then(c=>c.put('./index.html',q));return inject(r)}).catch(()=>caches.match('./index.html').then(inject)))}else{e.respondWith(caches.match(e.request).then(c=>c||fetch(e.request).then(r=>{const q=r.clone();caches.open(CACHE).then(x=>x.put(e.request,q));return r}).catch(()=>caches.match('./index.html'))))}});
