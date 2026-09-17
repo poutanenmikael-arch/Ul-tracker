@@ -1,6 +1,7 @@
 (()=>{
   const SUPABASE_URL='https://zjwunducqyvueapqdeqx.supabase.co';
   const SUPABASE_KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn';
+  const APP_URL='https://poutanenmikael-arch.github.io/Ul-tracker/';
   const CDN='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
   let sb=null, user=null, syncTimer=null;
   const $=(s)=>document.querySelector(s);
@@ -11,7 +12,7 @@
   const authUI=()=>{const el=document.createElement('div');el.className='cloud-auth';el.id='cloudAuth';el.innerHTML='<div class="cloud-box"><div style="font-size:12px;color:#39ffb6;font-weight:900;margin-bottom:8px">UL TRACKER • CLOUD</div><h2>Kirjaudu sisään</h2><div style="font-size:12px;color:#8e9aaa;margin-bottom:12px">Treeni tallennetaan Supabase-pilveen, jotta se ei katoa puhelimen vaihtuessa.</div><input class="cloud-input" id="cloudEmail" type="email" autocomplete="email" placeholder="Sähköposti"><input class="cloud-input" id="cloudPass" type="password" autocomplete="current-password" placeholder="Salasana"><div class="cloud-actions"><button class="btn primary" id="cloudLogin">Kirjaudu</button><button class="btn" id="cloudSignup">Luo tili</button></div><div class="cloud-status" id="cloudStatus"></div><button class="btn ghost" id="cloudSkip" style="width:100%;margin-top:8px">Jatka ilman pilvitallennusta</button></div>';document.body.appendChild(el);
     const status=(x)=>$('#cloudStatus').textContent=x;
     $('#cloudLogin').onclick=async()=>{status('Kirjaudutaan...');const email=$('#cloudEmail').value.trim(),password=$('#cloudPass').value;if(!email||!password)return status('Anna sähköposti ja salasana.');const r=await sb.auth.signInWithPassword({email,password});if(r.error)return status(r.error.message);await finish(r.data.user)};
-    $('#cloudSignup').onclick=async()=>{status('Luodaan tili...');const email=$('#cloudEmail').value.trim(),password=$('#cloudPass').value;if(!email||password.length<6)return status('Anna sähköposti ja vähintään 6 merkin salasana.');const r=await sb.auth.signUp({email,password});if(r.error)return status(r.error.message);if(r.data.session){await finish(r.data.user)}else status('Tili luotu. Tarkista sähköposti ja vahvista tili, jos Supabase pyytää sitä.')};
+    $('#cloudSignup').onclick=async()=>{status('Luodaan tili...');const email=$('#cloudEmail').value.trim(),password=$('#cloudPass').value;if(!email||password.length<6)return status('Anna sähköposti ja vähintään 6 merkin salasana.');const r=await sb.auth.signUp({email,password,options:{emailRedirectTo:APP_URL}});if(r.error)return status(r.error.message);if(r.data.session){await finish(r.data.user)}else status('Tili luotu. Tarkista sähköposti ja vahvista tili.');};
     $('#cloudSkip').onclick=()=>{el.remove();toast('Pilvitallennus ohitettu')};
   };
   const userBadge=()=>{let b=$('#cloudUser');if(!b){b=document.createElement('div');b.id='cloudUser';b.className='cloud-user';document.body.appendChild(b)}b.innerHTML=(user?.email||'Pilvi')+' <button id="cloudLogout">Kirjaudu ulos</button>';$('#cloudLogout').onclick=async()=>{await sb.auth.signOut();user=null;b.remove();authUI()}};
