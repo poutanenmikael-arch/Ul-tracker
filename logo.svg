@@ -1,10 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 80" fill="none" role="img" aria-labelledby="ulTitle ulDesc">
-<title id="ulTitle">UL Tracker</title><desc id="ulDesc">UL monogram</desc>
+<title id="ulTitle">UL Tracker</title><desc id="ulDesc">Sharp angular UL monogram</desc>
 <defs>
-<linearGradient id="ulg" x1="8" y1="8" x2="120" y2="72" gradientUnits="userSpaceOnUse">
-<stop stop-color="#D1FFE5"/><stop offset=".28" stop-color="#39FFB6"/><stop offset=".72" stop-color="#10D982"/><stop offset="1" stop-color="#078B57"/>
+<linearGradient id="ulg" x1="8" y1="4" x2="120" y2="76" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E2FFF0"/><stop offset=".24" stop-color="#39FFB6"/><stop offset=".68" stop-color="#10D982"/><stop offset="1" stop-color="#047447"/>
 </linearGradient>
+<filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 </defs>
-<path d="M13 10V43C13 56 20 64 33 64C46 64 53 56 53 43V10" stroke="url(#ulg)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M75 10V64H114" stroke="url(#ulg)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10 9V43L29 63H39L58 43V9" stroke="url(#ulg)" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter" filter="url(#glow)"/>
+<path d="M72 9V63H118L106 51H86V9" fill="url(#ulg)" filter="url(#glow)"/>
 </svg>
