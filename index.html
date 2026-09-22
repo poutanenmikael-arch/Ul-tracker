@@ -23,7 +23,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 </head>
 <body>
 <script>
-(()=>{try{if(sessionStorage.getItem('ul-sw-clean-v10')!=='1'){sessionStorage.setItem('ul-sw-clean','1');if('serviceWorker' in navigator)navigator.serviceWorker.getRegistrations().then(rs=>Promise.all(rs.map(r=>r.unregister())));if('caches' in window)caches.keys().then(ks=>Promise.all(ks.map(k=>caches.delete(k))));setTimeout(()=>location.reload(),180)}}catch(e){}})();
+(()=>{try{if(sessionStorage.getItem('ul-sw-clean-v11')!=='1'){sessionStorage.setItem('ul-sw-clean','1');if('serviceWorker' in navigator)navigator.serviceWorker.getRegistrations().then(rs=>Promise.all(rs.map(r=>r.unregister())));if('caches' in window)caches.keys().then(ks=>Promise.all(ks.map(k=>caches.delete(k))));setTimeout(()=>location.reload(),180)}}catch(e){}})();
 </script>
 <header class="nav"><div class="wrap nav-inner">
 <a class="brand" href="#"><img src="./logo.svg?v=10" alt="UL Tracker"><div class="brand-copy">UL TRACKER<small>BUILT FOR PROGRESS</small></div></a>
