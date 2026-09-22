@@ -1,12 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 72" fill="none" role="img" aria-labelledby="title desc">
+<title id="title">UL Tracker</title><desc id="desc">UL Tracker monogram</desc>
 <defs>
-  <linearGradient id="g" x1="18" y1="8" x2="78" y2="56" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#B7FFD9"/>
-    <stop offset=".34" stop-color="#39FFB6"/>
-    <stop offset=".72" stop-color="#10D982"/>
-    <stop offset="1" stop-color="#078B57"/>
-  </linearGradient>
+<linearGradient id="ulg" x1="12" y1="8" x2="108" y2="64" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C8FFE1"/><stop offset=".32" stop-color="#39FFB6"/><stop offset=".72" stop-color="#10D982"/><stop offset="1" stop-color="#078B57"/>
+</linearGradient>
+<filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 </defs>
-<path d="M12 10h18l-4.5 27.5c-.5 3.1 1.1 5.2 4.2 5.2h8.8c3.5 0 5.4-1.8 6-5.1L49 10h18l-5.1 29.5c-1.7 9.8-8.2 14.5-18.1 14.5H27.4C16.8 54 9.3 47.7 11 37.2L12 10Z" fill="url(#g)"/>
-<path d="M65.5 43.5 80 29.8l-2.6 14.7H63.8l1.7-.9Z" fill="#39FFB6"/>
+<g filter="url(#glow)">
+<path d="M12 9h19l-5 31c-.45 2.9 1.05 4.7 4.2 4.7h10.1c3.45 0 5.35-1.75 5.95-5.05L51.1 9h19.1l-5.35 31.25C63.2 51.1 56.7 58 46.45 58H27.2C15.9 58 8.35 51.15 10.2 40.05L12 9Z" fill="url(#ulg)"/>
+<path d="M69.5 51.5 100.5 20l-5.4 31.5H69.5Z" fill="url(#ulg)"/>
+<path d="M75 45.5h13.2l2.2-12.8-15.4 12.8Z" fill="#03110A" opacity=".8"/>
+</g>
 </svg>
