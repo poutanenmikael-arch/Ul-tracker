@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 80" fill="none" role="img" aria-labelledby="ulTitle ulDesc">
 <title id="ulTitle">UL Tracker</title><desc id="ulDesc">UL monogram</desc>
 <defs>
-<linearGradient id="ulGradient" x1="10" y1="8" x2="112" y2="72" gradientUnits="userSpaceOnUse">
-<stop stop-color="#C8FFE1"/><stop offset=".28" stop-color="#39FFB6"/><stop offset=".7" stop-color="#10D982"/><stop offset="1" stop-color="#078B57"/>
+<linearGradient id="ulg" x1="8" y1="8" x2="120" y2="72" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D1FFE5"/><stop offset=".28" stop-color="#39FFB6"/><stop offset=".72" stop-color="#10D982"/><stop offset="1" stop-color="#078B57"/>
 </linearGradient>
 </defs>
-<path d="M13 12V43.5C13 57 20.5 64 34 64h3c13.5 0 21-7 21-20.5V12" stroke="url(#ulGradient)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M76 12V64H112" stroke="url(#ulGradient)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13 10V43C13 56 20 64 33 64C46 64 53 56 53 43V10" stroke="url(#ulg)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M75 10V64H114" stroke="url(#ulg)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
