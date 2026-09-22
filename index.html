@@ -23,24 +23,11 @@ section{scroll-margin-top:90px}.section{padding:100px 0}.section-head{text-align
 </style>
 <style>
 /* UL Tracker photographic background */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-2;
+body{
   background:
-    linear-gradient(rgba(5,7,10,.88),rgba(5,7,10,.94)),
-    url("https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=2200&q=80") center/cover no-repeat;
-  opacity:.55;
-  pointer-events:none;
-}
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  background:linear-gradient(180deg,rgba(5,7,10,.18),rgba(5,7,10,.72) 55%,#05070a 100%);
-  pointer-events:none;
+    linear-gradient(rgba(5,7,10,.82),rgba(5,7,10,.94)),
+    url("https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=2200&q=85") center top/cover fixed no-repeat,
+    #05070a;
 }
 </style></head>
 <body>
