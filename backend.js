@@ -1,7 +1,7 @@
 (()=>{
   const SUPABASE_URL='https://zjwunducqyvueapqdeqx.supabase.co';
   const SUPABASE_KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn';
-  const APP_URL='https://poutanenmikael-arch.github.io/Ul-tracker/';
+  const APP_URL='https://ultracker.online/';
   const CDN='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
   let sb=null,user=null,syncTimer=null;
   const $=s=>document.querySelector(s);
