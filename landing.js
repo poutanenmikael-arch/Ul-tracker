@@ -1,5 +1,7 @@
 (()=>{const URL='https://zjwunducqyvueapqdeqx.supabase.co',KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn',APP='./app.html?v=2';const sb=supabase.createClient(URL,KEY);const $=s=>document.querySelector(s);let mode='login';
 const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const nav=document.querySelector('.nav');
+if(nav&&!reduce){window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>30),{passive:true});}
 if(!reduce){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -7% 0px'});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));}const modal=$('#auth'),statusEl=$('#status');
 const status=(x,type='')=>{statusEl.textContent=x;statusEl.className='status '+type};
 const open=m=>{mode=m;modal.classList.add('show');$('#authTitle').textContent=m==='login'?'Log in':'Create your account';$('#authDesc').textContent=m==='login'?'Pick up where your last workout left off.':'Start building your training history today.';$('#submitAuth').innerHTML=m==='login'?'Log in <span aria-hidden="true">→</span>':'Create account <span aria-hidden="true">→</span>';$('#toggleAuth').textContent=m==='login'?'Create account':'Log in';$('#forgot').style.display=m==='login'?'block':'none';document.querySelector('.auth-kicker').textContent=m==='login'?'WELCOME BACK':'START YOUR PROGRESS';status('');setTimeout(()=>$('#email').focus(),180)};
