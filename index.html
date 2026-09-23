@@ -450,6 +450,21 @@ body:before{
 @media(prefers-reduced-motion:reduce){
   .hero-copy-side,.hero-product{transform:none!important;opacity:1!important}
 }
+
+/* MOBILE HERO WIDTH FIX — never let the product surface escape the viewport */
+@media(max-width:850px){
+  .hero-grid{grid-template-columns:minmax(0,1fr)!important}
+  .hero-grid>*,.hero-copy-side,.hero-product{min-width:0!important;width:100%!important}
+  .hero-product{display:grid!important;overflow:visible}
+  .product-frame{width:100%!important;max-width:100%!important;min-width:0!important}
+  .product-body{min-width:0!important;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}
+  .mock-panel{min-width:0!important;overflow:hidden}
+  .mock-row b{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+}
+@media(max-width:560px){
+  .product-body{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .mock-row b{font-size:9px}
+}
 </style></head>
 <body>
 <script>
