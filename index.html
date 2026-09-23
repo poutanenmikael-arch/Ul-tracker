@@ -389,6 +389,27 @@ body:before{
     animation:none!important;opacity:1!important;transform:none!important;will-change:auto
   }
 }
+
+/* HERO COMPOSITION FIX — keep every floating element inside the product surface */
+.hero:after{display:none!important}
+.floating-stat{
+  right:18px!important;
+  bottom:18px!important;
+  z-index:8!important;
+}
+.hero-badge{
+  left:18px!important;
+  bottom:18px!important;
+  z-index:8!important;
+}
+@media(max-width:850px){
+  .floating-stat{right:14px!important;bottom:14px!important}
+  .hero-badge{left:14px!important;bottom:14px!important}
+}
+@media(max-width:560px){
+  .floating-stat{right:8px!important;bottom:8px!important}
+  .hero-badge{left:8px!important;bottom:8px!important}
+}
 </style></head>
 <body>
 <script>
