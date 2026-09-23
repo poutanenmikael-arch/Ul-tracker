@@ -322,6 +322,73 @@ body:before{
 @media(prefers-reduced-motion:reduce){
   .hero-product:before{animation:none}
 }
+
+/* HERO LIVING UI v1 — one-time entrance, no continuous work */
+.product-frame{
+  animation:heroFrameSettle .7s cubic-bezier(.2,.8,.2,1) 1.72s both;
+  will-change:transform,opacity;
+}
+.mock-panel{
+  animation:panelReveal .48s cubic-bezier(.2,.8,.2,1) 2.02s both;
+  will-change:transform,opacity;
+}
+.mock-panel:nth-child(2){animation-delay:2.10s}
+.mock-input{
+  opacity:0;
+  transform:translate3d(0,8px,0) scale(.985);
+  animation:setValueIn .38s cubic-bezier(.2,.85,.2,1) forwards;
+  will-change:transform,opacity;
+}
+.mock-input:nth-child(1){animation-delay:2.30s}
+.mock-input:nth-child(2){animation-delay:2.36s}
+.mock-input:nth-child(3){animation-delay:2.42s}
+.mock-chart{
+  opacity:0;
+  transform:translate3d(0,6px,0);
+  animation:chartIn .55s cubic-bezier(.2,.8,.2,1) 2.30s forwards;
+  will-change:transform,opacity;
+}
+.floating-stat{
+  opacity:0;
+  transform:translate3d(0,10px,0) scale(.98);
+  animation:floatStatIn .5s cubic-bezier(.2,.85,.2,1) 2.48s forwards;
+  will-change:transform,opacity;
+}
+.hero-badge{
+  opacity:0;
+  transform:translate3d(0,8px,0);
+  animation:badgeIn .45s cubic-bezier(.2,.85,.2,1) 2.58s forwards;
+  will-change:transform,opacity;
+}
+@keyframes heroFrameSettle{
+  from{opacity:0;transform:translate3d(0,12px,0) scale(.988)}
+  to{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+@keyframes panelReveal{
+  from{opacity:0;transform:translate3d(0,9px,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
+}
+@keyframes setValueIn{
+  from{opacity:0;transform:translate3d(0,8px,0) scale(.985)}
+  to{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+@keyframes chartIn{
+  from{opacity:0;transform:translate3d(0,6px,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
+}
+@keyframes floatStatIn{
+  from{opacity:0;transform:translate3d(0,10px,0) scale(.98)}
+  to{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+@keyframes badgeIn{
+  from{opacity:0;transform:translate3d(0,8px,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
+}
+@media(prefers-reduced-motion:reduce){
+  .product-frame,.mock-panel,.mock-input,.mock-chart,.floating-stat,.hero-badge{
+    animation:none!important;opacity:1!important;transform:none!important;will-change:auto
+  }
+}
 </style></head>
 <body>
 <script>
