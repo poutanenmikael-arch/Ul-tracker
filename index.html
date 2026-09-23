@@ -93,6 +93,149 @@ body:before{
     -webkit-backdrop-filter:blur(14px) saturate(115%);
   }
 }
+
+/* UL LIQUID HERO v2 — visibly glassy, still restrained */
+.hero{padding-top:72px}
+.hero-grid{grid-template-columns:.82fr 1.18fr;gap:58px}
+.hero-product{min-height:620px}
+.hero-product:before{
+  content:"";
+  position:absolute;
+  width:520px;height:520px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(57,255,182,.14) 0%,rgba(57,255,182,.045) 34%,transparent 70%);
+  filter:blur(18px);
+  pointer-events:none;
+}
+.product-frame{
+  width:min(700px,100%);
+  height:590px;
+  border-radius:36px;
+  border:1px solid rgba(255,255,255,.18);
+  background:
+    radial-gradient(520px 300px at 76% 7%,rgba(86,255,196,.12),transparent 72%),
+    linear-gradient(145deg,rgba(27,43,35,.78),rgba(7,12,10,.72));
+  backdrop-filter:blur(34px) saturate(135%);
+  -webkit-backdrop-filter:blur(34px) saturate(135%);
+  box-shadow:
+    0 45px 120px rgba(0,0,0,.62),
+    inset 0 1px 0 rgba(255,255,255,.11),
+    inset 0 -1px 0 rgba(255,255,255,.025);
+}
+.product-frame:before{
+  inset:1px;
+  border-radius:35px;
+  background:
+    linear-gradient(105deg,rgba(255,255,255,.10),transparent 18%,transparent 72%,rgba(57,255,182,.055)),
+    radial-gradient(500px 180px at 8% 96%,rgba(255,255,255,.035),transparent 72%);
+}
+.product-top{
+  height:72px;
+  padding:0 27px;
+  border-bottom:1px solid rgba(255,255,255,.09);
+  background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0));
+}
+.product-top span{
+  background:rgba(57,255,182,.07);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07);
+  backdrop-filter:blur(12px);
+}
+.product-body{padding:20px;gap:18px}
+.mock-panel{
+  border-radius:22px;
+  background:
+    linear-gradient(145deg,rgba(30,47,38,.70),rgba(8,14,11,.55));
+  border-color:rgba(255,255,255,.13);
+  backdrop-filter:blur(24px) saturate(130%);
+  -webkit-backdrop-filter:blur(24px) saturate(130%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.07),
+    inset 0 -1px 0 rgba(255,255,255,.018);
+}
+.mock-panel.main{
+  background:
+    radial-gradient(320px 180px at 5% 4%,rgba(57,255,182,.085),transparent 68%),
+    linear-gradient(145deg,rgba(35,57,45,.74),rgba(8,14,11,.56));
+}
+.mock-input{
+  background:rgba(3,8,6,.44);
+  border-color:rgba(255,255,255,.10);
+  backdrop-filter:blur(12px);
+}
+.mock-input.active{
+  background:rgba(57,255,182,.055);
+  border-color:rgba(57,255,182,.42);
+  box-shadow:inset 0 0 24px rgba(57,255,182,.05),inset 0 1px 0 rgba(255,255,255,.05);
+}
+.mock-chart{
+  background:
+    linear-gradient(180deg,rgba(17,30,24,.58),rgba(5,10,8,.42));
+  border-color:rgba(255,255,255,.10);
+  backdrop-filter:blur(14px);
+}
+.floating-stat{
+  right:-10px;
+  bottom:26px;
+  width:215px;
+  border-radius:20px;
+  padding:16px 17px;
+  background:
+    linear-gradient(145deg,rgba(35,55,44,.80),rgba(7,13,10,.70));
+  border-color:rgba(255,255,255,.15);
+  backdrop-filter:blur(28px) saturate(135%);
+  -webkit-backdrop-filter:blur(28px) saturate(135%);
+  box-shadow:
+    0 24px 55px rgba(0,0,0,.48),
+    inset 0 1px 0 rgba(255,255,255,.10);
+}
+.hero-badge{
+  left:-18px;
+  bottom:72px;
+  border-radius:16px;
+  padding:12px 15px;
+  background:rgba(12,22,17,.64);
+  border-color:rgba(255,255,255,.13);
+  backdrop-filter:blur(24px) saturate(130%);
+  -webkit-backdrop-filter:blur(24px) saturate(130%);
+  box-shadow:0 18px 42px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.07);
+}
+.nav{
+  background:rgba(4,7,6,.55);
+  border-bottom-color:rgba(255,255,255,.08);
+  box-shadow:inset 0 -1px 0 rgba(255,255,255,.025);
+}
+.btn{
+  background:rgba(12,20,16,.62);
+  border-color:rgba(255,255,255,.12);
+  backdrop-filter:blur(16px) saturate(120%);
+  -webkit-backdrop-filter:blur(16px) saturate(120%);
+}
+.btn.primary{
+  background:linear-gradient(145deg,rgba(57,255,182,.19),rgba(57,255,182,.08));
+  color:var(--green);
+  border-color:rgba(57,255,182,.46);
+}
+.btn.primary:hover{
+  background:linear-gradient(145deg,rgba(57,255,182,.25),rgba(57,255,182,.11));
+}
+@media(max-width:850px){
+  .hero-product{min-height:500px}
+  .product-frame{height:470px}
+  .floating-stat{right:6px;bottom:14px}
+  .hero-badge{left:6px;bottom:20px}
+}
+@media(max-width:560px){
+  .hero{padding-top:42px}
+  .hero-grid{gap:24px}
+  .hero-product{min-height:370px}
+  .product-frame{height:370px;border-radius:24px}
+  .product-frame:before{border-radius:23px}
+  .product-top{height:55px;padding:0 16px}
+  .product-body{padding:9px;gap:8px}
+  .mock-panel{border-radius:13px}
+  .floating-stat{width:145px;right:5px;bottom:9px;padding:10px;border-radius:14px}
+  .hero-badge{left:5px;bottom:12px;border-radius:12px;padding:8px 10px}
+}
 </style></head>
 <body>
 <script>
