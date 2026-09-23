@@ -1,7 +1,29 @@
 (()=>{const URL='https://zjwunducqyvueapqdeqx.supabase.co',KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn',APP='./app.html?v=2';const sb=supabase.createClient(URL,KEY);const $=s=>document.querySelector(s);let mode='login';
 const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-if(!reduce){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -7% 0px'});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));}const modal=$('#auth'),statusEl=$('#status');
+if(!reduce){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -7% 0px'});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));}
+const heroProduct=document.querySelector('.hero-product'),liquidCursor=heroProduct?.querySelector('.liquid-cursor');
+if(!reduce&&heroProduct&&liquidCursor&&window.matchMedia('(hover: hover) and (pointer: fine)').matches){
+  let raf=0,x=0,y=0;
+  const paint=()=>{raf=0;liquidCursor.style.transform=`translate3d(${x}px,${y}px,0) translate(-50%,-50%)`};
+  heroProduct.addEventListener('pointermove',e=>{
+    const r=heroProduct.getBoundingClientRect();
+    x=e.clientX-r.left;y=e.clientY-r.top;
+    if(!raf)raf=requestAnimationFrame(paint);
+  });
+  heroProduct.addEventListener('pointerenter',e=>{
+    const r=heroProduct.getBoundingClientRect();
+    x=e.clientX-r.left;y=e.clientY-r.top;
+    if(!raf)raf=requestAnimationFrame(paint);
+    heroProduct.classList.add('cursor-active');
+  });
+  heroProduct.addEventListener('pointerleave',()=>{
+    heroProduct.classList.remove('cursor-active');
+    if(raf){cancelAnimationFrame(raf);raf=0}
+  });
+}
+
+const modal=$('#auth'),statusEl=$('#status');
 const status=(x,type='')=>{statusEl.textContent=x;statusEl.className='status '+type};
 const open=m=>{mode=m;modal.classList.add('show');$('#authTitle').textContent=m==='login'?'Log in':'Create your account';$('#authDesc').textContent=m==='login'?'Pick up where your last workout left off.':'Start building your training history today.';$('#submitAuth').innerHTML=m==='login'?'Log in <span aria-hidden="true">→</span>':'Create account <span aria-hidden="true">→</span>';$('#toggleAuth').textContent=m==='login'?'Create account':'Log in';$('#forgot').style.display=m==='login'?'block':'none';document.querySelector('.auth-kicker').textContent=m==='login'?'WELCOME BACK':'START YOUR PROGRESS';status('');setTimeout(()=>$('#email').focus(),180)};
 document.querySelectorAll('[data-auth]').forEach(b=>b.addEventListener('click',()=>open(b.dataset.auth)));
