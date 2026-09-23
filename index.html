@@ -465,6 +465,14 @@ body:before{
   .product-body{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   .mock-row b{font-size:9px}
 }
+
+/* MOBILE HARD LAYOUT RESET — hero must stack, never share the row */
+@media(max-width:850px){
+  .hero-grid{display:block!important;width:100%!important}
+  .hero-copy-side{display:block!important;width:100%!important;max-width:100%!important}
+  .hero-product{display:block!important;position:relative!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:32px 0 0!important}
+  .product-frame{display:block!important;position:relative!important;width:100%!important;max-width:100%!important;min-width:0!important}
+}
 </style></head>
 <body>
 <script>
