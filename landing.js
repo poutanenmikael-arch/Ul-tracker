@@ -23,6 +23,38 @@ if(!reduce&&heroProduct&&liquidCursor&&window.matchMedia('(hover: hover) and (po
   });
 }
 
+/* Scroll-driven hero transition — only active while hero is relevant */
+if(!reduce&&heroProduct){
+  const hero=document.querySelector('.hero'),copySide=document.querySelector('.hero-copy-side');
+  let scrollRaf=0,lastProgress=-1;
+  const updateHero=()=>{
+    scrollRaf=0;
+    const rect=hero.getBoundingClientRect();
+    const travel=Math.max(320,Math.min(620,rect.height*.68));
+    const p=Math.max(0,Math.min(1,-rect.top/travel));
+    const stepped=Math.round(p*1000)/1000;
+    if(Math.abs(stepped-lastProgress)<.004)return;
+    lastProgress=stepped;
+    if(p<=0.001){
+      copySide.style.opacity='1';
+      copySide.style.transform='translate3d(0,0,0)';
+      heroProduct.style.opacity='1';
+      heroProduct.style.transform='translate3d(0,0,0) scale(1)';
+      return;
+    }
+    copySide.style.opacity=String(1-p*.92);
+    copySide.style.transform=`translate3d(0,${-p*18}px,0) scale(${1-p*.012})`;
+    heroProduct.style.opacity=String(1-p*.08);
+    heroProduct.style.transform=`translate3d(0,${-p*20}px,0) scale(${1-p*.035})`;
+  };
+  const onScroll=()=>{
+    if(!scrollRaf)scrollRaf=requestAnimationFrame(updateHero);
+  };
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll,{passive:true});
+  updateHero();
+}
+
 const modal=$('#auth'),statusEl=$('#status');
 const status=(x,type='')=>{statusEl.textContent=x;statusEl.className='status '+type};
 const open=m=>{mode=m;modal.classList.add('show');$('#authTitle').textContent=m==='login'?'Log in':'Create your account';$('#authDesc').textContent=m==='login'?'Pick up where your last workout left off.':'Start building your training history today.';$('#submitAuth').innerHTML=m==='login'?'Log in <span aria-hidden="true">→</span>':'Create account <span aria-hidden="true">→</span>';$('#toggleAuth').textContent=m==='login'?'Create account':'Log in';$('#forgot').style.display=m==='login'?'block':'none';document.querySelector('.auth-kicker').textContent=m==='login'?'WELCOME BACK':'START YOUR PROGRESS';status('');setTimeout(()=>$('#email').focus(),180)};
