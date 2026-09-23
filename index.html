@@ -436,6 +436,20 @@ body:before{
 @media(prefers-reduced-motion:reduce){
   .liquid-cursor{display:none!important}
 }
+
+/* SCROLL PRODUCT TRANSITION v1 — one lightweight progress driver */
+.hero-copy-side,
+.hero-product{
+  will-change:transform,opacity;
+}
+.hero-copy-side{transform-origin:left center}
+.hero-product{transform-origin:center center}
+@media(max-width:850px){
+  .hero-copy-side,.hero-product{will-change:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-copy-side,.hero-product{transform:none!important;opacity:1!important}
+}
 </style></head>
 <body>
 <script>
@@ -448,7 +462,7 @@ body:before{
 
 <main>
 <section class="hero"><div class="wrap hero-grid">
-<div>
+<div class="hero-copy-side">
 <h1 aria-label="Train. Track. Progress."><span class="hero-type" style="--chars:6;--delay:.12s;--caret-delay:.12s">Train.</span><span class="hero-type" style="--chars:6;--delay:.66s;--caret-delay:.66s">Track.</span><span class="hero-type accent" style="--chars:9;--delay:1.20s;--caret-delay:1.20s">Progress.</span></h1>
 <p class="hero-copy">The workout tracker built around the set in front of you. Log your work, see your progression, and know what comes next.</p>
 <div class="hero-actions"><button class="btn primary large" data-auth="signup">Start tracking free</button><a class="btn large" href="#product">See the product</a></div>
@@ -510,6 +524,6 @@ body:before{
 
 <div class="auth" id="auth"><div class="box"><div class="box-head"><img src="./logo.svg?v=11" alt="UL Tracker"><div><div style="font-size:11px;color:var(--green);font-weight:900">UL TRACKER</div><div style="font-size:10px;color:#728078">BUILT FOR PROGRESS</div></div><button class="close" id="closeAuth">×</button></div><h2 id="authTitle">Log in</h2><p id="authDesc">Pick up where your last workout left off.</p><input class="field" id="email" type="email" autocomplete="email" placeholder="Email"><input class="field" id="password" type="password" autocomplete="current-password" placeholder="Password"><div class="auth-actions"><button class="btn primary" id="submitAuth">Log in <span aria-hidden="true">→</span></button><button class="btn" id="toggleAuth">Create account</button></div><button class="btn" id="forgot" style="width:100%;margin-top:8px;background:transparent">Forgot password?</button><div class="status" id="status"></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="./landing.js?v=15"></script>
+<script src="./landing.js?v=16"></script>
 </body>
 </html>
