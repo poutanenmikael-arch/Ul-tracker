@@ -410,6 +410,32 @@ body:before{
   .floating-stat{right:8px!important;bottom:8px!important}
   .hero-badge{left:8px!important;bottom:8px!important}
 }
+
+/* CURSOR LIQUID v1 — event-driven, lightweight */
+.liquid-cursor{
+  position:absolute;
+  width:170px;
+  height:170px;
+  left:0;
+  top:0;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:3;
+  opacity:0;
+  transform:translate3d(-50%,-50%,0);
+  background:radial-gradient(circle,rgba(151,255,222,.12) 0,rgba(57,255,182,.055) 24%,transparent 68%);
+  filter:blur(16px);
+  will-change:transform,opacity;
+  transition:opacity .22s ease;
+  mix-blend-mode:screen
+}
+.hero-product.cursor-active .liquid-cursor{opacity:1}
+@media(max-width:850px),(hover:none){
+  .liquid-cursor{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .liquid-cursor{display:none!important}
+}
 </style></head>
 <body>
 <script>
@@ -428,7 +454,7 @@ body:before{
 <div class="hero-actions"><button class="btn primary large" data-auth="signup">Start tracking free</button><a class="btn large" href="#product">See the product</a></div>
 <div class="hero-note">Free account · Built for serious training</div>
 </div>
-<div class="hero-product">
+<div class="hero-product"><div class="liquid-cursor" aria-hidden="true"></div>
 <div class="product-frame">
 <div class="product-top"><b>UL TRACKER</b><span>READY</span></div>
 <div class="product-body">
