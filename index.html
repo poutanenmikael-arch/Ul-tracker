@@ -236,6 +236,92 @@ body:before{
   .floating-stat{width:145px;right:5px;bottom:9px;padding:10px;border-radius:14px}
   .hero-badge{left:5px;bottom:12px;border-radius:12px;padding:8px 10px}
 }
+
+/* LIQUID SIGNATURE — intentionally visible on landing */
+.hero-product{isolation:isolate}
+.hero-product:before{
+  content:"";
+  position:absolute;
+  width:420px;height:420px;
+  left:50%;top:44%;
+  transform:translate(-50%,-50%);
+  border-radius:42% 58% 55% 45% / 48% 42% 58% 52%;
+  background:
+    radial-gradient(circle at 34% 32%,rgba(191,255,231,.34) 0 7%,transparent 15%),
+    radial-gradient(circle at 65% 62%,rgba(57,255,182,.28),transparent 52%),
+    radial-gradient(circle at 48% 48%,rgba(16,126,87,.22),transparent 72%);
+  filter:blur(18px);
+  opacity:.9;
+  z-index:0;
+  animation:liquidFloat 10s ease-in-out infinite alternate;
+  pointer-events:none
+}
+.hero-product:after{
+  content:"";
+  position:absolute;
+  inset:7% 2% 7% 2%;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:42px;
+  background:linear-gradient(135deg,rgba(255,255,255,.025),transparent 34%,rgba(57,255,182,.018));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.055);
+  z-index:0;
+  pointer-events:none
+}
+@keyframes liquidFloat{
+  0%{transform:translate(-54%,-48%) rotate(-4deg) scale(.96);border-radius:42% 58% 55% 45% / 48% 42% 58% 52%}
+  100%{transform:translate(-46%,-52%) rotate(5deg) scale(1.04);border-radius:55% 45% 43% 57% / 52% 58% 42% 48%}
+}
+.product-frame{
+  z-index:2;
+  background:
+    linear-gradient(145deg,rgba(30,48,39,.48),rgba(5,10,8,.42)),
+    rgba(8,14,11,.34);
+  backdrop-filter:blur(34px) saturate(145%);
+  -webkit-backdrop-filter:blur(34px) saturate(145%);
+  border-color:rgba(255,255,255,.20);
+  box-shadow:
+    0 50px 120px rgba(0,0,0,.62),
+    inset 0 1px 0 rgba(255,255,255,.13),
+    inset 0 -1px 0 rgba(255,255,255,.025)
+}
+.product-frame:before{
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.15) 0,rgba(255,255,255,.035) 13%,transparent 29%),
+    radial-gradient(360px 210px at 72% 4%,rgba(118,255,208,.13),transparent 72%);
+}
+.mock-panel{
+  background:rgba(7,14,11,.28);
+  backdrop-filter:blur(22px) saturate(140%);
+  -webkit-backdrop-filter:blur(22px) saturate(140%);
+  border-color:rgba(255,255,255,.14);
+}
+.mock-panel.main{
+  background:linear-gradient(145deg,rgba(30,51,40,.34),rgba(7,14,11,.24));
+}
+.mock-chart{
+  background:rgba(5,11,8,.25);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+.floating-stat{
+  background:rgba(20,36,28,.48);
+  backdrop-filter:blur(30px) saturate(150%);
+  -webkit-backdrop-filter:blur(30px) saturate(150%);
+  border-color:rgba(255,255,255,.18);
+}
+.hero-badge{
+  background:rgba(15,28,21,.40);
+  backdrop-filter:blur(26px) saturate(145%);
+  -webkit-backdrop-filter:blur(26px) saturate(145%);
+  border-color:rgba(255,255,255,.16);
+}
+@media(max-width:850px){
+  .hero-product:before{width:340px;height:340px}
+  .hero-product:after{inset:4% 0;border-radius:28px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-product:before{animation:none}
+}
 </style></head>
 <body>
 <script>
@@ -310,6 +396,6 @@ body:before{
 
 <div class="auth" id="auth"><div class="box"><div class="box-head"><img src="./logo.svg?v=11" alt="UL Tracker"><div><div style="font-size:11px;color:var(--green);font-weight:900">UL TRACKER</div><div style="font-size:10px;color:#728078">BUILT FOR PROGRESS</div></div><button class="close" id="closeAuth">×</button></div><h2 id="authTitle">Log in</h2><p id="authDesc">Pick up where your last workout left off.</p><input class="field" id="email" type="email" autocomplete="email" placeholder="Email"><input class="field" id="password" type="password" autocomplete="current-password" placeholder="Password"><div class="auth-actions"><button class="btn primary" id="submitAuth">Log in <span aria-hidden="true">→</span></button><button class="btn" id="toggleAuth">Create account</button></div><button class="btn" id="forgot" style="width:100%;margin-top:8px;background:transparent">Forgot password?</button><div class="status" id="status"></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="./landing.js?v=14"></script>
+<script src="./landing.js?v=15"></script>
 </body>
 </html>
