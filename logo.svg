@@ -1,34 +1,50 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1526 1030" fill="none" role="img" aria-labelledby="ulTitle ulDesc">
 <title id="ulTitle">UL Tracker</title>
-<desc id="ulDesc">Angular charcoal and emerald UL monogram</desc>
+<desc id="ulDesc">Angular white and emerald UL monogram</desc>
 <defs>
-  <linearGradient id="charcoal" x1="300" y1="70" x2="760" y2="980" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#FFFFFF"/>
-    <stop offset=".45" stop-color="#F5F7F6"/>
-    <stop offset="1" stop-color="#DCE2DF"/>
+  <linearGradient id="whiteMetal" x1="280" y1="70" x2="870" y2="960" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#BFC6C2"/>
+    <stop offset=".28" stop-color="#FFFFFF"/>
+    <stop offset=".42" stop-color="#F7F9F8"/>
+    <stop offset=".50" stop-color="#FFFFFF"/>
+    <stop offset=".62" stop-color="#D7DDDA"/>
+    <stop offset=".82" stop-color="#FFFFFF"/>
+    <stop offset="1" stop-color="#C4CBC7"/>
   </linearGradient>
-  <linearGradient id="charcoal2" x1="780" y1="60" x2="1180" y2="650" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#FFFFFF"/>
-    <stop offset=".45" stop-color="#F1F4F2"/>
-    <stop offset="1" stop-color="#DCE2DF"/>
+  <linearGradient id="greenMetal" x1="820" y1="430" x2="1410" y2="960" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#059A67"/>
+    <stop offset=".26" stop-color="#18D990"/>
+    <stop offset=".42" stop-color="#39FFB6"/>
+    <stop offset=".50" stop-color="#C0FFE9"/>
+    <stop offset=".57" stop-color="#39FFB6"/>
+    <stop offset=".78" stop-color="#11D487"/>
+    <stop offset="1" stop-color="#06784F"/>
   </linearGradient>
-  <linearGradient id="emerald" x1="850" y1="440" x2="1290" y2="960" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#47FFC2"/>
-    <stop offset=".33" stop-color="#16E89A"/>
-    <stop offset=".72" stop-color="#05B875"/>
-    <stop offset="1" stop-color="#087C52"/>
+  <linearGradient id="specWhite" x1="250" y1="780" x2="1050" y2="260" gradientUnits="userSpaceOnUse">
+    <stop offset=".37" stop-color="#FFFFFF" stop-opacity="0"/>
+    <stop offset=".465" stop-color="#FFFFFF" stop-opacity="0"/>
+    <stop offset=".505" stop-color="#FFFFFF" stop-opacity=".48"/>
+    <stop offset=".535" stop-color="#FFFFFF" stop-opacity=".14"/>
+    <stop offset=".58" stop-color="#FFFFFF" stop-opacity="0"/>
   </linearGradient>
-  <linearGradient id="edge" x1="300" y1="100" x2="1400" y2="950" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#FFFFFF" stop-opacity=".8"/>
-    <stop offset=".35" stop-color="#9AA09D" stop-opacity=".18"/>
-    <stop offset=".7" stop-color="#39FFB6" stop-opacity=".35"/>
-    <stop offset="1" stop-color="#39FFB6" stop-opacity=".6"/>
+  <linearGradient id="specGreen" x1="650" y1="940" x2="1420" y2="500" gradientUnits="userSpaceOnUse">
+    <stop offset=".39" stop-color="#FFFFFF" stop-opacity="0"/>
+    <stop offset=".48" stop-color="#FFFFFF" stop-opacity="0"/>
+    <stop offset=".515" stop-color="#FFFFFF" stop-opacity=".42"/>
+    <stop offset=".55" stop-color="#FFFFFF" stop-opacity=".10"/>
+    <stop offset=".60" stop-color="#FFFFFF" stop-opacity="0"/>
   </linearGradient>
 </defs>
-<g stroke="url(#edge)" stroke-width="3" stroke-linejoin="round">
-  <path fill="url(#charcoal)" d="M695 220 L430 384 L323 767 L322 796 L327 824 L340 855 L357 877 L552 756 Z"/>
-  <path fill="url(#charcoal)" d="M845 627 L828 634 L390 889 L284 955 L378 908 L407 931 L436 947 L485 961 L533 961 L579 955 L619 944 L684 913 L710 895 L749 859 L790 802 L808 764 Z"/>
-  <path fill="url(#charcoal2)" d="M1437 214 L1026 437 L1030 415 L1133 66 L882 215 L877 220 L768 641 L1074 465 L1345 281 Z"/>
-  <path fill="url(#emerald)" d="M1453 806 L1046 804 L1144 456 L1142 452 L876 608 L774 958 L1256 959 L1441 818 Z"/>
+<g stroke="#FFFFFF" stroke-opacity=".28" stroke-width="3" stroke-linejoin="round">
+  <path d="M695 220L430 384L323 767L322 796L327 824L340 855L357 877L552 756Z" fill="url(#whiteMetal)"/>
+  <path d="M845 627L828 634L390 889L284 955L378 908L407 931L436 947L485 961L533 961L579 955L619 944L684 913L710 895L749 859L790 802L808 764Z" fill="url(#whiteMetal)"/>
+  <path d="M1437 214L1026 437L1030 415L1133 66L882 215L877 220L768 641L1074 465L1345 281Z" fill="url(#whiteMetal)"/>
+  <path d="M1453 806L1046 804L1144 456L1142 452L876 608L774 958L1256 959L1441 818Z" fill="url(#greenMetal)"/>
+</g>
+<g pointer-events="none">
+  <path d="M695 220L430 384L323 767L322 796L327 824L340 855L357 877L552 756Z" fill="url(#specWhite)"/>
+  <path d="M845 627L828 634L390 889L284 955L378 908L407 931L436 947L485 961L533 961L579 955L619 944L684 913L710 895L749 859L790 802L808 764Z" fill="url(#specWhite)"/>
+  <path d="M1437 214L1026 437L1030 415L1133 66L882 215L877 220L768 641L1074 465L1345 281Z" fill="url(#specWhite)"/>
+  <path d="M1453 806L1046 804L1144 456L1142 452L876 608L774 958L1256 959L1441 818Z" fill="url(#specGreen)"/>
 </g>
 </svg>
