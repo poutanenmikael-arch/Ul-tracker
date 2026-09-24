@@ -1,12 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 80" fill="none" role="img" aria-labelledby="ulTitle ulDesc">
-<title id="ulTitle">UL Tracker</title><desc id="ulDesc">Angular UL performance monogram</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410 320" fill="none" role="img" aria-labelledby="title desc">
+<title id="title">UL Tracker</title>
+<desc id="desc">Angular white and emerald UL monogram</desc>
 <defs>
-<linearGradient id="g" x1="7" y1="4" x2="121" y2="76" gradientUnits="userSpaceOnUse">
-<stop stop-color="#E8FFF4"/><stop offset=".22" stop-color="#39FFB6"/><stop offset=".58" stop-color="#12E184"/><stop offset="1" stop-color="#007A4A"/>
-</linearGradient>
-<filter id="f" x="-20%" y="-25%" width="140%" height="150%"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <linearGradient id="white" x1="55" y1="20" x2="120" y2="300" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#FFFFFF"/>
+    <stop offset=".52" stop-color="#F3F5F4"/>
+    <stop offset="1" stop-color="#B4BDB9"/>
+  </linearGradient>
+  <linearGradient id="emerald" x1="190" y1="125" x2="335" y2="305" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#8BFFE0"/>
+    <stop offset=".25" stop-color="#00FFA3"/>
+    <stop offset=".72" stop-color="#0EDC91"/>
+    <stop offset="1" stop-color="#00A96D"/>
+  </linearGradient>
+  <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="3.5" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
 </defs>
-<path d="M9 8V45L29 68H37L57 45V8" stroke="url(#g)" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" filter="url(#f)"/>
-<path d="M73 8V68H121L109 56H86V8H73Z" fill="url(#g)" filter="url(#f)"/>
-<path d="M61 8H67" stroke="#39FFB6" stroke-width="4" stroke-linecap="square"/>
+<g filter="url(#softGlow)">
+  <path fill="url(#white)" d="M127.6 59.4L46.2 112.2L16.7 244.8C14.7 255.9 17.8 268.6 25.3 276.8C31.7 283.7 39.5 285.7 47.5 281.1L76.5 261C82.7 256.7 86.2 249.8 87.8 241.2L90.2 237.6L127.6 59.4Z"/>
+  <path fill="url(#white)" d="M356.4 71.5L312.4 94.6L267.3 121L258.5 124.3L257.4 118.8L266.2 77L276.1 17.6L200.2 66L196.9 69.3L174.9 190.3L265.1 134.2L331.1 90.2L356.4 71.5Z"/>
+  <path fill="url(#emerald)" d="M382.4 247.5L266.2 245.3L284.9 138.6L271.7 147.4L268.4 145.2L264 146.3L267.3 148.5L266.2 150.7L200.2 192.5L177.1 304.7L330 304.7L382.4 247.5Z"/>
+</g>
 </svg>
