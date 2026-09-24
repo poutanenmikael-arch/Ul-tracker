@@ -644,13 +644,13 @@ body:after{
   from{opacity:.42;transform:scale(1)}
   to{opacity:.72;transform:scale(1.035)}
 }
-.ambient-bg{position:fixed;inset:0;pointer-events:none;z-index:-2;overflow:hidden}
+.ambient-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .ambient-bg:before,.ambient-bg:after{content:"";position:absolute;width:38vw;height:38vw;min-width:340px;min-height:340px;border-radius:50%;border:1px solid rgba(57,255,182,.045)}
 .ambient-bg:before{left:-18vw;top:16vh;box-shadow:0 0 160px rgba(57,255,182,.025);animation:orbLeft 22s ease-in-out infinite alternate}
 .ambient-bg:after{right:-18vw;bottom:8vh;box-shadow:0 0 170px rgba(14,150,102,.028);animation:orbRight 26s ease-in-out infinite alternate}
 @keyframes orbLeft{from{transform:translate3d(0,0,0) scale(.9)}to{transform:translate3d(8vw,5vh,0) scale(1.08)}}
 @keyframes orbRight{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-7vw,-6vh,0) scale(.86)}}
-.showcase,.engine,.memory,.program,.app-showcase,.final-v2{isolation:isolate}
+.showcase,.engine,.memory,.program,.app-showcase,.final-v2{isolation:isolate;position:relative}
 .showcase:before,.engine:before,.memory:before,.program:before,.app-showcase:before{
   content:"";
   position:absolute;
@@ -679,7 +679,7 @@ body:after{
 (()=>{try{if(sessionStorage.getItem('ul-sw-clean-v14')!=='1'){sessionStorage.setItem('ul-sw-clean-v14','1');if('serviceWorker' in navigator)navigator.serviceWorker.getRegistrations().then(rs=>Promise.all(rs.map(r=>r.unregister())));if('caches' in window)caches.keys().then(ks=>Promise.all(ks.map(k=>caches.delete(k))));}}catch(e){}})();
 </script>
 <div class="ambient-bg" aria-hidden="true"></div>
-<header class="nav"><div class="wrap nav-inner">
+<header class="nav" style="position:sticky;z-index:50"><div class="wrap nav-inner">
 <a class="brand" href="#"><svg class="ul-mark" viewBox="0 0 1526 1030" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UL Tracker">
 <defs>
 <linearGradient id="mw" x1="280" y1="70" x2="870" y2="960" gradientUnits="userSpaceOnUse"><stop stop-color="#BFC6C2"/><stop offset=".28" stop-color="#FFFFFF"/><stop offset=".42" stop-color="#F7F9F8"/><stop offset=".50" stop-color="#FFFFFF"/><stop offset=".62" stop-color="#D7DDDA"/><stop offset=".82" stop-color="#FFFFFF"/><stop offset="1" stop-color="#C4CBC7"/></linearGradient>
@@ -703,7 +703,7 @@ body:after{
 <div class="nav-right"><a href="#product">Product</a><a href="#why">Why UL</a><button class="btn" data-auth="login">Log in</button><button class="btn primary" data-auth="signup">Sign up</button></div>
 </div></header>
 
-<main>
+<main style="position:relative;z-index:1">
 <section class="hero"><div class="wrap hero-grid">
 <div class="hero-copy-side">
 <h1 aria-label="Train. Track. Progress."><span class="hero-type" style="--chars:6;--delay:.12s;--caret-delay:.12s">Train.</span><span class="hero-type" style="--chars:6;--delay:.66s;--caret-delay:.66s">Track.</span><span class="hero-type accent" style="--chars:9;--delay:1.20s;--caret-delay:1.20s">Progress.</span></h1>
@@ -915,7 +915,7 @@ Leg Press 2x8-12</pre>
     </div>
   </div>
 </section>
-<footer class="footer"><div class="wrap footer-inner"><span>© 2026 UL Tracker</span><span>TRAIN · TRACK · PROGRESS</span></div></footer>
+<footer class="footer" style="position:relative;z-index:1"><div class="wrap footer-inner"><span>© 2026 UL Tracker</span><span>TRAIN · TRACK · PROGRESS</span></div></footer>
 
 <div class="auth" id="auth"><div class="box"><div class="box-head"><svg class="ul-mark" viewBox="0 0 1526 1030" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UL Tracker">
 <defs>
