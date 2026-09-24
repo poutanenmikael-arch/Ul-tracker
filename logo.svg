@@ -3,14 +3,14 @@
 <desc id="ulDesc">Angular charcoal and emerald UL monogram</desc>
 <defs>
   <linearGradient id="charcoal" x1="300" y1="70" x2="760" y2="980" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#5A5D5C"/>
-    <stop offset=".45" stop-color="#2A2D2C"/>
-    <stop offset="1" stop-color="#111413"/>
+    <stop stop-color="#FFFFFF"/>
+    <stop offset=".45" stop-color="#F5F7F6"/>
+    <stop offset="1" stop-color="#DCE2DF"/>
   </linearGradient>
   <linearGradient id="charcoal2" x1="780" y1="60" x2="1180" y2="650" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#6A6D6B"/>
-    <stop offset=".45" stop-color="#303332"/>
-    <stop offset="1" stop-color="#111413"/>
+    <stop stop-color="#FFFFFF"/>
+    <stop offset=".45" stop-color="#F1F4F2"/>
+    <stop offset="1" stop-color="#DCE2DF"/>
   </linearGradient>
   <linearGradient id="emerald" x1="850" y1="440" x2="1290" y2="960" gradientUnits="userSpaceOnUse">
     <stop stop-color="#47FFC2"/>
@@ -19,7 +19,7 @@
     <stop offset="1" stop-color="#087C52"/>
   </linearGradient>
   <linearGradient id="edge" x1="300" y1="100" x2="1400" y2="950" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#D8DDDA" stop-opacity=".8"/>
+    <stop stop-color="#FFFFFF" stop-opacity=".8"/>
     <stop offset=".35" stop-color="#9AA09D" stop-opacity=".18"/>
     <stop offset=".7" stop-color="#39FFB6" stop-opacity=".35"/>
     <stop offset="1" stop-color="#39FFB6" stop-opacity=".6"/>
