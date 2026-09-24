@@ -675,6 +675,50 @@ body:after{
   body:after{opacity:.48}
 }
 
+
+@media(max-width:620px){
+  .wrap{width:calc(100% - 28px)}
+  .showcase,.engine,.memory,.program,.app-showcase{padding-bottom:64px}
+  .engine-wrap,.memory-wrap,.program-wrap,.app-wrap{padding-top:64px}
+  .story-grid,.engine-grid,.memory-wrap,.program-grid{gap:24px}
+  .story-copy h2,.memory-copy h2,.program-copy h2,.app-head h2{font-size:clamp(43px,14vw,62px);line-height:.88;letter-spacing:-3.5px}
+  .story-copy p,.memory-copy p,.program-copy p,.engine-main>p,.app-head p{font-size:13px;line-height:1.6}
+  .set-demo{border-radius:20px}
+  .demo-top{padding:15px 16px}
+  .demo-top strong{font-size:11px}.demo-top span{font-size:8px}
+  .demo-body{padding:20px 15px 18px}
+  .demo-ex{font-size:29px;line-height:.95;letter-spacing:-1.7px}
+  .demo-target{font-size:10px}
+  .demo-last{margin:20px 0 13px;padding:12px}
+  .demo-last b{font-size:12px}
+  .demo-set{grid-template-columns:27px minmax(0,1fr);gap:9px;padding:12px 10px}
+  .demo-rir{grid-column:2;justify-self:start;margin-top:-5px;font-size:9px}
+  .demo-main b{font-size:13px}.demo-main span{font-size:9px}
+  .demo-num{width:25px;height:25px;font-size:9px}
+  .demo-save{margin-top:12px;padding:15px;font-size:11px}
+  .demo-rest{margin-top:8px;padding:12px;font-size:9px}
+  .demo-rest b{font-size:17px}.demo-rest span:last-child{font-size:7px;text-align:right}
+  .engine-main{padding:20px}
+  .engine-main h2{font-size:clamp(40px,13vw,58px);letter-spacing:-3px}
+  .engine-flow{gap:7px;margin-top:28px}
+  .flow-card{padding:15px}
+  .flow-card strong{font-size:22px}
+  .flow-card p{font-size:10px}
+  .engine-side-card{padding:21px}
+  .engine-side-card h3{font-size:22px}
+  .mini-next{margin-top:18px}
+  .history-board{border-radius:20px}
+  .history-row{grid-template-columns:63px minmax(0,1fr);gap:6px;padding:14px 13px}
+  .history-gain{grid-column:2;justify-self:start;margin-top:-2px;font-size:9px}
+  .import-card{padding:18px}
+  .import-pane{padding:14px}
+  .import-pane pre{font-size:10px;line-height:1.65}
+  .app-stage{gap:10px}
+  .app-card{padding:11px}
+  .app-ui{height:365px;padding:14px}
+  .final-v2-box{padding:62px 17px 56px}
+}
+
 </style></head>
 <body>
 <script>
@@ -806,31 +850,31 @@ body:after{
       <div class="engine-main">
         <div class="engine-eyebrow">02 · PROGRESSION ENGINE</div>
         <h2>DON’T GUESS<br>YOUR NEXT SET.</h2>
-        <p>UL reads your previous performance and turns it into the next decision. When the numbers say you are ready, the app can tell you to add weight. When they do not, it keeps the load where it is.</p>
+        <p>For a 6–10 rep target, UL looks at the completed working sets and your target RIR. When you reach the top of the range across the prescribed sets, it flags the load for progression next session. If you are not there yet, it keeps the current load.</p>
         <div class="engine-flow">
           <div class="flow-card">
             <div class="flow-label">LAST PERFORMANCE</div>
-            <strong>100 KG × 8</strong>
+            <strong>100 KG × 10, 10, 10</strong>
             <p>2 RIR · target range 6–10</p>
           </div>
           <div class="flow-arrow">→</div>
           <div class="flow-card next">
             <div class="flow-label">NEXT TARGET</div>
             <strong>102.5 KG × 8</strong>
-            <p>UL recommends the next step</p>
+            <p>Top of range → next load</p>
           </div>
         </div>
       </div>
       <div class="engine-side">
         <div class="engine-side-card">
-          <h3>MORE WEIGHT.</h3>
-          <p>When your performance supports progression, UL makes the recommendation visible before you start the set.</p>
+          <h3>TOP OF RANGE.</h3>
+          <p>When you hit the top of the rep range across the prescribed sets, UL makes the next load visible before the next workout.</p>
           <div class="mini-next"><b>102.5 KG</b><span>↑ ADD 2.5 KG</span></div>
         </div>
         <div class="engine-side-card">
-          <h3>OR STAY.</h3>
-          <p>Not every session needs a jump. The goal is useful decisions, not forced progression.</p>
-          <div class="mini-next"><b>100 KG</b><span>HIT 8 AGAIN</span></div>
+          <h3>NOT THERE YET.</h3>
+          <p>Miss the top of the range? UL keeps the load where it is and gives you the next target.</p>
+          <div class="mini-next"><b>100 KG</b><span>HIT 10 AGAIN</span></div>
         </div>
       </div>
     </div>
