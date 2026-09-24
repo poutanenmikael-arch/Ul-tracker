@@ -613,11 +613,72 @@ body:before{
   .final-v2-box{padding:70px 20px 64px;border-radius:22px}.final-v2-box h2{letter-spacing:-4px}
 }
 
+
+/* ATMOSPHERE V1 — add depth without heavy scroll effects */
+body{
+  background:
+    radial-gradient(720px 520px at 12% 8%,rgba(57,255,182,.075),transparent 68%),
+    radial-gradient(820px 600px at 88% 31%,rgba(14,150,102,.075),transparent 70%),
+    radial-gradient(900px 620px at 46% 78%,rgba(57,255,182,.035),transparent 72%),
+    linear-gradient(180deg,#030605 0%,#06100b 42%,#040706 100%);
+}
+body:before{
+  background:
+    linear-gradient(90deg,transparent 0%,rgba(57,255,182,.025) 50%,transparent 100%),
+    repeating-linear-gradient(90deg,transparent 0,transparent 119px,rgba(255,255,255,.018) 120px),
+    repeating-linear-gradient(0deg,transparent 0,transparent 119px,rgba(255,255,255,.014) 120px);
+  opacity:.42;
+}
+body:after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:
+    radial-gradient(260px 170px at 18% 40%,rgba(57,255,182,.055),transparent 72%),
+    radial-gradient(300px 190px at 82% 69%,rgba(57,255,182,.045),transparent 72%);
+  animation:ambientPulse 14s ease-in-out infinite alternate;
+}
+@keyframes ambientPulse{
+  from{opacity:.42;transform:scale(1)}
+  to{opacity:.72;transform:scale(1.035)}
+}
+.ambient-bg{position:fixed;inset:0;pointer-events:none;z-index:-2;overflow:hidden}
+.ambient-bg:before,.ambient-bg:after{content:"";position:absolute;width:38vw;height:38vw;min-width:340px;min-height:340px;border-radius:50%;border:1px solid rgba(57,255,182,.045)}
+.ambient-bg:before{left:-18vw;top:16vh;box-shadow:0 0 160px rgba(57,255,182,.025);animation:orbLeft 22s ease-in-out infinite alternate}
+.ambient-bg:after{right:-18vw;bottom:8vh;box-shadow:0 0 170px rgba(14,150,102,.028);animation:orbRight 26s ease-in-out infinite alternate}
+@keyframes orbLeft{from{transform:translate3d(0,0,0) scale(.9)}to{transform:translate3d(8vw,5vh,0) scale(1.08)}}
+@keyframes orbRight{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-7vw,-6vh,0) scale(.86)}}
+.showcase,.engine,.memory,.program,.app-showcase,.final-v2{isolation:isolate}
+.showcase:before,.engine:before,.memory:before,.program:before,.app-showcase:before{
+  content:"";
+  position:absolute;
+  width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(57,255,182,.065),transparent 69%);
+  pointer-events:none;
+  z-index:-1;
+}
+.showcase:before{right:-110px;top:10%}
+.engine:before{left:-120px;top:22%}
+.memory:before{right:-100px;top:18%}
+.program:before{left:-100px;top:25%}
+.app-showcase:before{right:-100px;top:8%}
+@media(prefers-reduced-motion:reduce){
+  body:after,.ambient-bg:before,.ambient-bg:after{animation:none!important}
+}
+@media(max-width:700px){
+  .ambient-bg:before,.ambient-bg:after{width:300px;height:300px;min-width:300px;min-height:300px}
+  body:before{opacity:.26}
+  body:after{opacity:.55}
+}
+
 </style></head>
 <body>
 <script>
 (()=>{try{if(sessionStorage.getItem('ul-sw-clean-v14')!=='1'){sessionStorage.setItem('ul-sw-clean-v14','1');if('serviceWorker' in navigator)navigator.serviceWorker.getRegistrations().then(rs=>Promise.all(rs.map(r=>r.unregister())));if('caches' in window)caches.keys().then(ks=>Promise.all(ks.map(k=>caches.delete(k))));}}catch(e){}})();
 </script>
+<div class="ambient-bg" aria-hidden="true"></div>
 <header class="nav"><div class="wrap nav-inner">
 <a class="brand" href="#"><svg class="ul-mark" viewBox="0 0 1526 1030" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UL Tracker">
 <defs>
