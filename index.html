@@ -473,6 +473,72 @@ body:before{
   .hero-product{display:block!important;position:relative!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:32px 0 0!important}
   .product-frame{display:block!important;position:relative!important;width:100%!important;max-width:100%!important;min-width:0!important}
 }
+
+/* DUAL PHONE HERO — real HTML UI based on the approved concept */
+.hero-product{min-height:650px;align-items:center}
+.phone-stage{position:relative;width:min(700px,100%);height:620px;display:grid;place-items:center;perspective:1200px}
+.phone-card{position:absolute;width:292px;filter:drop-shadow(0 32px 70px rgba(0,0,0,.5));will-change:transform}
+.phone-workout{left:4%;top:28px;z-index:4;transform:rotateY(7deg) rotateZ(-2deg)}
+.phone-progress{right:4%;top:8px;z-index:3;transform:rotateY(-7deg) rotateZ(2deg)}
+.phone-shell{position:relative;padding:8px;border:1px solid rgba(255,255,255,.25);border-radius:42px;background:linear-gradient(145deg,#1a211e,#080c0a 72%);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 0 0 1px rgba(0,0,0,.6)}
+.phone-ui{position:relative;height:570px;border-radius:35px;overflow:hidden;border:1px solid rgba(255,255,255,.10);background:linear-gradient(155deg,rgba(12,20,16,.97),rgba(3,7,5,.99));padding:20px 14px 13px}
+.phone-ui:before{content:"";position:absolute;inset:0;background:radial-gradient(230px 180px at 20% 8%,rgba(57,255,182,.08),transparent 68%),linear-gradient(135deg,rgba(255,255,255,.04),transparent 24%);pointer-events:none}
+.phone-island{position:absolute;z-index:4;top:11px;left:50%;transform:translateX(-50%);width:92px;height:24px;border-radius:16px;background:#010201;border:1px solid rgba(255,255,255,.05)}
+.phone-status{display:flex;justify-content:space-between;font-size:8px;color:#a8b4ad;position:relative;z-index:2;margin:1px 3px 18px}
+.phone-appbar{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
+.phone-appbar b{font-size:11px;letter-spacing:1.4px}
+.phone-appbar span{width:24px;height:24px;border:1px solid rgba(255,255,255,.11);border-radius:50%;display:grid;place-items:center;color:#7e8b83;font-size:9px}
+.phone-heading{position:relative;z-index:2;padding:22px 2px 15px}
+.phone-heading small,.phone-last small,.phone-next small,.progress-foot span{display:block;color:#6f7d74;font-size:7px;font-weight:900;letter-spacing:1.4px}
+.phone-heading h3{margin:5px 0 0;font-size:28px;letter-spacing:-1.5px}
+.phone-exercise-head{display:flex;justify-content:space-between;align-items:center;padding:11px 10px;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:rgba(20,31,25,.45);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);position:relative;z-index:2}
+.phone-exercise-head b{font-size:10px}.phone-exercise-head span{font-size:7px;color:var(--green);font-weight:900}
+.phone-last{position:relative;z-index:2;padding:12px 2px 10px}.phone-last b{display:block;font-size:8px;color:#aebbb3;margin-top:4px}
+.phone-set-row{display:grid;grid-template-columns:18px 14px 1fr auto;gap:6px;align-items:center;height:40px;padding:0 9px;margin:6px 0;border:1px solid rgba(255,255,255,.09);border-radius:11px;background:rgba(11,18,14,.58);font-size:8px;position:relative;z-index:2}
+.phone-set-row b{font-size:8px}.phone-set-row em{font-style:normal;color:#96a39a;font-size:7px}
+.phone-set-row.done .set-check{width:16px;height:16px;border-radius:50%;display:grid;place-items:center;background:rgba(57,255,182,.14);color:var(--green);border:1px solid rgba(57,255,182,.28);font-size:8px}.phone-set-row.active{border-color:rgba(57,255,182,.34);background:rgba(57,255,182,.055);box-shadow:inset 0 0 20px rgba(57,255,182,.035)}
+.set-num{width:16px;height:16px;border-radius:50%;border:1px solid rgba(57,255,182,.35);display:grid;place-items:center;color:var(--green);font-size:7px}
+.phone-save{width:100%;height:42px;margin-top:10px;border-radius:12px;border:1px solid rgba(57,255,182,.55);background:linear-gradient(145deg,#46ffc0,#20dc96);color:#04110a;font-size:10px;font-weight:950;letter-spacing:.4px;box-shadow:0 10px 30px rgba(57,255,182,.16)}
+.phone-save span{float:right;margin-right:8px}
+.phone-rest{display:flex;align-items:center;gap:10px;margin-top:9px;padding:9px 10px;border:1px solid rgba(255,255,255,.09);border-radius:12px;background:rgba(13,21,17,.58)}
+.rest-ring{width:24px;height:24px;border:4px solid rgba(57,255,182,.18);border-top-color:var(--green);border-right-color:var(--green);border-radius:50%}.phone-rest small{display:block;font-size:6px;color:#6f7d74;letter-spacing:1px}.phone-rest b{font-size:12px}.skip{margin-left:auto;font-size:7px;color:#6f7d74}
+.phone-next{margin-top:10px;padding:10px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(9,15,12,.5)}.phone-next b{display:block;font-size:9px;margin-top:3px}.phone-next span{font-size:7px;color:#758279}
+.phone-nav{position:absolute;left:12px;right:12px;bottom:12px;display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:8px 4px;border-top:1px solid rgba(255,255,255,.07);background:rgba(6,10,8,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.phone-nav span{text-align:center;font-size:6.5px;color:#66746c}.phone-nav .selected{color:var(--green)}
+.range-row{display:flex;gap:4px;padding:8px 0 12px}.range-row span,.range-row b{flex:1;text-align:center;padding:7px 2px;border-radius:9px;font-size:7px;color:#68766e}.range-row b{color:#04110a;background:var(--green)}
+.progress-module,.pr-module{border:1px solid rgba(255,255,255,.10);border-radius:15px;background:rgba(13,22,17,.53);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding:11px;position:relative;z-index:2}
+.progress-module-top{display:flex;justify-content:space-between;align-items:center}.progress-module-top b{font-size:9px}.progress-module-top span{font-size:8px;color:var(--green);font-weight:900}
+.chart-lines{position:relative;height:205px;margin-top:8px}.chart-lines i{position:absolute;left:0;right:0;height:1px;background:rgba(255,255,255,.06)}.chart-lines i:nth-child(1){top:24%}.chart-lines i:nth-child(2){top:52%}.chart-lines i:nth-child(3){top:80%}.chart-lines svg{position:absolute;inset:0;width:100%;height:100%}.chart-lines polyline{fill:none;stroke:var(--green);stroke-width:4;filter:drop-shadow(0 0 8px rgba(57,255,182,.35))}
+.chart-meta{display:flex;justify-content:space-between;color:#5d6a63;font-size:6px;letter-spacing:1px;margin-top:-3px}
+.pr-module{margin-top:10px}.pr-module small{color:#6f7d74;font-size:7px;letter-spacing:1.2px;font-weight:900}.pr-module div{display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid rgba(255,255,255,.06);margin-top:7px}.pr-module b{font-size:8px}.pr-module span{font-size:6px;color:#68766e}
+.progress-foot{display:flex;align-items:end;gap:8px;padding:18px 3px 5px;position:relative;z-index:2}.progress-foot b{font-size:27px;letter-spacing:-1.2px}.progress-foot em{font-style:normal;color:var(--green);font-size:15px;margin-bottom:3px}
+.glass-float{position:absolute;z-index:7;border:1px solid rgba(255,255,255,.16);background:rgba(17,31,24,.50);backdrop-filter:blur(24px) saturate(135%);-webkit-backdrop-filter:blur(24px) saturate(135%);box-shadow:0 20px 45px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.08);border-radius:17px}
+.set-float{left:0;top:205px;padding:11px 13px;display:flex;align-items:center;gap:9px}.set-float>strong{width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:rgba(57,255,182,.12);color:var(--green);border:1px solid rgba(57,255,182,.28)}.set-float b{display:block;font-size:10px}.set-float span{display:block;font-size:7px;color:#7c8a82;margin-top:2px}
+.progress-float{right:-2px;top:230px;padding:12px 14px}.progress-float b{display:block;font-size:24px;color:var(--green);letter-spacing:-1px}.progress-float span{font-size:7px;color:#7c8a82}
+.next-float{left:18px;bottom:55px;padding:11px 14px}.next-float small{font-size:6px;letter-spacing:1px;color:#6f7d74}.next-float b{display:block;font-size:9px;margin:3px 0}.next-float span{font-size:6px;color:#728078}
+@media(max-width:1000px){
+  .hero-grid{grid-template-columns:.78fr 1.22fr;gap:35px}
+  .phone-stage{transform:scale(.94);transform-origin:center right}
+}
+@media(max-width:850px){
+  .hero-product{min-height:570px}
+  .phone-stage{transform:none;height:540px}
+  .phone-card{width:250px}.phone-ui{height:500px;border-radius:30px}.phone-shell{border-radius:36px}.phone-island{top:9px}.phone-heading{padding-top:18px}.phone-heading h3{font-size:24px}.chart-lines{height:165px}
+  .phone-workout{left:3%;top:26px}.phone-progress{right:3%;top:6px}
+  .set-float{left:0;top:175px}.progress-float{right:0;top:205px}.next-float{left:7px;bottom:40px}
+}
+@media(max-width:700px){
+  .hero-product{margin-top:4px}
+  .phone-stage{height:500px}
+  .phone-card{width:220px}.phone-ui{height:440px;border-radius:28px;padding:16px 11px 10px}.phone-shell{padding:6px;border-radius:33px}
+  .phone-workout{left:0;top:30px;transform:rotateY(5deg) rotateZ(-1.5deg)}.phone-progress{right:0;top:15px;transform:rotateY(-5deg) rotateZ(1.5deg)}
+  .phone-status{margin-bottom:13px}.phone-appbar b{font-size:9px}.phone-heading{padding:16px 1px 11px}.phone-heading h3{font-size:21px}.phone-exercise-head{padding:8px}.phone-set-row{height:33px;margin:4px 0}.phone-save{height:36px;margin-top:7px}.phone-rest{margin-top:6px}.phone-next{margin-top:7px}.phone-nav{bottom:8px}.range-row{padding:5px 0 8px}.chart-lines{height:130px}.progress-float{padding:9px 10px}.progress-float b{font-size:19px}.set-float{padding:8px 9px}.next-float{display:none}
+}
+@media(max-width:520px){
+  .hero-product{min-height:520px}
+  .phone-stage{height:480px;width:100%}
+  .phone-card{width:190px}.phone-ui{height:400px}.phone-progress{right:-3px}.phone-workout{left:-3px}
+  .glass-float{display:none}
+}
 </style></head>
 <body>
 <script>
@@ -491,32 +557,63 @@ body:before{
 <div class="hero-actions"><button class="btn primary large" data-auth="signup">Start tracking free</button><a class="btn large" href="#product">See the product</a></div>
 <div class="hero-note">Free account · Built for serious training</div>
 </div>
-<div class="hero-product"><div class="liquid-cursor" aria-hidden="true"></div>
-<div class="product-frame">
-<div class="product-top"><b>UL TRACKER</b><span>READY</span></div>
-<div class="product-body">
-<div class="mock-panel main">
-<div class="mock-label">WORKOUT</div>
-<div class="mock-title">Upper A</div>
-<div class="mock-row"><b>Incline Smith Press</b><span>3 SETS</span></div>
-<div class="mock-row"><b>Chest-Supported Row</b><span>3 SETS</span></div>
-<div class="mock-row"><b>Machine Chest Press</b><span>2 SETS</span></div>
-<div class="mock-row"><b>Lat Pulldown</b><span>2 SETS</span></div>
-<div class="mock-label" style="margin-top:18px">CURRENT SET</div>
-<div class="mock-inputs"><div class="mock-input active">100 KG</div><div class="mock-input active">8 REPS</div><div class="mock-input active">2 RIR</div></div>
-</div>
-<div class="mock-panel">
-<div class="mock-label">PROGRESS</div>
-<div class="mock-title">Strength</div>
-<div class="mock-chart"></div>
-<div class="mock-row"><b>Incline Smith Press</b><span>+12.4%</span></div>
-<div class="mock-row"><b>Chest Press</b><span>+8.1%</span></div>
-<div class="mock-row"><b>Row</b><span>+10.6%</span></div>
-</div>
-</div>
-<div class="floating-stat"><small>EST. STRENGTH</small><b>+12.4%</b><span>↑ FROM YOUR HISTORY</span></div>
-</div>
-<div class="hero-badge"><strong>100 KG × 8</strong> · 2 RIR · SET 1</div>
+<div class="hero-product">
+  <div class="liquid-cursor" aria-hidden="true"></div>
+  <div class="phone-stage" aria-label="UL Tracker product preview">
+    <div class="phone-card phone-workout">
+      <div class="phone-shell">
+        <div class="phone-island"></div>
+        <div class="phone-ui">
+          <div class="phone-status"><span>9:41</span><span>● ●</span></div>
+          <div class="phone-appbar"><b>UL TRACKER</b><span>•••</span></div>
+          <div class="phone-heading">
+            <small>WORKOUT</small>
+            <h3>Upper A</h3>
+          </div>
+          <div class="phone-exercise-head"><b>Incline Smith Press</b><span>3 SETS</span></div>
+          <div class="phone-last"><small>LAST SESSION</small><b>100 KG × 8, 8, 7 @ 2 RIR</b></div>
+          <div class="phone-set-row done"><span class="set-check">✓</span><span>1</span><b>100 KG × 8</b><em>2 RIR</em></div>
+          <div class="phone-set-row done"><span class="set-check">✓</span><span>2</span><b>100 KG × 8</b><em>2 RIR</em></div>
+          <div class="phone-set-row active"><span class="set-num">3</span><span>3</span><b>100 KG × 7</b><em>2 RIR</em></div>
+          <button class="phone-save">SAVE SET <span>→</span></button>
+          <div class="phone-rest"><span class="rest-ring"></span><div><small>REST TIMER</small><b>01:45</b></div><span class="skip">SKIP</span></div>
+          <div class="phone-next"><small>NEXT EXERCISE</small><b>Chest-Supported Row</b><span>3 sets · 8–12 reps</span></div>
+          <div class="phone-nav"><span class="selected">Workout</span><span>Progression</span><span>History</span><span>Socials</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone-card phone-progress">
+      <div class="phone-shell">
+        <div class="phone-island"></div>
+        <div class="phone-ui">
+          <div class="phone-status"><span>9:41</span><span>● ●</span></div>
+          <div class="phone-appbar"><b>UL TRACKER</b><span>•••</span></div>
+          <div class="phone-heading">
+            <small>PROGRESSION</small>
+            <h3>Strength</h3>
+          </div>
+          <div class="range-row"><span>1W</span><span>1M</span><b>3M</b><span>1Y</span><span>ALL</span></div>
+          <div class="progress-module">
+            <div class="progress-module-top"><b>Incline Smith Press</b><span>+12.4%</span></div>
+            <div class="chart-lines"><i></i><i></i><i></i><svg viewBox="0 0 320 150" preserveAspectRatio="none" aria-hidden="true"><polyline points="10,118 48,108 86,104 124,94 162,88 200,77 238,70 276,46 310,28"/></svg></div>
+            <div class="chart-meta"><span>JUL</span><span>AUG</span><span>SEP</span></div>
+          </div>
+          <div class="pr-module">
+            <small>PERSONAL RECORDS</small>
+            <div><b>100 KG × 8</b><span>CURRENT</span></div>
+            <div><b>92.5 KG × 8</b><span>JUN 12</span></div>
+          </div>
+          <div class="progress-foot"><span>STRENGTH</span><b>+12.4%</b><em>↑</em></div>
+          <div class="phone-nav"><span>Workout</span><span class="selected">Progression</span><span>History</span><span>Socials</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-float set-float"><strong>✓</strong><div><b>100 KG × 8</b><span>2 RIR · Completed</span></div></div>
+    <div class="glass-float progress-float"><b>+12.4%</b><span>Strength increase</span></div>
+    <div class="glass-float next-float"><small>NEXT</small><b>Chest-Supported Row</b><span>3 sets · 8–12 reps</span></div>
+  </div>
 </div>
 </div></section>
 
@@ -547,6 +644,6 @@ body:before{
 
 <div class="auth" id="auth"><div class="box"><div class="box-head"><img src="./logo.svg?v=11" alt="UL Tracker"><div><div style="font-size:11px;color:var(--green);font-weight:900">UL TRACKER</div><div style="font-size:10px;color:#728078">BUILT FOR PROGRESS</div></div><button class="close" id="closeAuth">×</button></div><h2 id="authTitle">Log in</h2><p id="authDesc">Pick up where your last workout left off.</p><input class="field" id="email" type="email" autocomplete="email" placeholder="Email"><input class="field" id="password" type="password" autocomplete="current-password" placeholder="Password"><div class="auth-actions"><button class="btn primary" id="submitAuth">Log in <span aria-hidden="true">→</span></button><button class="btn" id="toggleAuth">Create account</button></div><button class="btn" id="forgot" style="width:100%;margin-top:8px;background:transparent">Forgot password?</button><div class="status" id="status"></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="./landing.js?v=16"></script>
+<script src="./landing.js?v=17"></script>
 </body>
 </html>
