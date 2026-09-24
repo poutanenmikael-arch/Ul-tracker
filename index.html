@@ -539,6 +539,80 @@ body:before{
   .phone-card{width:190px}.phone-ui{height:400px}.phone-progress{right:-3px}.phone-workout{left:-3px}
   .glass-float{display:none}
 }
+
+/* LANDING V2 — product-first storytelling */
+.showcase{padding:0 0 120px;position:relative}
+.story-grid{display:grid;grid-template-columns:.52fr 1.48fr;gap:70px;align-items:start}
+.story-copy{position:sticky;top:130px;padding-top:30px}
+.story-index{font-size:11px;font-weight:950;color:var(--green);letter-spacing:2px;margin-bottom:18px}
+.story-copy h2{font-size:clamp(46px,6vw,84px);line-height:.88;letter-spacing:-5px;margin:0 0 18px}
+.story-copy p{max-width:360px;color:var(--muted);font-size:15px;line-height:1.7;margin:0}
+.set-demo{min-height:640px;border:1px solid rgba(255,255,255,.1);border-radius:28px;background:linear-gradient(145deg,#101812,#060907 78%);box-shadow:0 36px 100px rgba(0,0,0,.5);overflow:hidden;position:relative}
+.set-demo:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(57,255,182,.07),transparent 28%,transparent 75%,rgba(57,255,182,.035));pointer-events:none}
+.demo-top{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid rgba(255,255,255,.07)}
+.demo-top strong{font-size:13px;letter-spacing:1.4px}.demo-top span{font-size:9px;color:#8b9991}
+.demo-body{padding:34px 34px 30px}
+.demo-ex{font-size:clamp(30px,4vw,54px);font-weight:950;letter-spacing:-3px;margin-bottom:7px}
+.demo-target{color:#819087;font-size:12px}
+.demo-last{margin:28px 0 18px;padding:15px 16px;border:1px solid rgba(105,185,255,.12);background:rgba(105,185,255,.04);border-radius:15px}
+.demo-last span{display:block;font-size:9px;letter-spacing:1.3px;color:#68766f;font-weight:900}.demo-last b{display:block;margin-top:5px;font-size:14px}
+.demo-sets{display:grid;gap:9px}
+.demo-set{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:17px 16px;border:1px solid rgba(255,255,255,.07);background:#09100c;border-radius:14px}
+.demo-set.done{border-color:rgba(57,255,182,.12)}.demo-set.active{border-color:rgba(57,255,182,.38);background:rgba(57,255,182,.045);box-shadow:inset 0 0 30px rgba(57,255,182,.035)}
+.demo-num{width:28px;height:28px;border:1px solid rgba(255,255,255,.1);border-radius:50%;display:grid;place-items:center;font-size:10px;color:#758279}
+.demo-set.done .demo-num{border-color:rgba(57,255,182,.3);color:var(--green)}.demo-main b{display:block;font-size:15px}.demo-main span{display:block;margin-top:3px;font-size:10px;color:#718078}
+.demo-rir{font-size:11px;color:var(--green);font-weight:900}
+.demo-save{margin-top:16px;display:flex;align-items:center;justify-content:space-between;padding:18px 18px;border-radius:14px;background:linear-gradient(145deg,#45ffc0,#1ddf98);color:#04120c;font-weight:950;font-size:12px;box-shadow:0 16px 36px rgba(57,255,182,.12)}
+.demo-save span{opacity:.5}
+.demo-rest{display:flex;justify-content:space-between;align-items:center;margin-top:11px;padding:15px 17px;border:1px solid rgba(255,255,255,.07);border-radius:14px;background:#080e0b}
+.demo-rest b{font-size:20px}.demo-rest span{font-size:10px;color:#77847c;letter-spacing:1px}
+.engine{padding:0 0 120px}.engine-wrap{border-top:1px solid var(--line);padding-top:120px}
+.engine-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}
+.engine-main{min-height:650px;border:1px solid rgba(57,255,182,.15);border-radius:28px;background:linear-gradient(145deg,#0e1812,#050907 80%);position:relative;overflow:hidden;padding:38px}
+.engine-main:after{content:"";position:absolute;width:420px;height:420px;right:-150px;top:-170px;border-radius:50%;background:radial-gradient(circle,rgba(57,255,182,.16),transparent 68%);pointer-events:none}
+.engine-eyebrow{font-size:10px;color:var(--green);font-weight:950;letter-spacing:2px}
+.engine-main h2{font-size:clamp(42px,5.6vw,78px);line-height:.9;letter-spacing:-4px;margin:16px 0 15px;max-width:760px}
+.engine-main>p{max-width:600px;color:var(--muted);font-size:15px;line-height:1.7;margin:0}
+.engine-flow{margin-top:48px;display:grid;grid-template-columns:1fr 62px 1fr;gap:12px;align-items:center}
+.flow-card{border:1px solid rgba(255,255,255,.09);background:#08100c;border-radius:18px;padding:20px}
+.flow-card .flow-label{font-size:9px;color:#65736b;letter-spacing:1.4px;font-weight:900}.flow-card strong{display:block;font-size:28px;letter-spacing:-1.5px;margin-top:8px}.flow-card p{margin:7px 0 0;color:#7a887f;font-size:11px}.flow-card.next{border-color:rgba(57,255,182,.22);background:rgba(57,255,182,.045)}.flow-card.next strong{color:var(--green)}
+.flow-arrow{width:62px;height:62px;border:1px solid rgba(57,255,182,.22);border-radius:50%;display:grid;place-items:center;color:var(--green);font-size:21px;background:rgba(57,255,182,.04)}
+.engine-side{display:grid;gap:18px}.engine-side-card{border:1px solid rgba(255,255,255,.08);border-radius:28px;background:#090e0b;padding:30px;position:relative;overflow:hidden}.engine-side-card h3{font-size:28px;letter-spacing:-1.5px;margin:0 0 10px}.engine-side-card p{margin:0;color:var(--muted);font-size:12px;line-height:1.7}
+.mini-next{margin-top:26px;padding-top:18px;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;gap:14px;align-items:end}.mini-next b{font-size:25px;letter-spacing:-1px}.mini-next span{font-size:10px;color:var(--green);font-weight:900}
+.memory{padding:0 0 120px}.memory-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center;border-top:1px solid var(--line);padding-top:120px}
+.memory-copy h2{font-size:clamp(48px,6vw,86px);line-height:.86;letter-spacing:-5px;margin:0 0 18px}.memory-copy p{max-width:440px;color:var(--muted);font-size:15px;line-height:1.7}
+.history-board{border:1px solid rgba(255,255,255,.08);border-radius:28px;background:#080d0a;overflow:hidden}
+.history-head{display:flex;justify-content:space-between;align-items:center;padding:21px 22px;border-bottom:1px solid rgba(255,255,255,.07)}.history-head b{font-size:12px;letter-spacing:1px}.history-head span{font-size:10px;color:var(--green);font-weight:900}
+.history-row{display:grid;grid-template-columns:95px 1fr 105px;gap:18px;align-items:center;padding:19px 22px;border-bottom:1px solid rgba(255,255,255,.055)}.history-row:last-child{border-bottom:0}.history-date{font-size:10px;color:#66736b;font-weight:900;letter-spacing:1px}.history-lift b{display:block;font-size:15px}.history-lift span{display:block;font-size:10px;color:#748179;margin-top:3px}.history-gain{justify-self:end;font-size:12px;color:var(--green);font-weight:900}
+.program{padding:0 0 120px}.program-wrap{border-top:1px solid var(--line);padding-top:120px}.program-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}.program-copy h2{font-size:clamp(48px,6vw,86px);line-height:.86;letter-spacing:-5px;margin:0 0 18px}.program-copy p{max-width:430px;color:var(--muted);font-size:15px;line-height:1.7}.program-flow{margin-top:25px;display:flex;gap:8px;flex-wrap:wrap}.program-flow span{padding:9px 11px;border:1px solid rgba(255,255,255,.08);border-radius:9px;font-size:10px;font-weight:900;color:#8a9890}.program-flow span.active{border-color:rgba(57,255,182,.28);color:var(--green);background:rgba(57,255,182,.04)}
+.import-card{border:1px solid rgba(255,255,255,.08);border-radius:28px;background:linear-gradient(145deg,#0c1410,#060907);padding:24px;box-shadow:0 30px 90px rgba(0,0,0,.4)}
+.import-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.import-top b{font-size:12px;letter-spacing:1px}.import-top span{font-size:9px;color:#77847c}
+.import-columns{display:grid;grid-template-columns:1fr 52px 1fr;gap:12px;align-items:center}
+.import-pane{border:1px solid rgba(255,255,255,.07);border-radius:18px;background:#080d0a;padding:16px;min-height:310px}.import-pane h3{font-size:12px;margin:0 0 12px}.import-pane pre{margin:0;white-space:pre-wrap;color:#8d9b93;font:11px/1.75 ui-monospace,SFMono-Regular,Menlo,monospace}
+.import-pane.result{border-color:rgba(57,255,182,.18);background:rgba(57,255,182,.035)}.import-pane.result .import-line{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-top:1px solid rgba(255,255,255,.06)}.import-pane.result .import-line:first-of-type{border-top:0}.import-pane.result b{font-size:10px}.import-pane.result span{font-size:9px;color:var(--green);font-weight:900}
+.import-arrow{width:52px;height:52px;border-radius:50%;border:1px solid rgba(57,255,182,.22);display:grid;place-items:center;color:var(--green);font-size:18px}
+.app-showcase{padding:0 0 120px}.app-wrap{border-top:1px solid var(--line);padding-top:120px}.app-head{text-align:center;max-width:770px;margin:0 auto 48px}.app-head h2{font-size:clamp(48px,6vw,84px);line-height:.86;letter-spacing:-5px;margin:0 0 17px}.app-head p{color:var(--muted);font-size:15px;line-height:1.7;margin:0 auto;max-width:560px}
+.app-stage{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.app-card{border:1px solid rgba(255,255,255,.08);border-radius:24px;background:#080d0a;padding:14px}.app-card-label{font-size:9px;color:#69766e;font-weight:900;letter-spacing:1.5px;padding:7px 4px 14px}.app-ui{height:430px;border-radius:18px;background:linear-gradient(160deg,#101a14,#050907);border:1px solid #1b251f;padding:16px;position:relative;overflow:hidden}
+.app-ui h3{font-size:24px;letter-spacing:-1.4px;margin:15px 0 14px}.ui-meta{display:flex;justify-content:space-between;font-size:8px;color:#6c7971}.ui-set{display:flex;justify-content:space-between;align-items:center;padding:12px 10px;border:1px solid rgba(255,255,255,.07);border-radius:11px;margin:7px 0;background:#09100c}.ui-set b{font-size:9px}.ui-set span{font-size:8px;color:var(--green);font-weight:900}.ui-chart{height:145px;border:1px solid rgba(255,255,255,.07);border-radius:14px;margin-top:12px;position:relative;overflow:hidden}.ui-chart:after{content:"";position:absolute;left:12px;right:12px;bottom:26px;height:80px;border-top:3px solid var(--green);transform:skewY(-11deg);filter:drop-shadow(0 0 8px rgba(57,255,182,.25))}
+.final-v2{padding:0 0 125px}.final-v2-box{border:1px solid rgba(57,255,182,.18);border-radius:30px;padding:95px 30px 88px;text-align:center;background:radial-gradient(500px 260px at 50% 0,rgba(57,255,182,.11),transparent 72%),#070d0a;position:relative;overflow:hidden}.final-v2-box .ul-mark{width:88px;height:59px;margin-bottom:24px}.final-v2-box h2{font-size:clamp(50px,7vw,92px);line-height:.86;letter-spacing:-5px;margin:0 auto 18px;max-width:920px}.final-v2-box p{max-width:520px;margin:0 auto 28px;color:var(--muted);font-size:15px;line-height:1.7}
+@media(max-width:900px){
+  .story-grid,.engine-grid,.memory-wrap,.program-grid{grid-template-columns:1fr;gap:34px}
+  .story-copy{position:relative;top:auto;padding-top:0}.story-copy p{max-width:560px}
+  .engine-side{grid-template-columns:1fr 1fr}.engine-main{min-height:0}
+  .app-stage{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .showcase,.engine,.memory,.program,.app-showcase{padding-bottom:78px}.engine-wrap,.memory-wrap,.program-wrap,.app-wrap{padding-top:78px}
+  .set-demo{min-height:0;border-radius:22px}.demo-body{padding:24px 18px 20px}.demo-set{grid-template-columns:30px 1fr auto;padding:14px 12px}.demo-ex{letter-spacing:-2px}
+  .engine-main,.engine-side-card,.history-board,.import-card,.app-card{border-radius:21px}.engine-main{padding:24px}.engine-flow{grid-template-columns:1fr;gap:10px}.flow-arrow{margin:auto;transform:rotate(90deg);width:46px;height:46px}.engine-side{grid-template-columns:1fr}
+  .history-row{grid-template-columns:76px 1fr 84px;gap:9px;padding:16px 14px}.history-lift b{font-size:13px}.history-gain{font-size:10px}
+  .program-copy h2,.memory-copy h2,.program-copy h2,.app-head h2{letter-spacing:-4px}
+  .import-columns{grid-template-columns:1fr}.import-arrow{margin:auto;transform:rotate(90deg)}.import-pane{min-height:0}
+  .app-stage{grid-template-columns:1fr}.app-ui{height:390px}
+  .final-v2-box{padding:70px 20px 64px;border-radius:22px}.final-v2-box h2{letter-spacing:-4px}
+}
+
 </style></head>
 <body>
 <script>
@@ -638,46 +712,148 @@ body:before{
 
 
 
-<section id="why" class="section reveal"><div class="wrap">
-<div class="section-head"><h2>Your training should feel simple.</h2><p>We are building UL Tracker around one principle: the app should remove friction from training, not add more of it.</p></div>
-<div class="benefits">
-<article class="benefit"><h3>Every set counts.</h3><p>Weight, reps and RIR stay together so you always know what actually happened in the workout.</p></article>
-<article class="benefit"><h3>Progress you can see.</h3><p>Your training history turns individual sessions into a clear picture of how your strength is moving.</p></article>
-<article class="benefit"><h3>Know when to push.</h3><p>Structured programming and progression logic help turn your previous performance into the next decision.</p></article>
-</div>
-</div></section>
+<section class="showcase reveal">
+  <div class="wrap story-grid">
+    <div class="story-copy">
+      <div class="story-index">01</div>
+      <h2>THE<br>SET.</h2>
+      <p>UL Tracker keeps the workout centered on the only thing that matters right now: the set in front of you.</p>
+    </div>
+    <div class="set-demo">
+      <div class="demo-top"><strong>UPPER A</strong><span>1 / 7 EXERCISES</span></div>
+      <div class="demo-body">
+        <div class="demo-ex">Incline Smith Press</div>
+        <div class="demo-target">3 sets · 6–10 reps · target ~2 RIR</div>
+        <div class="demo-last"><span>LAST SESSION</span><b>100 KG × 8, 8, 7 @ 2 RIR</b></div>
+        <div class="demo-sets">
+          <div class="demo-set done"><div class="demo-num">✓</div><div class="demo-main"><b>100 KG × 8</b><span>Completed set</span></div><div class="demo-rir">2 RIR</div></div>
+          <div class="demo-set done"><div class="demo-num">✓</div><div class="demo-main"><b>100 KG × 8</b><span>Completed set</span></div><div class="demo-rir">2 RIR</div></div>
+          <div class="demo-set active"><div class="demo-num">3</div><div class="demo-main"><b>100 KG × 7</b><span>Current set</span></div><div class="demo-rir">2 RIR</div></div>
+        </div>
+        <div class="demo-save"><b>SAVE SET</b><span>→</span></div>
+        <div class="demo-rest"><span>REST</span><b>01:45</b><span>NEXT · CHEST-SUPPORTED ROW</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section id="product" class="section reveal"><div class="wrap product">
-<div class="product-copy"><h2>Built around the workout.</h2><p>No giant dashboard. No endless menus. The experience starts with the set you are about to perform and keeps your history close when you need it.</p>
-<div class="product-list"><div class="product-item"><div class="check">✓</div><div><b>Fast workout logging</b><span>Record kg, reps and RIR without breaking your rhythm.</span></div></div><div class="product-item"><div class="check">✓</div><div><b>Structured Upper / Lower program</b><span>Your sessions are organized before you walk into the gym.</span></div></div><div class="product-item"><div class="check">✓</div><div><b>Progress history</b><span>Look back at the numbers that actually matter.</span></div></div></div></div>
-<div class="screens">
-<div class="screen-card"><div class="screen-label">WORKOUT</div><div class="screen-ui"><div class="ui-title">Upper A</div><div class="ui-row"><b>Incline Smith Press</b><span>80 × 8</span></div><div class="ui-row"><b>Chest-Supported Row</b><span>70 × 9</span></div><div class="ui-row"><b>Machine Chest Press</b><span>65 × 10</span></div><div class="ui-row"><b>Lat Pulldown</b><span>70 × 10</span></div></div></div>
-<div class="screen-card"><div class="screen-label">PROGRESS</div><div class="screen-ui"><div class="ui-title">Strength</div><div class="chart"></div><div class="ui-row"><b>Incline Smith Press</b><span>+12.4%</span></div><div class="ui-row"><b>Chest Press</b><span>+8.1%</span></div><div class="ui-row"><b>Row</b><span>+10.6%</span></div></div></div>
-</div>
-</div></section>
+<section class="engine reveal">
+  <div class="wrap engine-wrap">
+    <div class="engine-grid">
+      <div class="engine-main">
+        <div class="engine-eyebrow">02 · PROGRESSION ENGINE</div>
+        <h2>DON’T GUESS<br>YOUR NEXT SET.</h2>
+        <p>UL reads your previous performance and turns it into the next decision. When the numbers say you are ready, the app can tell you to add weight. When they do not, it keeps the load where it is.</p>
+        <div class="engine-flow">
+          <div class="flow-card">
+            <div class="flow-label">LAST PERFORMANCE</div>
+            <strong>100 KG × 8</strong>
+            <p>2 RIR · target range 6–10</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-card next">
+            <div class="flow-label">NEXT TARGET</div>
+            <strong>102.5 KG × 8</strong>
+            <p>UL recommends the next step</p>
+          </div>
+        </div>
+      </div>
+      <div class="engine-side">
+        <div class="engine-side-card">
+          <h3>MORE WEIGHT.</h3>
+          <p>When your performance supports progression, UL makes the recommendation visible before you start the set.</p>
+          <div class="mini-next"><b>102.5 KG</b><span>↑ ADD 2.5 KG</span></div>
+        </div>
+        <div class="engine-side-card">
+          <h3>OR STAY.</h3>
+          <p>Not every session needs a jump. The goal is useful decisions, not forced progression.</p>
+          <div class="mini-next"><b>100 KG</b><span>HIT 8 AGAIN</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section class="final reveal"><div class="wrap"><div class="final-box"><svg class="ul-mark" viewBox="0 0 1526 1030" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UL Tracker">
-<defs>
-<linearGradient id="mw" x1="280" y1="70" x2="870" y2="960" gradientUnits="userSpaceOnUse"><stop stop-color="#BFC6C2"/><stop offset=".28" stop-color="#FFFFFF"/><stop offset=".42" stop-color="#F7F9F8"/><stop offset=".50" stop-color="#FFFFFF"/><stop offset=".62" stop-color="#D7DDDA"/><stop offset=".82" stop-color="#FFFFFF"/><stop offset="1" stop-color="#C4CBC7"/></linearGradient>
-<linearGradient id="mg" x1="820" y1="430" x2="1410" y2="960" gradientUnits="userSpaceOnUse"><stop stop-color="#059A67"/><stop offset=".26" stop-color="#18D990"/><stop offset=".42" stop-color="#39FFB6"/><stop offset=".50" stop-color="#C0FFE9"/><stop offset=".57" stop-color="#39FFB6"/><stop offset=".78" stop-color="#11D487"/><stop offset="1" stop-color="#06784F"/></linearGradient>
-<linearGradient id="sw" x1="250" y1="780" x2="1050" y2="260" gradientUnits="userSpaceOnUse"><stop offset=".37" stop-color="#FFFFFF" stop-opacity="0"/><stop offset=".465" stop-color="#FFFFFF" stop-opacity="0"/><stop offset=".505" stop-color="#FFFFFF" stop-opacity=".48"/><stop offset=".535" stop-color="#FFFFFF" stop-opacity=".14"/><stop offset=".58" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
-<linearGradient id="sg" x1="650" y1="940" x2="1420" y2="500" gradientUnits="userSpaceOnUse"><stop offset=".39" stop-color="#FFFFFF" stop-opacity="0"/><stop offset=".48" stop-color="#FFFFFF" stop-opacity="0"/><stop offset=".515" stop-color="#FFFFFF" stop-opacity=".42"/><stop offset=".55" stop-color="#FFFFFF" stop-opacity=".10"/><stop offset=".60" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
-</defs>
-<g stroke="#FFFFFF" stroke-opacity=".28" stroke-width="3" stroke-linejoin="round">
-<path fill="url(#mw)" d="M695 220L430 384L323 767L322 796L327 824L340 855L357 877L552 756Z"/>
-<path fill="url(#mw)" d="M845 627L828 634L390 889L284 955L378 908L407 931L436 947L485 961L533 961L579 955L619 944L684 913L710 895L749 859L790 802L808 764Z"/>
-<path fill="url(#mw)" d="M1437 214L1026 437L1030 415L1133 66L882 215L877 220L768 641L1074 465L1345 281Z"/>
-<path fill="url(#mg)" d="M1453 806L1046 804L1144 456L1142 452L876 608L774 958L1256 959L1441 818Z"/>
-</g>
-<g pointer-events="none">
-<path fill="url(#sw)" d="M695 220L430 384L323 767L322 796L327 824L340 855L357 877L552 756Z"/>
-<path fill="url(#sw)" d="M845 627L828 634L390 889L284 955L378 908L407 931L436 947L485 961L533 961L579 955L619 944L684 913L710 895L749 859L790 802L808 764Z"/>
-<path fill="url(#sw)" d="M1437 214L1026 437L1030 415L1133 66L882 215L877 220L768 641L1074 465L1345 281Z"/>
-<path fill="url(#sg)" d="M1453 806L1046 804L1144 456L1142 452L876 608L774 958L1256 959L1441 818Z"/>
-</g>
-</svg><h2>Make your next set count.</h2><p>UL Tracker is entering its next stage. Start building your training history now.</p><button class="btn primary large" data-auth="signup">Create your free account</button></div></div></section>
-</main>
+<section class="memory reveal">
+  <div class="wrap memory-wrap">
+    <div class="memory-copy">
+      <h2>UL<br>REMEMBERS.</h2>
+      <p>Your past workouts stay close to the next one. History is not a separate archive — it is part of the training decision.</p>
+    </div>
+    <div class="history-board">
+      <div class="history-head"><b>INCLINE SMITH PRESS</b><span>+12.4%</span></div>
+      <div class="history-row"><div class="history-date">SEP 24</div><div class="history-lift"><b>100 KG × 8, 8, 7</b><span>2 RIR · Upper A</span></div><div class="history-gain">+2.5 KG</div></div>
+      <div class="history-row"><div class="history-date">SEP 17</div><div class="history-lift"><b>97.5 KG × 8, 8, 7</b><span>2 RIR · Upper A</span></div><div class="history-gain">+2.5 KG</div></div>
+      <div class="history-row"><div class="history-date">SEP 10</div><div class="history-lift"><b>95 KG × 8, 8, 8</b><span>2 RIR · Upper A</span></div><div class="history-gain">+2.5 KG</div></div>
+      <div class="history-row"><div class="history-date">SEP 03</div><div class="history-lift"><b>92.5 KG × 8, 8, 8</b><span>2 RIR · Upper A</span></div><div class="history-gain">START</div></div>
+    </div>
+  </div>
+</section>
 
+<section class="program reveal">
+  <div class="wrap program-wrap">
+    <div class="program-grid">
+      <div class="program-copy">
+        <h2>BRING<br>YOUR PROGRAM.</h2>
+        <p>Have your own plan? Paste it in. UL is designed to turn a rough workout note into a structured training program you can actually run.</p>
+        <div class="program-flow"><span class="active">PASTE</span><span>PARSE</span><span>REVIEW</span><span>TRAIN</span></div>
+      </div>
+      <div class="import-card">
+        <div class="import-top"><b>PROGRAM IMPORT</b><span>AI STRUCTURED</span></div>
+        <div class="import-columns">
+          <div class="import-pane">
+            <h3>MY PROGRAM.TXT</h3>
+            <pre>Upper A
+Incline Smith Press 3x6-10
+Chest Supported Row 3x6-10
+Machine Chest Press 2x8-12
+Lat Pulldown 2x8-12
+
+Lower A
+Hack Squat 3x6-10
+Leg Press 2x8-12</pre>
+          </div>
+          <div class="import-arrow">→</div>
+          <div class="import-pane result">
+            <h3>UL TRACKER</h3>
+            <div class="import-line"><b>Incline Smith Press</b><span>3 SETS</span></div>
+            <div class="import-line"><b>Chest Supported Row</b><span>3 SETS</span></div>
+            <div class="import-line"><b>Machine Chest Press</b><span>2 SETS</span></div>
+            <div class="import-line"><b>Lat Pulldown</b><span>2 SETS</span></div>
+            <div class="import-line"><b>Hack Squat</b><span>3 SETS</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="app-showcase reveal">
+  <div class="wrap app-wrap">
+    <div class="app-head">
+      <h2>ONE APP.<br>ZERO FRICTION.</h2>
+      <p>Workout, progression and history live in one focused system. The interface gets out of the way so the training stays in front.</p>
+    </div>
+    <div class="app-stage">
+      <div class="app-card"><div class="app-card-label">WORKOUT</div><div class="app-ui"><div class="ui-meta"><span>UPPER A</span><span>1 / 7</span></div><h3>Incline Smith Press</h3><div class="ui-set"><b>✓ 100 KG × 8</b><span>2 RIR</span></div><div class="ui-set"><b>✓ 100 KG × 8</b><span>2 RIR</span></div><div class="ui-set"><b>100 KG × 7</b><span>2 RIR</span></div><div class="demo-save" style="margin-top:12px"><b>SAVE SET</b><span>→</span></div></div></div>
+      <div class="app-card"><div class="app-card-label">PROGRESSION</div><div class="app-ui"><div class="ui-meta"><span>STRENGTH</span><span>3 MONTHS</span></div><h3>+12.4%</h3><div class="ui-chart"></div><div class="ui-set"><b>Incline Smith Press</b><span>+12.4%</span></div><div class="ui-set"><b>Chest Press</b><span>+8.1%</span></div><div class="ui-set"><b>Row</b><span>+10.6%</span></div></div></div>
+      <div class="app-card"><div class="app-card-label">HISTORY</div><div class="app-ui"><div class="ui-meta"><span>RECENT TRAINING</span><span>SEP 2026</span></div><h3>Upper A</h3><div class="ui-set"><b>100 KG × 8</b><span>2 RIR</span></div><div class="ui-set"><b>100 KG × 8</b><span>2 RIR</span></div><div class="ui-set"><b>100 KG × 7</b><span>2 RIR</span></div><div class="ui-set"><b>97.5 KG × 8</b><span>2 RIR</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="final-v2 reveal">
+  <div class="wrap">
+    <div class="final-v2-box">
+      <svg class="ul-mark" viewBox="0 0 1526 1030" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs><linearGradient id="fw" x1="280" y1="70" x2="870" y2="960" gradientUnits="userSpaceOnUse"><stop stop-color="#BFC6C2"/><stop offset=".28" stop-color="#FFFFFF"/><stop offset=".42" stop-color="#F7F9F8"/><stop offset=".50" stop-color="#FFFFFF"/><stop offset=".62" stop-color="#D7DDDA"/><stop offset=".82" stop-color="#FFFFFF"/><stop offset="1" stop-color="#C4CBC7"/></linearGradient><linearGradient id="fg" x1="820" y1="430" x2="1410" y2="960" gradientUnits="userSpaceOnUse"><stop stop-color="#059A67"/><stop offset=".26" stop-color="#18D990"/><stop offset=".42" stop-color="#39FFB6"/><stop offset=".50" stop-color="#C0FFE9"/><stop offset=".57" stop-color="#39FFB6"/><stop offset=".78" stop-color="#11D487"/><stop offset="1" stop-color="#06784F"/></linearGradient></defs>
+<g stroke="#FFFFFF" stroke-opacity=".28" stroke-width="3" stroke-linejoin="round"><path fill="url(#fw)" d="M695 220L430 384L323 767L322 796L327 824L340 855L357 877L552 756Z"/><path fill="url(#fw)" d="M845 627L828 634L390 889L284 955L378 908L407 931L436 947L485 961L533 961L579 955L619 944L684 913L710 895L749 859L790 802L808 764Z"/><path fill="url(#fw)" d="M1437 214L1026 437L1030 415L1133 66L882 215L877 220L768 641L1074 465L1345 281Z"/><path fill="url(#fg)" d="M1453 806L1046 804L1144 456L1142 452L876 608L774 958L1256 959L1441 818Z"/></g></svg>
+      <h2>MAKE YOUR<br>NEXT SET COUNT.</h2>
+      <p>Train. Track. Progress. Then let UL remember the work and help guide what comes next.</p>
+      <button class="btn primary large" data-auth="signup">Start tracking free</button>
+    </div>
+  </div>
+</section>
 <footer class="footer"><div class="wrap footer-inner"><span>© 2026 UL Tracker</span><span>TRAIN · TRACK · PROGRESS</span></div></footer>
 
 <div class="auth" id="auth"><div class="box"><div class="box-head"><svg class="ul-mark" viewBox="0 0 1526 1030" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UL Tracker">
@@ -701,6 +877,6 @@ body:before{
 </g>
 </svg><div><div style="font-size:11px;color:var(--green);font-weight:900">UL TRACKER</div><div style="font-size:10px;color:#728078">BUILT FOR PROGRESS</div></div><button class="close" id="closeAuth">×</button></div><h2 id="authTitle">Log in</h2><p id="authDesc">Pick up where your last workout left off.</p><input class="field" id="email" type="email" autocomplete="email" placeholder="Email"><input class="field" id="password" type="password" autocomplete="current-password" placeholder="Password"><div class="auth-actions"><button class="btn primary" id="submitAuth">Log in <span aria-hidden="true">→</span></button><button class="btn" id="toggleAuth">Create account</button></div><button class="btn" id="forgot" style="width:100%;margin-top:8px;background:transparent">Forgot password?</button><div class="status" id="status"></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="./landing.js?v=17"></script>
+<script src="./landing.js?v=18"></script>
 </body>
 </html>
