@@ -1,26 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410 320" fill="none" role="img" aria-labelledby="title desc">
-<title id="title">UL Tracker</title>
-<desc id="desc">Angular white and emerald UL monogram</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1526 1030" fill="none" role="img" aria-labelledby="ulTitle ulDesc">
+<title id="ulTitle">UL Tracker</title>
+<desc id="ulDesc">Angular charcoal and emerald UL monogram</desc>
 <defs>
-  <linearGradient id="white" x1="55" y1="20" x2="120" y2="300" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#FFFFFF"/>
-    <stop offset=".52" stop-color="#F3F5F4"/>
-    <stop offset="1" stop-color="#B4BDB9"/>
+  <linearGradient id="charcoal" x1="300" y1="70" x2="760" y2="980" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#5A5D5C"/>
+    <stop offset=".45" stop-color="#2A2D2C"/>
+    <stop offset="1" stop-color="#111413"/>
   </linearGradient>
-  <linearGradient id="emerald" x1="190" y1="125" x2="335" y2="305" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#8BFFE0"/>
-    <stop offset=".25" stop-color="#00FFA3"/>
-    <stop offset=".72" stop-color="#0EDC91"/>
-    <stop offset="1" stop-color="#00A96D"/>
+  <linearGradient id="charcoal2" x1="780" y1="60" x2="1180" y2="650" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#6A6D6B"/>
+    <stop offset=".45" stop-color="#303332"/>
+    <stop offset="1" stop-color="#111413"/>
   </linearGradient>
-  <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-    <feGaussianBlur stdDeviation="3.5" result="blur"/>
-    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
+  <linearGradient id="emerald" x1="850" y1="440" x2="1290" y2="960" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#47FFC2"/>
+    <stop offset=".33" stop-color="#16E89A"/>
+    <stop offset=".72" stop-color="#05B875"/>
+    <stop offset="1" stop-color="#087C52"/>
+  </linearGradient>
+  <linearGradient id="edge" x1="300" y1="100" x2="1400" y2="950" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#D8DDDA" stop-opacity=".8"/>
+    <stop offset=".35" stop-color="#9AA09D" stop-opacity=".18"/>
+    <stop offset=".7" stop-color="#39FFB6" stop-opacity=".35"/>
+    <stop offset="1" stop-color="#39FFB6" stop-opacity=".6"/>
+  </linearGradient>
 </defs>
-<g filter="url(#softGlow)">
-  <path fill="url(#white)" d="M127.6 59.4L46.2 112.2L16.7 244.8C14.7 255.9 17.8 268.6 25.3 276.8C31.7 283.7 39.5 285.7 47.5 281.1L76.5 261C82.7 256.7 86.2 249.8 87.8 241.2L90.2 237.6L127.6 59.4Z"/>
-  <path fill="url(#white)" d="M356.4 71.5L312.4 94.6L267.3 121L258.5 124.3L257.4 118.8L266.2 77L276.1 17.6L200.2 66L196.9 69.3L174.9 190.3L265.1 134.2L331.1 90.2L356.4 71.5Z"/>
-  <path fill="url(#emerald)" d="M382.4 247.5L266.2 245.3L284.9 138.6L271.7 147.4L268.4 145.2L264 146.3L267.3 148.5L266.2 150.7L200.2 192.5L177.1 304.7L330 304.7L382.4 247.5Z"/>
+<g stroke="url(#edge)" stroke-width="3" stroke-linejoin="round">
+  <path fill="url(#charcoal)" d="M695 220 L430 384 L323 767 L322 796 L327 824 L340 855 L357 877 L552 756 Z"/>
+  <path fill="url(#charcoal)" d="M845 627 L828 634 L390 889 L284 955 L378 908 L407 931 L436 947 L485 961 L533 961 L579 955 L619 944 L684 913 L710 895 L749 859 L790 802 L808 764 Z"/>
+  <path fill="url(#charcoal2)" d="M1437 214 L1026 437 L1030 415 L1133 66 L882 215 L877 220 L768 641 L1074 465 L1345 281 Z"/>
+  <path fill="url(#emerald)" d="M1453 806 L1046 804 L1144 456 L1142 452 L876 608 L774 958 L1256 959 L1441 818 Z"/>
 </g>
 </svg>
