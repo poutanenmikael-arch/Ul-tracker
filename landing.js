@@ -1,4 +1,4 @@
-(()=>{const URL='https://zjwunducqyvueapqdeqx.supabase.co',KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn',APP='./app.html?v=2';const sb=supabase.createClient(URL,KEY);const $=s=>document.querySelector(s);let mode='login';
+(()=>{const URL='https://zjwunducqyvueapqdeqx.supabase.co',KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn',APP='./app.html?v=3';const sb=supabase.createClient(URL,KEY);const $=s=>document.querySelector(s);let mode='login';
 const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if(!reduce){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -7% 0px'});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));}
