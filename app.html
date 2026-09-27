@@ -183,8 +183,9 @@ $('#logoutBtn')?.addEventListener('click',async function(){
   const btn=this; if(btn.disabled)return; btn.disabled=true; btn.textContent='Logging out...';
   try{ localStorage.setItem('ul_logged_out','1'); const r=window.ulSignOut?await window.ulSignOut():null; if(r?.error)throw r.error; }
   catch(e){ btn.disabled=false; btn.textContent='Log out'; toast('Uloskirjautuminen epäonnistui'); return; }
-  ['ul_profile','ul_profile_name','ul_history','ul_program','ul_draft','ul_current_day','ul_home_day'].forEach(k=>localStorage.removeItem(k));
-  location.replace('./index.html');
+  ['ul_profile','ul_profile_name','ul_history','ul_program','ul_draft','ul_current_day','ul_home_day','ul_logged_out'].forEach(k=>localStorage.removeItem(k));
+  Object.keys(localStorage).filter(k=>k.startsWith('sb-')).forEach(k=>localStorage.removeItem(k));
+  location.replace('./index.html?loggedout=1&t='+Date.now());
 });
 if($('#profileName'))$('#profileName').value=profileName();
 
