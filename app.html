@@ -177,8 +177,8 @@ switchView=function(id){
 };
 $$('.bottom-nav button').forEach(function(b){b.onclick=function(){switchView(b.dataset.view)}});
 $('.profile-orb')?.addEventListener('click',function(){switchView('settingsView')});
-$('#profileName')?.addEventListener('input',function(e){localStorage.setItem('ul_profile_name',e.target.value.slice(0,30));renderWorkoutHome();});
-$('#profileName')?.addEventListener('change',function(e){localStorage.setItem('ul_profile_name',e.target.value.slice(0,30));renderWorkoutHome();});
+$('#profileName')?.addEventListener('input',function(e){const p=window.ulGetProfile?window.ulGetProfile():{};p.name=e.target.value.slice(0,30);localStorage.setItem('ul_profile_name',p.name);localStorage.setItem('ul_profile',JSON.stringify(p));window.dispatchEvent(new CustomEvent('ul-profile-changed',{detail:p}));renderWorkoutHome();});
+$('#profileName')?.addEventListener('change',function(e){const p=window.ulGetProfile?window.ulGetProfile():{};p.name=e.target.value.slice(0,30);localStorage.setItem('ul_profile_name',p.name);localStorage.setItem('ul_profile',JSON.stringify(p));window.dispatchEvent(new CustomEvent('ul-profile-changed',{detail:p}));renderWorkoutHome();});
 if($('#profileName'))$('#profileName').value=profileName();
 
 renderWorkout();renderProgress();renderHistory();</script><script src="./autosave.js?v=3"></script><script src="./backend.js?v=3"></script><script src="./program.js?v=3"></script><script>
