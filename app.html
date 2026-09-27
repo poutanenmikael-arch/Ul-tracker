@@ -181,7 +181,7 @@ $('#profileName')?.addEventListener('input',function(e){const p=window.ulGetProf
 $('#profileName')?.addEventListener('change',function(e){const p=window.ulGetProfile?window.ulGetProfile():{};p.name=e.target.value.slice(0,30);localStorage.setItem('ul_profile_name',p.name);localStorage.setItem('ul_profile',JSON.stringify(p));window.dispatchEvent(new CustomEvent('ul-profile-changed',{detail:p}));renderWorkoutHome();});
 if($('#profileName'))$('#profileName').value=profileName();
 
-renderWorkout();renderProgress();renderHistory();</script><script src="./autosave.js?v=3"></script><script src="./backend.js?v=3"></script><script src="./program.js?v=3"></script><script>
+renderWorkout();renderProgress();renderHistory();</script><script src="./autosave.js?v=3"></script><script src="./backend.js?v=4"></script><script src="./program.js?v=3"></script><script>
 (()=>{
   const readProfile=()=>{try{const p=JSON.parse(localStorage.getItem('ul_profile')||'null');if(p&&typeof p==='object')return p}catch{}return localStorage.getItem('ul_profile_name')?{name:localStorage.getItem('ul_profile_name')}:{}}};
   const saveProfile=p=>{localStorage.setItem('ul_profile',JSON.stringify(p));if(typeof p.name==='string')localStorage.setItem('ul_profile_name',p.name.slice(0,30));window.dispatchEvent(new CustomEvent('ul-profile-changed',{detail:p}));return p};
