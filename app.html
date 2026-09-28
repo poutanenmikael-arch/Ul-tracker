@@ -313,7 +313,7 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
       if(!completedProfile(completed)){toast('Please check your profile answers.');return}
       saveProfile(completed);
       const profileSaved=await window.ulSyncNow?.();
-      if(profileSaved!==true){state={...completed,onboardingComplete:false};$('#onboardProgramError').textContent='Your profile could not be saved yet. Please try again.';return}
+      if(profileSaved!==true){state={...completed,onboardingComplete:false};saveProfile(state);$('#onboardProgramError').textContent='Your profile could not be saved yet. Please try again.';return}
       close();toast('Your profile and program are ready ✓');
       const profileNameInput=$('#profileName');if(profileNameInput)profileNameInput.value=completed.name;
       window.renderProfileDetails?.();
