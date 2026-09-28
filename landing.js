@@ -1,4 +1,5 @@
-(()=>{const URL='https://zjwunducqyvueapqdeqx.supabase.co',KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn',APP='./app.html?v=5';const sb=supabase.createClient(URL,KEY);const $=s=>document.querySelector(s);let mode='login';
+(()=>{const URL='https://zjwunducqyvueapqdeqx.supabase.co',KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn',APP='./app.html?v=6'+(new URLSearchParams(location.search).has('authDebug')?'&authDebug=1':'');const sb=supabase.createClient(URL,KEY);const $=s=>document.querySelector(s);let mode='login';
+const authDebug=new URLSearchParams(location.search).has('authDebug'),debugAuth=(event,details={})=>{if(authDebug)console.info('[UL auth]',event,details)};
 const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if(!reduce){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -7% 0px'});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));}
@@ -65,6 +66,7 @@ $('#toggleAuth').onclick=()=>open(mode==='login'?'signup':'login');
 $('#submitAuth').onclick=async()=>{
   const email=$('#email').value.trim(),password=$('#password').value;
   if(!email||!password)return status('Enter your email and password.','error');
+  if(!$('#email').checkValidity())return status('Enter a valid email address.','error');
   if(mode==='signup'&&password.length<6)return status('Password must be at least 6 characters.','error');
   const submit=$('#submitAuth');submit.disabled=true;submit.style.pointerEvents='none';
   status(mode==='login'?'Signing you in...':'Creating your account...','loading');
@@ -79,9 +81,16 @@ $('#submitAuth').onclick=async()=>{
     const r=mode==='login'
       ?await sb.auth.signInWithPassword({email,password})
       :await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+'/' }});
-    if(r.error)throw r.error;
+    if(r.error){
+      if(mode==='signup'&&(/already registered|user_already_exists/i.test(r.error.message||'')||r.error.code==='user_already_exists')){
+        status('This email already has an account. Log in or reset your password.','error');
+        submit.disabled=false;submit.style.pointerEvents='auto';return;
+      }
+      throw r.error;
+    }
+    debugAuth(mode==='signup'?'signup response':'login response',{userId:r.data.user?.id||null,sessionUserId:r.data.session?.user?.id||null,sessionCreated:!!r.data.session});
     if(mode==='signup'&&!r.data.session){
-      submit.innerHTML='✓ Account created';status('Check your email to confirm your account.','success');
+      submit.innerHTML='Check your inbox';status('If this email is new, check it to confirm your account. If it is already registered, log in or reset your password.','success');
       submit.disabled=false;submit.style.pointerEvents='auto';return;
     }
     submit.innerHTML='✓ Success';submit.classList.add('success-pulse');
@@ -92,4 +101,4 @@ $('#submitAuth').onclick=async()=>{
   }
 };
 $('#forgot').onclick=async()=>{const email=$('#email').value.trim();if(!email)return status('Enter your email first.','error');status('Sending reset link...','loading');const r=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+'/'});status(r.error?r.error.message:'Reset link sent. Check your email.','success')};
-const justLoggedOut=localStorage.getItem('ul_logged_out')==='1';if(justLoggedOut)localStorage.removeItem('ul_logged_out');sb.auth.getSession().then(({data})=>{if(data.session&&!justLoggedOut)location.href=APP});sb.auth.onAuthStateChange((event,session)=>{if(session&&(event==='SIGNED_IN'||event==='INITIAL_SESSION')&&!justLoggedOut)location.href=APP})})();
+const justLoggedOut=localStorage.getItem('ul_logged_out')==='1';if(justLoggedOut)localStorage.removeItem('ul_logged_out');sb.auth.getSession().then(({data})=>{debugAuth('landing getSession',{sessionUserId:data.session?.user?.id||null});if(data.session&&!justLoggedOut)location.href=APP});sb.auth.onAuthStateChange((event,session)=>{debugAuth('landing auth event',{event,sessionUserId:session?.user?.id||null});if(session&&(event==='SIGNED_IN'||event==='INITIAL_SESSION')&&!justLoggedOut)location.href=APP})})();
