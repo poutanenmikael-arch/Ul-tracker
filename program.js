@@ -2,12 +2,12 @@
   const KEY='ul_program';
   const $=s=>document.querySelector(s);
   const clone=o=>JSON.parse(JSON.stringify(o));
-  const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'null')}catch{return null}};
+  const read=()=>{try{return JSON.parse(ulStorage.getItem(KEY)||'null')}catch{return null}};
   const base=()=>({days:Object.entries(WORKOUTS).map(([id,xs])=>({id,name:DAYS[id]||id,exercises:xs.map(x=>({name:x[0],sets:x[1],reps:x[2],minRir:x[3],maxRir:x[4],rest:x[5]}))})),optional:OPTIONAL.map(x=>({name:x[0],sets:x[1],reps:x[2],minRir:x[3],maxRir:x[4],rest:x[5]}))});
   const normalize=p=>p&&Array.isArray(p.days)&&p.days.length?p:null;
   const toInternal=p=>{Object.keys(WORKOUTS).forEach(k=>delete WORKOUTS[k]);Object.keys(DAYS).forEach(k=>{if(k!=='upperA'&&k!=='lowerA'&&k!=='upperB'&&k!=='lowerB')delete DAYS[k]});p.days.forEach((d,i)=>{const id=d.id||`day${i+1}`;d.id=id;DAYS[id]=d.name||`Päivä ${i+1}`;WORKOUTS[id]=(d.exercises||[]).map(e=>[e.name||'Liike',Math.max(1,+e.sets||1),e.reps||'8–12',+e.minRir||0,+e.maxRir||1,+e.rest||2])});OPTIONAL.length=0;(p.optional||[]).forEach(e=>OPTIONAL.push([e.name||'Liike',Math.max(1,+e.sets||1),e.reps||'8–12',+e.minRir||0,+e.maxRir||1,+e.rest||2]));};
-  const persist=p=>{localStorage.setItem(KEY,JSON.stringify(p));window.dispatchEvent(new CustomEvent('ul-program-changed',{detail:p}));};
-  const applyCloud=p=>{const n=normalize(p);if(!n)return;persist(clone(n));toInternal(n);try{localStorage.setItem('ul_current_day',n.days[0].id)}catch{};try{renderWorkout();renderProgress();renderHistory()}catch{};};
+  const persist=p=>{ulStorage.setItem(KEY,JSON.stringify(p));window.dispatchEvent(new CustomEvent('ul-program-changed',{detail:p}));};
+  const applyCloud=p=>{const n=normalize(p);if(!n)return;persist(clone(n));toInternal(n);try{ulStorage.setItem('ul_current_day',n.days[0].id)}catch{};try{renderWorkout();renderProgress();renderHistory()}catch{};};
   const esc=v=>String(v??'').replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
   const style=()=>{const s=document.createElement('style');s.textContent='.prog-modal{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:120;display:flex;align-items:flex-end;justify-content:center;padding:10px;backdrop-filter:blur(10px)}.prog-box{width:min(760px,100%);max-height:92vh;overflow:auto;background:#11161e;border:1px solid #242e3a;border-radius:24px;padding:16px}.prog-head{display:flex;gap:8px;align-items:center}.prog-head h2{flex:1}.prog-day{border:1px solid #242e3a;background:#0c1118;border-radius:17px;padding:12px;margin:10px 0}.prog-ex{display:grid;grid-template-columns:1.4fr .55fr .8fr .55fr .55fr .55fr auto;gap:5px;margin-top:7px}.prog-input{min-width:0;width:100%;background:#070a0f;border:1px solid #242e3a;color:#f5f7fa;border-radius:9px;padding:8px;font-size:12px}.prog-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.prog-label{font-size:10px;color:#8e9aaa}.prog-note{font-size:10px;color:#8e9aaa;margin:5px 0 10px}@media(max-width:560px){.prog-ex{grid-template-columns:1.5fr .55fr .8fr .55fr .55fr .55fr 30px}}';document.head.appendChild(s)};
   const open=()=>{const p=clone(read()||base());const m=document.createElement('div');m.className='prog-modal';m.id='progModal';m.innerHTML=`<div class="prog-box"><div class="prog-head"><h2>Oma ohjelma</h2><button class="btn" id="progClose">Sulje</button></div><div class="prog-note">Ohjelma tallennetaan tälle käyttäjälle pilveen.</div><div id="progDays"></div><div class="prog-actions"><button class="btn" id="progAddDay">+ Treenipäivä</button><button class="btn primary" id="progSave">Tallenna ohjelma</button></div></div>`;document.body.appendChild(m);const days=$('#progDays');
@@ -19,6 +19,7 @@
     $('#progClose').onclick=()=>m.remove();render();};
   const addButton=()=>{const card=document.querySelector('#settingsView .card');if(!card||$('#editProgramBtn'))return;const row=document.createElement('div');row.className='setting';row.innerHTML='<div><b>Oma treeniohjelma</b><div class="small">Luo itsellesi tai kaverille täysin oma ohjelma.</div></div><button class="btn blue" id="editProgramBtn">Muokkaa</button>';card.appendChild(row);$('#editProgramBtn').onclick=open};
   const boot=()=>{style();let p=normalize(read());if(!p){p=base();persist(p)}toInternal(p);addButton();try{renderWorkout();renderProgress();renderHistory()}catch{}};
+  window.ulSetProgram=p=>{if(!window.ulCurrentUserId||!normalize(p))return false;applyCloud(p);return true};
   window.addEventListener('ul-cloud-program-loaded',e=>applyCloud(e.detail));
   setTimeout(boot,0);
 })();
