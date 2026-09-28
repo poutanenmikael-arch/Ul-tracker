@@ -91,7 +91,7 @@ body{
 @media(max-width:600px){.app{max-width:100%;padding:9px 12px 96px}.top{margin:2px 1px 4px;padding-top:env(safe-area-inset-top)}.brand-mark,.brand-mark img{width:39px;height:30px}.brand-copy h1{font-size:15px}.brand-copy .sub{display:none}.home-greeting{padding:20px 2px 18px}.home-greeting h2{font-size:42px}.home-greeting p{font-size:13px}.today-card{min-height:310px;padding:17px;border-radius:21px}.today-card h3{font-size:31px}.today-arrow{right:14px;bottom:14px;width:46px;height:46px}.today-meta{font-size:10px}.workout-choice{min-height:68px;padding:15px 49px 15px 15px;border-radius:16px}.workout-choice.expanded{min-height:180px}.choice-name{font-size:17px}.bottom-nav{padding-left:6px;padding-right:6px}.bottom-nav button span{font-size:18px}.session-copy h2{font-size:26px}.session-head{padding-top:4px}}
 @media(max-width:380px){.app{padding-left:9px;padding-right:9px}.today-card{min-height:275px}.today-card h3{font-size:28px}.home-greeting h2{font-size:38px}.workout-choice.expanded{min-height:165px}}
 
-.onboarding-modal{position:fixed;inset:0;z-index:180;background:rgba(2,5,4,.88);backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:center;padding:18px}.onboarding-box{width:min(520px,100%);background:linear-gradient(180deg,#111a16,#0b100e);border:1px solid rgba(57,255,182,.18);border-radius:28px;box-shadow:0 30px 90px rgba(0,0,0,.55);padding:24px}.onboarding-kicker{font-size:10px;letter-spacing:2px;font-weight:900;color:var(--accent);margin-bottom:8px}.onboarding-title{font-size:30px;letter-spacing:-1.2px;margin:0}.onboarding-sub{margin:7px 0 20px;color:#82928a;font-size:13px;line-height:1.5}.onboarding-progress{height:4px;background:#19221e;border-radius:999px;overflow:hidden;margin-bottom:24px}.onboarding-progress span{display:block;height:100%;background:var(--accent);border-radius:999px;transition:width .25s ease}.onboarding-step{display:none}.onboarding-step.active{display:block;animation:onboardingIn .22s ease both}@keyframes onboardingIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}.onboarding-question{font-size:20px;font-weight:900;letter-spacing:-.5px;margin-bottom:14px}.onboarding-options{display:grid;gap:9px}.onboarding-option{width:100%;text-align:left;padding:14px 15px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#0b120f;color:#fff;cursor:pointer;font-size:13px;font-weight:800}.onboarding-option.selected{border-color:rgba(57,255,182,.65);background:rgba(57,255,182,.08);box-shadow:inset 0 0 0 1px rgba(57,255,182,.15)}.onboarding-nav{display:flex;gap:8px;margin-top:20px}.onboarding-nav .btn{flex:1}@media(max-width:560px){.onboarding-modal{align-items:flex-end;padding:10px}.onboarding-box{border-radius:24px;padding:20px}.onboarding-title{font-size:26px}}</style></head><body><script>
+.onboarding-modal{position:fixed;inset:0;z-index:180;background:rgba(2,5,4,.88);backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:center;padding:18px}.onboarding-box{width:min(500px,100%);max-height:calc(100dvh - 36px);overflow:auto;overscroll-behavior:contain;background:linear-gradient(180deg,#111a16,#0b100e);border:1px solid rgba(57,255,182,.16);border-radius:26px;box-shadow:0 28px 80px rgba(0,0,0,.5);padding:24px}.onboarding-kicker{font-size:10px;letter-spacing:2px;font-weight:900;color:var(--accent);margin-bottom:8px}.onboarding-title{font-size:29px;letter-spacing:-1.1px;margin:0}.onboarding-sub{margin:7px 0 16px;color:#9aa79f;font-size:13px;line-height:1.5}.onboarding-progress{height:4px;background:#19221e;border-radius:999px;overflow:hidden;margin-bottom:7px}.onboarding-progress span{display:block;height:100%;background:var(--accent);border-radius:999px;transition:width .22s ease}.onboarding-step-status{font-size:10px;color:#8e9a92;letter-spacing:.04em;margin:0 0 21px}.onboarding-step{display:none}.onboarding-step.active{display:block;animation:onboardingIn .18s ease both}@keyframes onboardingIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}.onboarding-question{font-size:20px;font-weight:850;letter-spacing:-.45px;margin:0 0 14px}.onboarding-options{display:grid;gap:9px}.onboarding-option{width:100%;text-align:left;padding:14px 15px;border-radius:14px;border:1px solid rgba(255,255,255,.09);background:#0b120f;color:#fff;cursor:pointer;font-size:13px;font-weight:750;transition:border-color .16s ease,background .16s ease}.onboarding-option:hover{border-color:rgba(57,255,182,.35)}.onboarding-option.selected{border-color:rgba(57,255,182,.62);background:rgba(57,255,182,.07);box-shadow:inset 0 0 0 1px rgba(57,255,182,.12)}.onboarding-nav{display:flex;gap:8px;margin-top:20px}.onboarding-nav .btn{flex:1}.onboarding-nav .btn:disabled{opacity:.62;cursor:wait}.onboarding-modal input:focus-visible,.onboarding-modal textarea:focus-visible,.onboarding-modal button:focus-visible{outline:2px solid rgba(57,255,182,.7);outline-offset:2px}@media(max-width:560px){.onboarding-modal{align-items:flex-end;padding:10px}.onboarding-box{max-height:calc(100dvh - 20px);border-radius:23px;padding:20px 18px calc(18px + env(safe-area-inset-bottom))}.onboarding-title{font-size:26px}}@media(prefers-reduced-motion:reduce){.onboarding-step.active{animation:none}.onboarding-progress span,.onboarding-option{transition:none}}</style></head><body><script>
 document.documentElement.classList.add('auth-pending');
 window.ulCurrentUserId=null;
 window.ulStorage=(()=>{
@@ -261,13 +261,24 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
     {key:'weight',title:"What's your current weight?",type:'number',placeholder:'83',min:20,max:500,suffix:'kg'},
     {key:'goal',title:"What's your main goal?",options:[['build_muscle','Build Muscle'],['lose_fat','Lose Fat'],['get_stronger','Get Stronger'],['maintain','Maintain']]}
   ];
-  let state={},index=0,modal=null,readyUserId=null;
-  const close=()=>{if(modal)modal.remove();modal=null};
+  let state={},index=0,modal=null,readyUserId=null,saving=false;
+  const setBusy=label=>{saving=true;modal?.setAttribute('aria-busy','true');modal?.querySelectorAll('input,textarea,select,.onboarding-option').forEach(el=>{el.disabled=true});const n=$('#onboardingNext'),b=$('#onboardingBack');if(n){n.disabled=true;n.textContent=label}if(b)b.disabled=true};
+  const setIdle=()=>{saving=false;modal?.setAttribute('aria-busy','false');modal?.querySelectorAll('input,textarea,select,.onboarding-option').forEach(el=>{el.disabled=false});const n=$('#onboardingNext'),b=$('#onboardingBack');if(n){n.disabled=false;n.textContent=index===5?'Save program':'Continue'}if(b)b.disabled=false};
+  const close=()=>{if(modal)modal.remove();modal=null;saving=false};
   const show=()=>{
     if(!readyUserId||readyUserId!==window.ulCurrentUserId||modal||completedProfile(state))return;
     modal=document.createElement('div');modal.className='onboarding-modal';modal.id='onboardingModal';
-    modal.innerHTML='<div class="onboarding-box"><div class="onboarding-kicker">UL TRACKER</div><h2 class="onboarding-title">Make it yours.</h2><div class="onboarding-sub">A few details, then your training program.</div><div class="onboarding-progress" aria-label="Onboarding progress"><span id="onboardingBar"></span></div><div id="onboardingSteps"></div><div class="onboarding-nav"><button class="btn" id="onboardingBack">Back</button><button class="btn primary" id="onboardingNext">Continue</button></div></div>';
+    modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-labelledby','onboardingTitle');modal.innerHTML='<div class="onboarding-box"><div class="onboarding-kicker">UL TRACKER</div><h2 class="onboarding-title" id="onboardingTitle">Make it yours.</h2><div class="onboarding-sub">A few details, then your training program.</div><div class="onboarding-progress" id="onboardingProgress" role="progressbar" aria-label="Onboarding progress" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1"><span id="onboardingBar"></span></div><div id="onboardingStepStatus" class="onboarding-step-status" aria-live="polite">Step 1 of 6</div><div id="onboardingSteps" aria-live="polite"></div><div class="onboarding-nav"><button class="btn" id="onboardingBack" type="button">Back</button><button class="btn primary" id="onboardingNext" type="button">Continue</button></div></div>';
     document.body.appendChild(modal);
+    modal.addEventListener('keydown',event=>{
+      if(event.key==='Enter'&&!event.isComposing&&event.target?.id==='onboardValue'){event.preventDefault();void next();return}
+      if(event.key==='Tab'){
+        const focusable=[...modal.querySelectorAll('button:not([disabled]),input:not([disabled]),textarea:not([disabled]),select:not([disabled])')].filter(el=>getComputedStyle(el).visibility!=='hidden');
+        const first=focusable[0],last=focusable[focusable.length-1];
+        if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus()}
+        else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus()}
+      }
+    });
     $('#onboardingBack').onclick=()=>{if(index>0){index--;render()}};
     $('#onboardingNext').onclick=next;
     render();
@@ -281,21 +292,24 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
   };
   const render=()=>{
     if(!modal)return;
-    const pct=index===5?100:Math.round((index+1)/6*100);
+    const stepNumber=index+1,pct=Math.round(stepNumber/6*100);
     $('#onboardingBar').style.width=pct+'%';
+    $('#onboardingProgress').setAttribute('aria-valuenow',String(stepNumber));
+    $('#onboardingStepStatus').textContent='Step '+stepNumber+' of 6';
     $('#onboardingBack').style.visibility=index?'visible':'hidden';
     $('#onboardingNext').textContent=index===5?'Save program':index===4?'Continue':'Continue';
     const root=$('#onboardingSteps');
     if(index===5){
-      root.innerHTML='<div class="onboarding-step active"><div class="onboarding-question">Add your training program</div><div class="onboarding-sub" style="margin:0 0 12px">Paste your training program here and we\'ll set it up in UL Tracker.</div><textarea id="onboardProgram" class="input" aria-label="Training program" placeholder="Upper A\nIncline DB Press — 3x8-10\nLat Pulldown — 3x8-12\n\nLower A\nSquat — 3x6-8" style="width:100%;min-height:220px;resize:vertical;line-height:1.55"></textarea><div id="onboardProgramError" role="status" style="min-height:20px;margin-top:8px;color:#ff9b91;font-size:12px"></div></div>';
-      return;
+      root.innerHTML='<div class="onboarding-step active"><h3 class="onboarding-question">Add your training program</h3><div class="onboarding-sub" style="margin:0 0 12px">Paste your training program here and we\'ll set it up in UL Tracker.</div><textarea id="onboardProgram" class="input" aria-label="Training program" placeholder="Upper A\nIncline DB Press — 3x8-10\nLat Pulldown — 3x8-12\n\nLower A\nSquat — 3x6-8" rows="7" maxlength="12000" style="width:100%;min-height:200px;resize:vertical;line-height:1.55"></textarea><div id="onboardProgramError" role="status" style="min-height:20px;margin-top:8px;color:#ff9b91;font-size:12px"></div></div>';
+      $('#onboardProgram')?.focus();return;
     }
     const s=steps[index];
-    if(s.type==='text')root.innerHTML='<div class="onboarding-step active"><div class="onboarding-question">'+s.title+'</div><input id="onboardValue" class="input" style="width:100%" maxlength="30" autocomplete="name" aria-label="'+s.title+'" placeholder="'+s.placeholder+'" value="'+String(state[s.key]||'').replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;')+'"></div>';
-    else if(s.type==='number')root.innerHTML='<div class="onboarding-step active"><div class="onboarding-question">'+s.title+'</div><div style="display:flex;align-items:center;gap:9px"><input id="onboardValue" class="input" style="flex:1" inputmode="decimal" type="number" min="'+s.min+'" max="'+s.max+'" step="'+(s.key==='age'?'1':'0.1')+'" aria-label="'+s.title+'" placeholder="'+s.placeholder+'" value="'+(state[s.key]??'')+'"><b style="color:#8e9aaa">'+s.suffix+'</b></div></div>';
-    else root.innerHTML='<div class="onboarding-step active"><div class="onboarding-question">'+s.title+'</div><div class="onboarding-options">'+s.options.map(o=>'<button type="button" class="onboarding-option '+(state[s.key]===o[0]?'selected':'')+'" data-value="'+o[0]+'">'+o[1]+'</button>').join('')+'</div></div>';
+    if(s.type==='text')root.innerHTML='<div class="onboarding-step active"><h3 class="onboarding-question">'+s.title+'</h3><input id="onboardValue" class="input" style="width:100%" maxlength="30" autocomplete="name" aria-label="'+s.title+'" placeholder="'+s.placeholder+'" value="'+String(state[s.key]||'').replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;')+'"></div>';
+    else if(s.type==='number')root.innerHTML='<div class="onboarding-step active"><h3 class="onboarding-question">'+s.title+'</h3><div style="display:flex;align-items:center;gap:9px"><input id="onboardValue" class="input" style="flex:1" inputmode="decimal" type="number" min="'+s.min+'" max="'+s.max+'" step="'+(s.key==='age'?'1':'0.1')+'" aria-label="'+s.title+'" placeholder="'+s.placeholder+'" value="'+(state[s.key]??'')+'"><b style="color:#8e9aaa">'+s.suffix+'</b></div></div>';
+    else root.innerHTML='<div class="onboarding-step active"><h3 class="onboarding-question">'+s.title+'</h3><div class="onboarding-options">'+s.options.map(o=>'<button type="button" class="onboarding-option '+(state[s.key]===o[0]?'selected':'')+'" data-value="'+o[0]+'">'+o[1]+'</button>').join('')+'</div></div>';
     const input=$('#onboardValue');if(input){input.focus();input.oninput=()=>{state[s.key]=input.value;};}
-    $$('.onboarding-option').forEach(b=>b.onclick=()=>{state[s.key]=b.dataset.value;render()});
+    const options=$$('.onboarding-option');options.forEach(b=>b.onclick=()=>{state[s.key]=b.dataset.value;render()});
+    if(options.length)(options.find(b=>b.dataset.value===state[s.key])||options[0]).focus();
   };
   const parseProgram=source=>{
     const days=[];let current=null,exerciseCount=0;
@@ -317,19 +331,20 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
     return {days:populated,optional:[]};
   };
   const next=async()=>{
-    if(!readyUserId||readyUserId!==window.ulCurrentUserId)return;
+    if(saving||!readyUserId||readyUserId!==window.ulCurrentUserId)return;
     if(index===5){
       const program=parseProgram($('#onboardProgram')?.value||'');
       if(!program){$('#onboardProgramError').textContent='We couldn’t read any exercises. Use lines like “Squat — 3x6-8”.';return}
-      if(typeof window.ulSetProgram!=='function'||!window.ulSetProgram(program)){toast('Program could not be added. Please try again.');return}
+      setBusy('Saving program…');
+      if(typeof window.ulSetProgram!=='function'||!window.ulSetProgram(program)){setIdle();$('#onboardProgramError').textContent='Program could not be added. Please try again.';return}
       const programSaved=await window.ulSyncNow?.();
-      if(programSaved!==true){$('#onboardProgramError').textContent='The program could not be saved. Check your connection and try again.';return}
+      if(programSaved!==true){setIdle();$('#onboardProgramError').textContent='The program could not be saved. Check your connection and try again.';return}
       if(readyUserId!==window.ulCurrentUserId)return;
       const completed={...state,onboardingComplete:true,completedAt:new Date().toISOString()};
       if(!completedProfile(completed)){toast('Please check your profile answers.');return}
-      saveProfile(completed);
+      setBusy('Finishing setup…');saveProfile(completed);
       const profileSaved=await window.ulSyncNow?.();
-      if(profileSaved!==true){state={...completed,onboardingComplete:false};saveProfile(state);$('#onboardProgramError').textContent='Your profile could not be saved yet. Please try again.';return}
+      if(profileSaved!==true){state={...completed,onboardingComplete:false};saveProfile(state);setIdle();$('#onboardProgramError').textContent='Your profile could not be saved yet. Please try again.';return}
       close();toast('Your profile and program are ready ✓');
       const profileNameInput=$('#profileName');if(profileNameInput)profileNameInput.value=completed.name;
       window.renderProfileSettings?.();
@@ -342,10 +357,11 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
     if(!valid()){toast('Complete this answer to continue.');return}
     if(index<steps.length-1){index++;render();return}
     const profilePending={...state,onboardingComplete:false};
-    saveProfile(profilePending);
+    setBusy('Saving profile…');saveProfile(profilePending);
     const profileSaved=await window.ulSyncNow?.();
-    if(profileSaved!==true){$('#onboardingNext').disabled=false;toast('Profile could not be saved. Check your connection and try again.');return}
-    index=5;render();
+    if(profileSaved!==true){setIdle();toast('Profile could not be saved. Check your connection and try again.');return}
+    if(readyUserId!==window.ulCurrentUserId){saving=false;return}
+    index=5;setIdle();render();
   };
   window.addEventListener('ul-cloud-ready',e=>{
     const uid=e.detail?.userId;
