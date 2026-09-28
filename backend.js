@@ -5,6 +5,9 @@
   const DATA_KEYS=['ul_profile','ul_profile_name','ul_history','ul_program','ul_draft','ul_current_day','ul_home_day'];
   let sb=null,user=null,activeUserId=null,epoch=0,syncTimer=null,hydrated=false;
   const $=s=>document.querySelector(s);
+  const authDebug=new URLSearchParams(window.location.search).has('authDebug');
+  const debugAuth=(event,details={})=>{if(authDebug)console.info('[UL auth]',event,details)};
+  const localDataFlags=()=>({profile:!!localStorage.getItem('ul_profile'),profileName:!!localStorage.getItem('ul_profile_name'),history:!!localStorage.getItem('ul_history'),program:!!localStorage.getItem('ul_program'),draft:!!localStorage.getItem('ul_draft'),serviceWorker:navigator.serviceWorker?.controller?.scriptURL||null});
   const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)??'null')??fallback}catch{return fallback}};
   const history=()=>read('ul_history',[]);
   const program=()=>read('ul_program',null);
@@ -20,10 +23,12 @@
     if(activeUserId===u.id&&hydrated)return;
     clearTimeout(syncTimer);syncTimer=null;
     const requestEpoch=++epoch;activeUserId=u.id;user=u;hydrated=false;
+    debugAuth('hydrate start',{authenticatedUserId:u.id,previousLocalData:localDataFlags()});
     clearLocalData();
-    const {data,error}=await sb.from('user_data').select('history_json,program_json,profile_json,updated_at').eq('user_id',u.id).maybeSingle();
+    const {data,error}=await sb.from('user_data').select('user_id,history_json,program_json,profile_json,updated_at').eq('user_id',u.id).maybeSingle();
     if(requestEpoch!==epoch||activeUserId!==u.id)return;
-    if(error){toast('Pilvidatan luku epäonnistui');return}
+    if(error){debugAuth('hydrate error',{authenticatedUserId:u.id,error:error.message});toast('Pilvidatan luku epäonnistui');const gate=$('#authBootstrap');if(gate)gate.textContent='Private account data could not be loaded. Refresh to retry.';return}
+    debugAuth('database row loaded',{queryUserId:u.id,rowUserId:data?.user_id||null,profileFields:Object.keys(data?.profile_json||{}),localStorageBeforeHydrate:localDataFlags()});
     if(data){
       if(Array.isArray(data.history_json))localStorage.setItem('ul_history',JSON.stringify(data.history_json));
       if(data.program_json&&Array.isArray(data.program_json.days))localStorage.setItem('ul_program',JSON.stringify(data.program_json));
@@ -33,6 +38,7 @@
       }
     }
     hydrated=true;
+    document.documentElement.classList.remove('auth-pending');$('#authBootstrap')?.remove();
     if(typeof window.renderHistory==='function')window.renderHistory();
     if(typeof window.renderProgress==='function')window.renderProgress();
     if(typeof window.renderWorkoutHome==='function')window.renderWorkoutHome();
@@ -64,7 +70,10 @@
   const boot=async()=>{
     try{
       await loadScript();sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+      debugAuth('supabase client initialized',{persistSession:true,storage:'Supabase client default browser storage',serviceWorker:navigator.serviceWorker?.controller?.scriptURL||null});
+      if(authDebug&&'caches'in window)caches.keys().then(keys=>debugAuth('browser caches',{keys}));
       sb.auth.onAuthStateChange((event,session)=>{
+        debugAuth('app auth event',{event,sessionUserId:session?.user?.id||null,localStorage:localDataFlags()});
         setTimeout(()=>{
           if(event==='PASSWORD_RECOVERY'){passwordRecovery();return}
           if(session?.user){void hydrate(session.user);return}
