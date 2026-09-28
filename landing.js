@@ -1,4 +1,4 @@
-(()=>{const URL='https://zjwunducqyvueapqdeqx.supabase.co',KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn',APP='./app.html?v=6'+(new URLSearchParams(location.search).has('authDebug')?'&authDebug=1':'');const sb=supabase.createClient(URL,KEY);const $=s=>document.querySelector(s);let mode='login';
+(()=>{const URL='https://zjwunducqyvueapqdeqx.supabase.co',KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn',APP='./app.html?v=7'+(new URLSearchParams(location.search).has('authDebug')?'&authDebug=1':'');const sb=supabase.createClient(URL,KEY);const $=s=>document.querySelector(s);let mode='login';
 const authDebug=new URLSearchParams(location.search).has('authDebug'),debugAuth=(event,details={})=>{if(authDebug)console.info('[UL auth]',event,details)};
 const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
