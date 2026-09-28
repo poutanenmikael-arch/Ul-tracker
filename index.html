@@ -816,7 +816,7 @@ button,a{touch-action:manipulation}
 </style></head>
 <body>
 <script>
-(()=>{try{if(sessionStorage.getItem('ul-sw-clean-v14')!=='1'){sessionStorage.setItem('ul-sw-clean-v14','1');if('serviceWorker' in navigator)navigator.serviceWorker.getRegistrations().then(rs=>Promise.all(rs.map(r=>r.unregister())));if('caches' in window)caches.keys().then(ks=>Promise.all(ks.map(k=>caches.delete(k))));}}catch(e){}})();
+(()=>{try{const key='ul-sw-clean-v17';if(localStorage.getItem(key)==='1')return;localStorage.setItem(key,'1');if('serviceWorker'in navigator)navigator.serviceWorker.getRegistrations().then(rs=>Promise.all(rs.filter(r=>[r.active,r.waiting,r.installing].some(w=>w&&new URL(w.scriptURL).origin===location.origin&&new URL(w.scriptURL).pathname.endsWith('/sw.js'))).map(r=>r.unregister())));if('caches'in window)caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('ul-tracker-')).map(k=>caches.delete(k))))}catch(e){}})();
 </script>
 <div class="ambient-bg" aria-hidden="true"></div>
 <header class="nav" style="position:sticky;z-index:50"><div class="wrap nav-inner">
@@ -1064,6 +1064,6 @@ Leg Press 2x8-12</pre>
 </g>
 </svg><div><div style="font-size:11px;color:var(--green);font-weight:900">UL TRACKER</div><div style="font-size:10px;color:#728078">BUILT FOR PROGRESS</div></div><button class="close" id="closeAuth">×</button></div><h2 id="authTitle">Log in</h2><p id="authDesc">Pick up where your last workout left off.</p><input class="field" id="email" type="email" autocomplete="email" placeholder="Email"><input class="field" id="password" type="password" autocomplete="current-password" placeholder="Password"><div class="auth-actions"><button class="btn primary" id="submitAuth">Log in <span aria-hidden="true">→</span></button><button class="btn" id="toggleAuth">Create account</button></div><button class="btn" id="forgot" style="width:100%;margin-top:8px;background:transparent">Forgot password?</button><div class="status" id="status"></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="./landing.js?v=19"></script>
+<script src="./landing.js?v=25"></script>
 </body>
 </html>

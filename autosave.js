@@ -1,19 +1,10 @@
-/* UL Tracker persistent draft + data recovery */
+/* UL Tracker persistent draft, scoped to the authenticated account */
 (()=>{
   const DRAFT='ul_draft',DAY='ul_current_day',HISTORY='ul_history';
-  const read=(k,f)=>{try{return JSON.parse(localStorage.getItem(k)||'')}catch{return f}};
+  const read=(k,f)=>{try{return JSON.parse(ulStorage.getItem(k)||'')}catch{return f}};
   const readDraft=()=>read(DRAFT,{});
-  const writeDraft=x=>localStorage.setItem(DRAFT,JSON.stringify(x));
-  const selected=()=>localStorage.getItem(DAY)||'upperA';
-  const looksLikeHistory=x=>Array.isArray(x)&&x.some(s=>s&&Array.isArray(s.exercises)&&s.exercises.some(e=>e&&Array.isArray(e.sets)));
-  const recover=()=>{
-    const current=read(HISTORY,[]); if(looksLikeHistory(current))return;
-    for(let i=0;i<localStorage.length;i++){
-      const k=localStorage.key(i); if(!k||k===HISTORY||k===DRAFT)continue;
-      const x=read(k,null);
-      if(looksLikeHistory(x)){localStorage.setItem(HISTORY,JSON.stringify(x));break;}
-    }
-  };
+  const writeDraft=x=>ulStorage.setItem(DRAFT,JSON.stringify(x));
+  const selected=()=>ulStorage.getItem(DAY)||'upperA';
   const persist=()=>{
     const draft=readDraft(),day=selected();
     document.querySelectorAll('[data-e][data-s][data-k]').forEach(el=>{
@@ -40,16 +31,15 @@
     if(!out.length)return;
     const h=read(HISTORY,[]);
     h.unshift({id:crypto.randomUUID(),date:new Date().toISOString(),day,exercises:out});
-    localStorage.setItem(HISTORY,JSON.stringify(h.slice(0,250)));
+    ulStorage.setItem(HISTORY,JSON.stringify(h.slice(0,250)));
     const d=readDraft();out.forEach(e=>delete d[`${day}|${e.name}`]);writeDraft(d);
     const t=document.querySelector('#toast');if(t){t.textContent='Treeni tallennettu ✓';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
   };
-  recover();
   document.addEventListener('input',()=>setTimeout(persist,0),true);
   document.addEventListener('change',()=>setTimeout(persist,0),true);
   document.addEventListener('click',e=>{
     const b=e.target.closest('#daytabs button');
-    if(b){localStorage.setItem(DAY,b.dataset.day);setTimeout(restore,50)}
+    if(b){ulStorage.setItem(DAY,b.dataset.day);setTimeout(restore,50)}
     if(e.target.closest('#saveBtn'))setTimeout(saveFallback,0);
   },true);
   setTimeout(()=>{const wanted=selected(),b=document.querySelector(`#daytabs button[data-day="${CSS.escape(wanted)}"]`);if(b&&!b.classList.contains('active'))b.click();setTimeout(restore,100)},120);
