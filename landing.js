@@ -3,7 +3,23 @@ const recoveryHash=new URLSearchParams(location.hash.replace(/^#/,''));
 const recoveryQuery=new URLSearchParams(location.search);
 const recoveryRequested=recoveryHash.get('type')==='recovery'||recoveryQuery.get('type')==='recovery';
 const authCallbackPending=!!location.hash||recoveryQuery.has('code');
-const recoveryApp=APP+(APP.includes('?')?'&':'?')+'passwordRecovery=1';const sb=supabase.createClient(URL,KEY);const $=s=>document.querySelector(s);let mode='login';
+const $=s=>document.querySelector(s);
+const recoveryApp=APP+(APP.includes('?')?'&':'?')+'passwordRecovery=1';
+if(!window.supabase||typeof window.supabase.createClient!=='function'){
+  const auth=$('.auth'),status=$('#status');
+  if(auth)auth.classList.add('show');
+  if(status){
+    status.classList.add('error');
+    status.setAttribute('role','alert');
+    status.textContent='Authentication could not load. Check your connection and reload.';
+    const retry=document.createElement('button');
+    retry.type='button';retry.className='btn';retry.style.marginTop='10px';
+    retry.textContent='Reload';retry.addEventListener('click',()=>location.reload());
+    status.appendChild(document.createElement('br'));status.appendChild(retry);
+  }
+  return;
+}
+const sb=window.supabase.createClient(URL,KEY);let mode='login';
 const authDebug=new URLSearchParams(location.search).has('authDebug'),debugAuth=(event,details={})=>{if(authDebug)console.info('[UL auth]',event,details)};
 const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
