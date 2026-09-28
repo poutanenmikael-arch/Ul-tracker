@@ -268,7 +268,7 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
     else if(s.type==='number')root.innerHTML='<div class="onboarding-step active"><div class="onboarding-question">'+s.title+'</div><div style="display:flex;align-items:center;gap:9px"><input id="onboardValue" class="input" style="flex:1" inputmode="decimal" type="number" min="'+s.min+'" max="'+s.max+'" step="'+(s.key==='age'?'1':'0.1')+'" aria-label="'+s.title+'" placeholder="'+s.placeholder+'" value="'+(state[s.key]??'')+'"><b style="color:#8e9aaa">'+s.suffix+'</b></div></div>';
     else root.innerHTML='<div class="onboarding-step active"><div class="onboarding-question">'+s.title+'</div><div class="onboarding-options">'+s.options.map(o=>'<button type="button" class="onboarding-option '+(state[s.key]===o[0]?'selected':'')+'" data-value="'+o[0]+'">'+o[1]+'</button>').join('')+'</div></div>';
     const input=$('#onboardValue');if(input){input.focus();input.oninput=()=>{state[s.key]=input.value;};}
-    $('.onboarding-option').forEach(b=>b.onclick=()=>{state[s.key]=b.dataset.value;render()});
+    $$('.onboarding-option').forEach(b=>b.onclick=()=>{state[s.key]=b.dataset.value;render()});
   };
   const parseProgram=source=>{
     const days=[];let current=null,exerciseCount=0;
