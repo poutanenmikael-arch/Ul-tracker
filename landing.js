@@ -1,4 +1,9 @@
-(()=>{const URL='https://zjwunducqyvueapqdeqx.supabase.co',KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn',APP='./app.html?v=8'+(new URLSearchParams(location.search).has('authDebug')?'&authDebug=1':'');const sb=supabase.createClient(URL,KEY);const $=s=>document.querySelector(s);let mode='login';
+(()=>{const URL='https://zjwunducqyvueapqdeqx.supabase.co',KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn',APP='./app.html?v=9'+(new URLSearchParams(location.search).has('authDebug')?'&authDebug=1':'');
+const recoveryHash=new URLSearchParams(location.hash.replace(/^#/,''));
+const recoveryQuery=new URLSearchParams(location.search);
+const recoveryRequested=recoveryHash.get('type')==='recovery'||recoveryQuery.get('type')==='recovery';
+const authCallbackPending=!!location.hash||recoveryQuery.has('code');
+const recoveryApp=APP+(APP.includes('?')?'&':'?')+'passwordRecovery=1';const sb=supabase.createClient(URL,KEY);const $=s=>document.querySelector(s);let mode='login';
 const authDebug=new URLSearchParams(location.search).has('authDebug'),debugAuth=(event,details={})=>{if(authDebug)console.info('[UL auth]',event,details)};
 const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -100,5 +105,7 @@ $('#submitAuth').onclick=async()=>{
     submit.disabled=false;submit.style.pointerEvents='auto';status(e.message||'Authentication failed.','error');
   }
 };
-$('#forgot').onclick=async()=>{const email=$('#email').value.trim();if(!email)return status('Enter your email first.','error');status('Sending reset link...','loading');const r=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+'/'});status(r.error?r.error.message:'Reset link sent. Check your email.','success')};
-const justLoggedOut=localStorage.getItem('ul_logged_out')==='1';if(justLoggedOut)localStorage.removeItem('ul_logged_out');sb.auth.getSession().then(({data})=>{debugAuth('landing getSession',{sessionUserId:data.session?.user?.id||null});if(data.session&&!justLoggedOut)location.href=APP});sb.auth.onAuthStateChange((event,session)=>{debugAuth('landing auth event',{event,sessionUserId:session?.user?.id||null});if(session&&(event==='SIGNED_IN'||event==='INITIAL_SESSION')&&!justLoggedOut)location.href=APP})})();
+$('#forgot').onclick=async()=>{const email=$('#email').value.trim(),button=$('#forgot');if(!email)return status('Enter your email first.','error');button.disabled=true;status('Sending reset link...','loading');try{const r=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+'/'});status(r.error?r.error.message:'Reset link sent. Check your email.','success')}catch(e){status(e?.message||'Could not send the reset link. Try again.','error')}finally{button.disabled=false}};
+const justLoggedOut=localStorage.getItem('ul_logged_out')==='1';if(justLoggedOut)localStorage.removeItem('ul_logged_out');
+sb.auth.onAuthStateChange((event,session)=>{debugAuth('landing auth event',{event,sessionUserId:session?.user?.id||null});if(!session||justLoggedOut)return;if(event==='PASSWORD_RECOVERY'){location.replace(recoveryApp);return}if(event==='SIGNED_IN'||event==='INITIAL_SESSION')location.href=recoveryRequested?recoveryApp:APP});
+sb.auth.getSession().then(({data})=>{debugAuth('landing getSession',{sessionUserId:data.session?.user?.id||null});if(data.session&&!justLoggedOut&&(!authCallbackPending||recoveryRequested))location.href=recoveryRequested?recoveryApp:APP}).catch(e=>debugAuth('landing session lookup failed',{error:e?.message||String(e)}))})();
