@@ -1,20 +1,86 @@
 (()=>{
   const SUPABASE_URL='https://zjwunducqyvueapqdeqx.supabase.co';
   const SUPABASE_KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn';
-  const APP_URL='https://ultracker.online/';
   const CDN='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
-  let sb=null,user=null,syncTimer=null;
+  const DATA_KEYS=['ul_profile','ul_profile_name','ul_history','ul_program','ul_draft','ul_current_day','ul_home_day'];
+  let sb=null,user=null,activeUserId=null,epoch=0,syncTimer=null,hydrated=false;
   const $=s=>document.querySelector(s);
-  const history=()=>{try{return JSON.parse(localStorage.getItem('ul_history')||'[]')}catch{return[]}};
-  const program=()=>{try{return JSON.parse(localStorage.getItem('ul_program')||'null')}catch{return null}};
-  const profile=()=>{try{const p=JSON.parse(localStorage.getItem('ul_profile')||'null');if(p&&typeof p==='object')return p}catch{}const name=localStorage.getItem('ul_profile_name')||'';return name?{name}:{};};
+  const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)??'null')??fallback}catch{return fallback}};
+  const history=()=>read('ul_history',[]);
+  const program=()=>read('ul_program',null);
+  const profile=()=>{const p=read('ul_profile',{});return p&&typeof p==='object'&&!Array.isArray(p)?p:{}};
   const toast=msg=>{const t=$('#toast');if(t){t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}};
   const loadScript=()=>new Promise((resolve,reject)=>{if(window.supabase)return resolve();const s=document.createElement('script');s.src=CDN;s.onload=resolve;s.onerror=reject;document.head.appendChild(s)});
-  const style=()=>{};
-  const passwordRecovery=()=>{let m=$('#passwordRecovery');if(m)return;const el=document.createElement('div');el.className='cloud-auth';el.id='passwordRecovery';el.innerHTML='<div class="cloud-box"><div style="font-size:12px;color:#39ffb6;font-weight:900;margin-bottom:8px">UL TRACKER • CLOUD</div><h2>Vaihda salasana</h2><div style="font-size:12px;color:#8e9aaa;margin-bottom:12px">Anna uusi salasana tilillesi.</div><input class="cloud-input" id="newPass" type="password" autocomplete="new-password" placeholder="Uusi salasana"><input class="cloud-input" id="newPass2" type="password" autocomplete="new-password" placeholder="Uusi salasana uudelleen"><div class="cloud-actions"><button class="btn primary" id="saveNewPass">Vaihda salasana</button></div><div class="cloud-status" id="passStatus"></div></div>';document.body.appendChild(el);$('#saveNewPass').onclick=async()=>{const a=$('#newPass').value,b=$('#newPass2').value;if(a.length<6)return $('#passStatus').textContent='Salasanan pitää olla vähintään 6 merkkiä.';if(a!==b)return $('#passStatus').textContent='Salasanat eivät täsmää.';const r=await sb.auth.updateUser({password:a});if(r.error)return $('#passStatus').textContent=r.error.message;el.remove();toast('Salasana vaihdettu ✓');await finish((await sb.auth.getUser()).data.user)};};
-  const sync=async(force=false)=>{if(!sb||!user)return;clearTimeout(syncTimer);if(!force){syncTimer=setTimeout(()=>sync(true),1200);return}const h=history(),p=program(),profileData=profile();const {error}=await sb.from('user_data').upsert({user_id:user.id,history_json:h,program_json:p,profile_json:profileData,updated_at:new Date().toISOString()},{onConflict:'user_id'});if(error)toast('Pilvitallennus epäonnistui');else toast('☁️ Tallennettu pilveen')};
-  const finish=async u=>{if(!u)return;user=u;const {data,error}=await sb.from('user_data').select('history_json,program_json,profile_json,updated_at').eq('user_id',user.id).maybeSingle();if(error){toast('Pilvidatan luku epäonnistui');return}const local=history(),lp=program();if(!data){['ul_profile','ul_profile_name','ul_history','ul_program','ul_draft','ul_current_day','ul_home_day'].forEach(k=>localStorage.removeItem(k));}
-if(data){if(Array.isArray(data.history_json)&&data.history_json.length){localStorage.setItem('ul_history',JSON.stringify(data.history_json));if(typeof window.renderHistory==='function')window.renderHistory();if(typeof window.renderProgress==='function')window.renderProgress();}if(data.program_json&&Array.isArray(data.program_json.days)){localStorage.setItem('ul_program',JSON.stringify(data.program_json));window.dispatchEvent(new CustomEvent('ul-cloud-program-loaded',{detail:data.program_json}));}if(data.profile_json&&typeof data.profile_json==='object'){localStorage.setItem('ul_profile',JSON.stringify(data.profile_json));if(typeof data.profile_json.name==='string'){localStorage.setItem('ul_profile_name',data.profile_json.name);}window.dispatchEvent(new CustomEvent('ul-profile-loaded',{detail:data.profile_json}));if(typeof window.renderWorkoutHome==='function')window.renderWorkoutHome();}}if(!data||(!Array.isArray(data.history_json)||!data.history_json.length)&&local.length||(!data?.program_json&&lp)||(!data?.profile_json&&Object.keys(profile()).length)){await sync(true)}window.dispatchEvent(new CustomEvent('ul-cloud-ready',{detail:{userId:user.id,profile:profile()}}));toast('☁️ Pilvitallennus käytössä')};
-  const boot=async()=>{style();try{await loadScript();sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);sb.auth.onAuthStateChange(async(event,session)=>{if(event==='PASSWORD_RECOVERY'){passwordRecovery();return}if(event==='SIGNED_IN'&&session&&!user)await finish(session.user)});const r=await sb.auth.getUser();if(r.data.user)await finish(r.data.user);else location.replace('./index.html');document.addEventListener('click',e=>{if(e.target.closest('#saveBtn'))setTimeout(()=>sync(true),900)},true);window.ulSignOut=async()=>{const r=await sb.auth.signOut({scope:'global'});if(r.error)throw r.error;user=null;sessionStorage.setItem('ul_logout','1');return r};window.addEventListener('storage',()=>sync(false));window.addEventListener('ul-program-changed',()=>sync(false));window.addEventListener('ul-profile-changed',()=>sync(false));}catch(e){console.error(e);toast('Pilvipalvelun käynnistys epäonnistui')}};
+  const clearLocalData=()=>DATA_KEYS.forEach(k=>localStorage.removeItem(k));
+  const deactivate=()=>{
+    clearTimeout(syncTimer);syncTimer=null;epoch++;hydrated=false;user=null;activeUserId=null;clearLocalData();
+  };
+  const hydrate=async u=>{
+    if(!u)return;
+    if(activeUserId===u.id&&hydrated)return;
+    clearTimeout(syncTimer);syncTimer=null;
+    const requestEpoch=++epoch;activeUserId=u.id;user=u;hydrated=false;
+    clearLocalData();
+    const {data,error}=await sb.from('user_data').select('history_json,program_json,profile_json,updated_at').eq('user_id',u.id).maybeSingle();
+    if(requestEpoch!==epoch||activeUserId!==u.id)return;
+    if(error){toast('Pilvidatan luku epäonnistui');return}
+    if(data){
+      if(Array.isArray(data.history_json))localStorage.setItem('ul_history',JSON.stringify(data.history_json));
+      if(data.program_json&&Array.isArray(data.program_json.days))localStorage.setItem('ul_program',JSON.stringify(data.program_json));
+      if(data.profile_json&&typeof data.profile_json==='object'&&!Array.isArray(data.profile_json)){
+        localStorage.setItem('ul_profile',JSON.stringify(data.profile_json));
+        if(typeof data.profile_json.name==='string'&&data.profile_json.name)localStorage.setItem('ul_profile_name',data.profile_json.name);
+      }
+    }
+    hydrated=true;
+    if(typeof window.renderHistory==='function')window.renderHistory();
+    if(typeof window.renderProgress==='function')window.renderProgress();
+    if(typeof window.renderWorkoutHome==='function')window.renderWorkoutHome();
+    if(data?.program_json&&Array.isArray(data.program_json.days))window.dispatchEvent(new CustomEvent('ul-cloud-program-loaded',{detail:data.program_json}));
+    if(data?.profile_json&&typeof data.profile_json==='object')window.dispatchEvent(new CustomEvent('ul-profile-loaded',{detail:data.profile_json}));
+    window.dispatchEvent(new CustomEvent('ul-cloud-ready',{detail:{userId:u.id,profile:profile()}}));
+    toast('☁️ Pilvitallennus käytössä');
+  };
+  const sync=force=>{
+    clearTimeout(syncTimer);
+    if(!sb||!user||!hydrated)return;
+    const uid=activeUserId,requestEpoch=epoch;
+    const write=async()=>{
+      if(!hydrated||!user||activeUserId!==uid||epoch!==requestEpoch)return;
+      const {error}=await sb.from('user_data').upsert({user_id:uid,history_json:history(),program_json:program(),profile_json:profile(),updated_at:new Date().toISOString()},{onConflict:'user_id'});
+      if(requestEpoch!==epoch||activeUserId!==uid)return;
+      if(error)toast('Pilvitallennus epäonnistui');
+      else toast('☁️ Tallennettu pilveen');
+    };
+    if(force)void write();else syncTimer=setTimeout(write,1200);
+  };
+  const passwordRecovery=()=>{
+    let m=$('#passwordRecovery');if(m)return;
+    const el=document.createElement('div');el.className='cloud-auth';el.id='passwordRecovery';
+    el.innerHTML='<div class="cloud-box"><div style="font-size:12px;color:#39ffb6;font-weight:900;margin-bottom:8px">UL TRACKER • CLOUD</div><h2>Vaihda salasana</h2><div style="font-size:12px;color:#8e9aaa;margin-bottom:12px">Anna uusi salasana tilillesi.</div><input class="cloud-input" id="newPass" type="password" autocomplete="new-password" placeholder="Uusi salasana"><input class="cloud-input" id="newPass2" type="password" autocomplete="new-password" placeholder="Uusi salasana uudelleen"><div class="cloud-actions"><button class="btn primary" id="saveNewPass">Vaihda salasana</button></div><div class="cloud-status" id="passStatus"></div></div>';
+    document.body.appendChild(el);
+    $('#saveNewPass').onclick=async()=>{const a=$('#newPass').value,b=$('#newPass2').value;if(a.length<6)return $('#passStatus').textContent='Salasanan pitää olla vähintään 6 merkkiä.';if(a!==b)return $('#passStatus').textContent='Salasanat eivät täsmää.';const r=await sb.auth.updateUser({password:a});if(r.error)return $('#passStatus').textContent=r.error.message;el.remove();toast('Salasana vaihdettu ✓')};
+  };
+  const boot=async()=>{
+    try{
+      await loadScript();sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+      sb.auth.onAuthStateChange((event,session)=>{
+        setTimeout(()=>{
+          if(event==='PASSWORD_RECOVERY'){passwordRecovery();return}
+          if(session?.user){void hydrate(session.user);return}
+          if(event==='SIGNED_OUT'){deactivate();return}
+          if(event==='INITIAL_SESSION')location.replace('./index.html');
+        },0);
+      });
+      document.addEventListener('click',e=>{if(e.target.closest('#saveBtn'))setTimeout(()=>sync(true),900)},true);
+      window.ulSignOut=async()=>{
+        const r=await sb.auth.signOut({scope:'global'});
+        if(r.error)throw r.error;
+        deactivate();sessionStorage.setItem('ul_logout','1');return r;
+      };
+      window.addEventListener('ul-program-changed',()=>sync(false));
+      window.addEventListener('ul-profile-changed',()=>sync(false));
+    }catch(e){console.error(e);toast('Pilvipalvelun käynnistys epäonnistui')}
+  };
   setTimeout(boot,0);
 })();
