@@ -232,7 +232,7 @@ $('#logoutBtn')?.addEventListener('click',async function(){
 });
 if($('#profileName'))$('#profileName').value=profileName();
 
-renderWorkout();renderProgress();renderHistory();</script><script src="./autosave.js?v=4"></script><script src="./backend.js?v=7"></script><script src="./program.js?v=5"></script><script>
+renderWorkout();renderProgress();renderHistory();</script><script src="./autosave.js?v=4"></script><script src="./backend.js?v=7"></script><script src="./program.js?v=6"></script><script>
 (()=>{
   const readProfile=()=>{try{const p=JSON.parse(ulStorage.getItem('ul_profile')||'null');if(p&&typeof p==='object'&&!Array.isArray(p))return p}catch{}const name=ulStorage.getItem('ul_profile_name')||'';return name?{name}:{}};
   const goals=new Set(['build_muscle','lose_fat','get_stronger','maintain']);
