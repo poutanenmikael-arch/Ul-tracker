@@ -1,4 +1,4 @@
-const CACHE='ul-tracker-v12';
+const CACHE='ul-tracker-v13';
 const ASSETS=['./','./manifest.json','./logo.svg'];
 const LIVE_PATHS=new Set(['/','/index.html','/app.html','/landing.js','/backend.js','/program.js','/autosave.js']);
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
