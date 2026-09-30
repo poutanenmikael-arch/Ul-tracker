@@ -325,4 +325,16 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
     else ulStorage.removeItem('ul_profile_name');
     show();
   });
-})();</script></body></html>
+})();</script><script>
+(()=>{
+  const exerciseSelect=document.getElementById('chartExercise');
+  exerciseSelect?.addEventListener('change',()=>{
+    [document.getElementById('chart'),document.getElementById('chartCaption'),document.getElementById('progressSummary')].filter(Boolean).forEach(surface=>{
+      surface.classList.remove('chart-refresh');
+      void surface.offsetWidth;
+      surface.classList.add('chart-refresh');
+      setTimeout(()=>surface.classList.remove('chart-refresh'),280);
+    });
+  });
+})();
+</script></body></html>
