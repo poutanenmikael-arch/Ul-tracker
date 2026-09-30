@@ -51,22 +51,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .today-card:hover{transform:translateY(-2px);border-color:rgba(113,238,177,.42);box-shadow:0 34px 86px rgba(0,0,0,.5),0 0 40px rgba(45,177,112,.09),inset 0 1px 0 rgba(255,255,255,.17)}
 .today-card:active{transform:scale(.989);filter:brightness(1.09)}
 .muscle-visual{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none}
-.muscle-visual::before{position:absolute;inset:0;content:"";background:radial-gradient(ellipse at 77% 35%,rgba(93,225,151,.18),transparent 32%),linear-gradient(100deg,rgba(4,8,5,.7),transparent 67%),linear-gradient(0deg,rgba(4,8,5,.68),transparent 70%)}
-.muscle-figure{position:absolute;right:0;bottom:-15%;width:min(64%,500px);height:120%;overflow:visible;opacity:.72;filter:drop-shadow(0 8px 32px rgba(72,205,132,.11));mix-blend-mode:screen}
-.figure-halo{fill:rgba(47,193,116,.14);opacity:.72}
-.figure-silhouette{fill:rgba(167,205,178,.16);stroke:rgba(212,248,225,.3);stroke-width:1.4}
-.figure-muscle{fill:rgba(33,122,74,.42);stroke:rgba(140,239,184,.25);stroke-width:1.5}
-.figure-chest{opacity:.88}
-.figure-back{opacity:.22}
-.figure-abs{opacity:.5}
-.figure-legs{opacity:.2}
-.muscle-visual[data-type="posterior"] .figure-chest{opacity:.2}
-.muscle-visual[data-type="posterior"] .figure-back{opacity:.94}
-.muscle-visual[data-type="legs"] .figure-chest,.muscle-visual[data-type="legs"] .figure-back{opacity:.12}
-.muscle-visual[data-type="legs"] .figure-legs{opacity:1}
-.muscle-visual[data-type="arms"] .figure-chest,.muscle-visual[data-type="arms"] .figure-back{opacity:.26}
-.muscle-visual[data-type="arms"] .figure-abs{opacity:.12}
-.muscle-visual[data-type="arms"] .figure-legs{opacity:.08}
+.muscle-visual::before{position:absolute;inset:0;content:"";background:radial-gradient(ellipse at 77% 35%,rgba(93,225,151,.18),transparent 32%),linear-gradient(100deg,rgba(4,8,5,.7),transparent 67%),linear-gradient(0deg,rgba(4,8,6,.68),transparent 70%)}
 .hero-scrim{position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(5,10,7,.48),transparent 78%),linear-gradient(0deg,rgba(4,8,6,.78),rgba(4,8,6,.03) 74%)}
 .hero-topline,.today-content,.today-arrow{position:relative;z-index:2}
 .hero-topline{display:flex;width:100%;align-items:center;justify-content:space-between;gap:12px}
@@ -94,7 +79,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .workout-choice{position:relative;isolation:isolate;display:flex;min-height:96px;align-items:center;overflow:hidden;padding:15px 58px 15px 18px;border:1px solid rgba(221,242,228,.105);border-radius:19px;background:linear-gradient(110deg,rgba(23,31,26,.76),rgba(12,19,14,.56));box-shadow:inset 0 1px 0 rgba(255,255,255,.035);cursor:pointer;transition:min-height .22s var(--ease),transform .2s var(--ease),border-color .2s var(--ease),background .2s var(--ease)}
 .workout-choice::before{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(4,9,6,.1),rgba(4,9,6,.25));content:"";pointer-events:none}
 .workout-choice .muscle-visual{opacity:.34;transition:opacity .25s var(--ease)}
-.workout-choice .muscle-figure{right:-3%;width:47%;height:135%;opacity:.5}
+
 .choice-content{position:relative;z-index:2;min-width:0}
 .choice-content .section-overline{margin-bottom:6px;font-size:7px}
 .choice-name{color:#edf2ee;font-size:20px;font-weight:570;letter-spacing:-.55px}
@@ -397,7 +382,6 @@ canvas{max-width:100%}
  .profile-orb{width:38px;height:38px}
  .home-greeting{padding:21px 0 23px}
  .today-card{min-height:360px;padding:18px 19px 22px;border-radius:27px}
- .muscle-figure{right:-5%;bottom:-9%;width:72%;height:112%}
  .today-card h3{font-size:clamp(31px,8vw,42px)}
  .today-meta{max-width:27ch;font-size:9px;line-height:1.7}
  .today-arrow{right:15px;bottom:17px;width:42px;height:42px}
@@ -502,3 +486,24 @@ canvas{max-width:100%}
  html{scroll-behavior:auto}
  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+.workout-art-image{display:block;object-fit:cover}
+.muscle-visual .workout-art-image{position:absolute;right:0;bottom:0;width:64%;height:100%;object-position:center 18%;opacity:.82;mix-blend-mode:screen;filter:drop-shadow(0 8px 32px rgba(72,205,132,.11));mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.86) 18%,#000 56%)}
+.muscle-visual[data-type="posterior"] .workout-art-image{object-position:center 10%}
+.muscle-visual[data-type="legs"] .workout-art-image{object-position:center 25%}
+.muscle-visual[data-type="arms"] .workout-art-image{object-position:center 14%}
+.muscle-visual[data-type="back"] .workout-art-image{object-position:center 14%}
+.workout-choice .muscle-visual{opacity:.48;transition:opacity .25s var(--ease)}
+.workout-choice .muscle-visual .workout-art-image{right:-3%;bottom:-19%;width:51%;height:138%;opacity:.76}
+.workout-choice.expanded .muscle-visual{opacity:.82}
+.today-card .muscle-visual .workout-art-image{width:min(66%,490px);height:100%;object-position:center 18%}
+.workout-focus-art{position:relative;height:clamp(140px,38vw,190px);margin:0 0 14px;overflow:hidden;border:1px solid rgba(223,249,233,.15);border-radius:20px;background:linear-gradient(145deg,rgba(15,25,19,.86),rgba(6,10,8,.9));box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.workout-focus-art::after{position:absolute;inset:0;content:"";background:linear-gradient(90deg,rgba(4,8,6,.14),transparent 70%),linear-gradient(0deg,rgba(4,8,6,.5),transparent 80%);pointer-events:none}
+.workout-focus-image{position:absolute;inset:0;width:100%;height:100%;object-position:center 22%;opacity:.86;mix-blend-mode:screen}
+.program-day{position:relative;isolation:isolate;overflow:hidden}
+.program-day::after{position:absolute;z-index:0;inset:0;content:"";background:linear-gradient(90deg,rgba(9,15,11,.02) 40%,rgba(9,15,11,.46)),linear-gradient(0deg,rgba(9,15,11,.24),transparent 70%);pointer-events:none}
+.program-day-artwork{position:absolute;z-index:0;top:0;right:0;width:45%;height:164px;object-position:center 14%;opacity:.52;mix-blend-mode:screen;mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.65) 62%,transparent 100%);pointer-events:none}
+.program-day-head,.program-exercises,.program-day-foot{position:relative;z-index:1}
+.history-session{position:relative;isolation:isolate}
+.history-artwork{position:absolute;z-index:0;top:8px;right:1px;width:78px;height:104px;object-position:center top;border:1px solid rgba(223,249,233,.12);border-radius:13px;opacity:.27;mix-blend-mode:screen;mask-image:linear-gradient(to left,#000 0%,rgba(0,0,0,.7) 62%,transparent 100%);pointer-events:none}
+.history-rail,.history-body{position:relative;z-index:1}
+@media(max-width:560px){.today-card .muscle-visual .workout-art-image{width:65%;object-position:center 18%}.program-day-artwork{width:46%;height:142px;opacity:.46}.history-artwork{width:62px;height:84px;opacity:.22}}
