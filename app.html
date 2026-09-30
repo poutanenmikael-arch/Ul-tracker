@@ -20,7 +20,7 @@ html.auth-pending #authBootstrap{display:grid}
 #authBootstrap .auth-retry{margin-top:14px;min-height:40px;padding:0 16px;border:1px solid rgba(57,255,182,.35);border-radius:12px;background:#101a15;color:#39ffb6;font-weight:800;cursor:pointer}
 #authBootstrap .auth-retry:focus-visible{outline:2px solid #39ffb6;outline-offset:3px}
 </style><div id="authBootstrap" role="status" aria-live="polite">Loading your private account data…</div><script>(()=>{try{const key='ul-sw-clean-v18';if(localStorage.getItem(key)==='1')return;localStorage.setItem(key,'1');if('serviceWorker'in navigator)navigator.serviceWorker.getRegistrations().then(rs=>Promise.all(rs.filter(r=>[r.active,r.waiting,r.installing].some(w=>w&&new URL(w.scriptURL).origin===location.origin&&new URL(w.scriptURL).pathname.endsWith('/sw.js'))).map(r=>r.unregister())));if('caches'in window)caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('ul-tracker-')).map(k=>caches.delete(k))))}catch(e){}})();</script><div class="app"><header class="top">
-  <a class="brand" href="./app.html?v=13" aria-label="UL Tracker home">
+  <a class="brand" href="./app.html?v=14" aria-label="UL Tracker home">
     <span class="brand-mark"><img src="./logo.svg" alt=""></span>
     <span class="brand-copy"><h1>UL TRACKER</h1><span class="brand-tagline">BUILT FOR PROGRESS</span></span>
   </a>
@@ -73,6 +73,7 @@ html.auth-pending #authBootstrap{display:grid}
     <div class="profile-group-heading"><span class="section-overline">PERSONAL</span><span class="profile-group-note">EDITABLE</span></div>
     <div class="profile-group-list">
       <div class="setting setting-name"><label class="setting-label" for="profileName">Name</label><input class="input profile-input" id="profileName" placeholder="Your name" maxlength="30" autocomplete="name"></div>
+      <div class="setting"><label class="setting-label" for="profileUsername">Username</label><div class="setting-field"><span aria-hidden="true">@</span><input class="input profile-input" id="profileUsername" placeholder="your_name" maxlength="20" autocomplete="nickname" autocapitalize="none" spellcheck="false" aria-describedby="profileUsernameStatus"></div><span id="profileUsernameStatus" class="small" role="status" aria-live="polite"></span></div>
       <div class="setting"><label class="setting-label" for="profileAge">Age</label><div class="setting-field"><input class="input profile-input" id="profileAge" aria-label="Age in years" type="number" min="13" max="120" step="1" inputmode="numeric"><span>years</span></div></div>
       <div class="setting"><label class="setting-label" for="profileHeight">Height</label><div class="setting-field"><input class="input profile-input" id="profileHeight" aria-label="Height in centimeters" type="number" min="50" max="260" step="0.1" inputmode="decimal"><span>cm</span></div></div>
       <div class="setting"><label class="setting-label" for="profileWeight">Weight</label><div class="setting-field"><input class="input profile-input" id="profileWeight" aria-label="Weight in kilograms" type="number" min="20" max="500" step="0.1" inputmode="decimal"><span>kg</span></div></div>
@@ -107,7 +108,7 @@ html.auth-pending #authBootstrap{display:grid}
   <button data-view="progressView" aria-label="Progress"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17 9 11l4 4 8-9"></path><path d="M15 6h6v6"></path></svg></span><b>Progress</b></button>
   <button data-view="historyView" aria-label="History"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"></rect><path d="M8 3v4m8-4v4M4 10h16"></path></svg></span><b>History</b></button>
   <button data-view="settingsView" aria-label="Profile"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.5 21c.7-4.2 3.3-6.5 7.5-6.5s6.8 2.3 7.5 6.5"></path></svg></span><b>Profile</b></button>
-</nav><div class="savebar"><div class="savebar-inner"><button class="btn" id="restBtn">⏱ Rest</button><button class="btn primary" id="saveBtn">✓ Save workout</button></div></div><div id="toast" class="toast"></div><div id="modal" class="modal"><div class="modalbox"><div class="row"><h2 style="flex:1;margin:0" id="modalTitle">Lepoajastin</h2><button class="btn" id="closeModal">Sulje</button></div><div id="modalBody"><div class="timer" id="timer">02:00</div><div class="row"><button class="btn primary" id="startTimer">Aloita</button><button class="btn" id="resetTimer">Nollaa</button><button class="btn" id="plus30">+30 s</button></div></div></div></div><script src="./workout-artwork.js?v=2"></script><script>const WORKOUTS={upperA:[['Incline Smith Press',3,'6–10',1,2,3],['Chest-Supported Row',3,'6–10',1,2,3],['Machine Chest Press',2,'8–12',1,1,2],['Lat Pulldown / Chin-Up',2,'8–12',1,2,3],['Lateral Raise',3,'10–15',1,1,2],['Cable / Rope Pushdown',2,'10–15',1,1,2],['Incline DB Curl',2,'8–12',1,1,2]],lowerA:[['Hack Squat',3,'6–10',1,2,4],['Leg Press',2,'8–12',1,1,3],['Smith Squat',2,'8–10',1,2,3],['Leg Extension',2,'10–15',0,1,2],['Seated Leg Curl',2,'10–15',1,1,2],['Standing Calf Raise',2,'10–15',0,1,2]],upperB:[['Incline DB Press',3,'8–12',1,1,3],['Chest-Supported / Cable Row',3,'8–12',1,1,3],['Pec Deck / Cable Fly',2,'10–15',0,1,2],['Weighted Chin-Up / Pulldown',2,'6–10',1,2,3],['Lateral Raise',3,'10–15',1,1,2],['Overhead Cable Triceps Extension',2,'10–15',1,1,2],['Preacher Curl',2,'8–12',1,1,2]],lowerB:[['Romanian Deadlift',3,'6–8',1,2,4],['Bulgarian Split Squat',2,'8–12',1,1,3],['Lying / Seated Leg Curl',3,'8–12',1,1,2],['Leg Extension',2,'10–15',1,1,2],['Standing / Seated Calf Raise',3,'10–15',0,1,2]]};const OPTIONAL=[['Cable / Preacher Curl',3,'8–12',1,1,2],['Overhead Cable Triceps Extension',3,'8–12',1,1,2],['Lateral Raise',3,'12–20',0,1,2],['Hammer Curl',2,'10–15',1,1,2],['Rope Pushdown',2,'10–15',0,1,2]];const DAYS={upperA:'Upper A',lowerA:'Lower A',upperB:'Upper B',lowerB:'Lower B'};const SWAPS={'Incline Smith Press':['Incline DB Press','Machine Chest Press','Barbell Incline Press'],'Incline DB Press':['Incline Smith Press','Machine Chest Press','Barbell Incline Press'],'Machine Chest Press':['Incline DB Press','Cable Chest Press','Push-Up'],'Hack Squat':['Leg Press','Smith Squat','Bulgarian Split Squat'],'Smith Squat':['Hack Squat','Leg Press','Goblet Squat'],'Leg Press':['Hack Squat','Smith Squat','Bulgarian Split Squat'],'Chest-Supported Row':['Seated Cable Row','T-Bar Row','One-Arm DB Row'],'Chest-Supported / Cable Row':['Chest-Supported Row','Seated Cable Row','One-Arm DB Row'],'Lat Pulldown / Chin-Up':['Assisted Chin-Up','Seated Cable Pulldown','One-Arm Lat Pulldown'],'Weighted Chin-Up / Pulldown':['Lat Pulldown','Assisted Chin-Up','Neutral-Grip Pulldown'],'Pec Deck / Cable Fly':['Cable Fly','Machine Chest Fly','DB Fly'],'Cable / Rope Pushdown':['Rope Pushdown','Single-Arm Cable Pushdown','Close-Grip Press'],'Overhead Cable Triceps Extension':['DB Overhead Extension','Cable Pushdown','EZ-Bar Skull Crusher'],'Incline DB Curl':['Preacher Curl','Cable Curl','Hammer Curl'],'Preacher Curl':['Incline DB Curl','Cable Curl','Hammer Curl'],'Lateral Raise':['Cable Lateral Raise','Machine Lateral Raise','DB Lateral Raise'],'Seated Leg Curl':['Lying Leg Curl','Cable Leg Curl','Nordic Curl'],'Lying / Seated Leg Curl':['Seated Leg Curl','Cable Leg Curl','Nordic Curl'],'Standing Calf Raise':['Seated Calf Raise','Leg Press Calf Raise','Donkey Calf Raise'],'Standing / Seated Calf Raise':['Leg Press Calf Raise','Donkey Calf Raise','Calf Raise Machine'],'Romanian Deadlift':['45° Back Extension','Good Morning','Leg Curl'],'Bulgarian Split Squat':['Reverse Lunge','Leg Press','Smith Split Squat'],'Leg Extension':['Single-Leg Extension','Reverse Nordic','Sissy Squat']};let currentDay=ulStorage.getItem('ul_current_day')||'upperA',optionalMode=currentDay==='optional',timerSec=120,timerId=null,chartPoints=[];const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];const loadHistory=()=>{try{return JSON.parse(ulStorage.getItem('ul_history')||'[]')}catch{return[]}};const saveHistory=h=>ulStorage.setItem('ul_history',JSON.stringify(h.slice(0,250)));const draftKey=()=>optionalMode?'optional':currentDay;function getDraft(){try{return JSON.parse(ulStorage.getItem('ul_draft')||'{}')}catch{return{}}}function setDraft(d){ulStorage.setItem('ul_draft',JSON.stringify(d))}function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2200)}function range(s){const m=s.match(/(\d+).*?(\d+)/);return m?[+m[1],+m[2]]:[0,999]}function fmt(n){return Number.isInteger(n)?String(n):n.toFixed(2).replace(/0+$/,'').replace(/\.$/,'')}function e1rm(w,r){return w*(1+r/30)}function lastExercise(name,day=draftKey()){return loadHistory().find(s=>s.day===day&&s.exercises.some(e=>e.name===name))?.exercises.find(e=>e.name===name)||null}function recommendation(x,prev){if(!$('#autoRec').checked||!prev)return '';const [lo,hi]=range(x[2]);if(prev.sets.length!==x[1])return '';const valid=prev.sets.every(s=>Number.isFinite(+s.weight)&&Number.isFinite(+s.reps)&&Number.isFinite(+s.rir));if(!valid)return '';const weights=prev.sets.map(s=>+s.weight),rirs=prev.sets.map(s=>+s.rir),reps=prev.sets.map(s=>+s.reps);const avgRir=rirs.reduce((a,b)=>a+b,0)/rirs.length,minRir=Math.min(...rirs),maxRir=Math.max(...rirs),maxWeight=Math.max(...weights),inc=maxWeight>=60?2.5:1.25;const allTop=reps.every(r=>r>=hi);if(minRir<x[3])return `<div class="recommend warning">🔴 <b>Laske hieman.</b> RIR kävi liian matalalla (${fmt(minRir)}). Kokeile noin <b>${fmt(Math.max(0,maxWeight-inc))} kg</b>.</div>`;if(allTop&&minRir>=x[3]&&maxRir<=x[4]+.5)return `<div class="recommend">🟢 <b>Lisää painoa.</b> Kaikki sarjat ylsivät ${hi} toistoon tavoite-RIR:llä. Seuraava noin <b>${fmt(maxWeight+inc)} kg</b>.</div>`;if(avgRir>x[4]&&Math.min(...reps)<hi)return `<div class="recommend warning">🟡 <b>Pidä paino.</b> RIR jäi vielä korkeaksi. Hae lisää toistoja samalla painolla.</div>`;return `<div class="recommend warning">🟡 <b>Pidä paino.</b> Pyri seuraavalla kerralla lähemmäs rep-rangen yläpäätä tavoite-RIR:llä.</div>`}function renderDayTabs(){$('#daytabs').innerHTML=Object.entries(DAYS).map(([k,v])=>`<button class="${k===currentDay&&!optionalMode?'active':''}" data-day="${k}">${v}</button>`).join('')+`<button class="${optionalMode?'active':''}" data-day="optional">Optional</button>`;$$('#daytabs button').forEach(b=>b.onclick=()=>{optionalMode=b.dataset.day==='optional';if(!optionalMode)currentDay=b.dataset.day;ulStorage.setItem('ul_current_day',optionalMode?'optional':currentDay);renderWorkout()})}function updateWorkoutProgress(){
+</nav><div class="savebar"><div class="savebar-inner"><button class="btn" id="restBtn">⏱ Rest</button><button class="btn primary" id="saveBtn">✓ Save workout</button></div></div><div id="toast" class="toast"></div><div id="modal" class="modal"><div class="modalbox"><div class="row"><h2 style="flex:1;margin:0" id="modalTitle">Lepoajastin</h2><button class="btn" id="closeModal">Sulje</button></div><div id="modalBody"><div class="timer" id="timer">02:00</div><div class="row"><button class="btn primary" id="startTimer">Aloita</button><button class="btn" id="resetTimer">Nollaa</button><button class="btn" id="plus30">+30 s</button></div></div></div></div><script src="./workout-artwork.js?v=3"></script><script>const WORKOUTS={upperA:[['Incline Smith Press',3,'6–10',1,2,3],['Chest-Supported Row',3,'6–10',1,2,3],['Machine Chest Press',2,'8–12',1,1,2],['Lat Pulldown / Chin-Up',2,'8–12',1,2,3],['Lateral Raise',3,'10–15',1,1,2],['Cable / Rope Pushdown',2,'10–15',1,1,2],['Incline DB Curl',2,'8–12',1,1,2]],lowerA:[['Hack Squat',3,'6–10',1,2,4],['Leg Press',2,'8–12',1,1,3],['Smith Squat',2,'8–10',1,2,3],['Leg Extension',2,'10–15',0,1,2],['Seated Leg Curl',2,'10–15',1,1,2],['Standing Calf Raise',2,'10–15',0,1,2]],upperB:[['Incline DB Press',3,'8–12',1,1,3],['Chest-Supported / Cable Row',3,'8–12',1,1,3],['Pec Deck / Cable Fly',2,'10–15',0,1,2],['Weighted Chin-Up / Pulldown',2,'6–10',1,2,3],['Lateral Raise',3,'10–15',1,1,2],['Overhead Cable Triceps Extension',2,'10–15',1,1,2],['Preacher Curl',2,'8–12',1,1,2]],lowerB:[['Romanian Deadlift',3,'6–8',1,2,4],['Bulgarian Split Squat',2,'8–12',1,1,3],['Lying / Seated Leg Curl',3,'8–12',1,1,2],['Leg Extension',2,'10–15',1,1,2],['Standing / Seated Calf Raise',3,'10–15',0,1,2]]};const OPTIONAL=[['Cable / Preacher Curl',3,'8–12',1,1,2],['Overhead Cable Triceps Extension',3,'8–12',1,1,2],['Lateral Raise',3,'12–20',0,1,2],['Hammer Curl',2,'10–15',1,1,2],['Rope Pushdown',2,'10–15',0,1,2]];const DAYS={upperA:'Upper A',lowerA:'Lower A',upperB:'Upper B',lowerB:'Lower B'};const SWAPS={'Incline Smith Press':['Incline DB Press','Machine Chest Press','Barbell Incline Press'],'Incline DB Press':['Incline Smith Press','Machine Chest Press','Barbell Incline Press'],'Machine Chest Press':['Incline DB Press','Cable Chest Press','Push-Up'],'Hack Squat':['Leg Press','Smith Squat','Bulgarian Split Squat'],'Smith Squat':['Hack Squat','Leg Press','Goblet Squat'],'Leg Press':['Hack Squat','Smith Squat','Bulgarian Split Squat'],'Chest-Supported Row':['Seated Cable Row','T-Bar Row','One-Arm DB Row'],'Chest-Supported / Cable Row':['Chest-Supported Row','Seated Cable Row','One-Arm DB Row'],'Lat Pulldown / Chin-Up':['Assisted Chin-Up','Seated Cable Pulldown','One-Arm Lat Pulldown'],'Weighted Chin-Up / Pulldown':['Lat Pulldown','Assisted Chin-Up','Neutral-Grip Pulldown'],'Pec Deck / Cable Fly':['Cable Fly','Machine Chest Fly','DB Fly'],'Cable / Rope Pushdown':['Rope Pushdown','Single-Arm Cable Pushdown','Close-Grip Press'],'Overhead Cable Triceps Extension':['DB Overhead Extension','Cable Pushdown','EZ-Bar Skull Crusher'],'Incline DB Curl':['Preacher Curl','Cable Curl','Hammer Curl'],'Preacher Curl':['Incline DB Curl','Cable Curl','Hammer Curl'],'Lateral Raise':['Cable Lateral Raise','Machine Lateral Raise','DB Lateral Raise'],'Seated Leg Curl':['Lying Leg Curl','Cable Leg Curl','Nordic Curl'],'Lying / Seated Leg Curl':['Seated Leg Curl','Cable Leg Curl','Nordic Curl'],'Standing Calf Raise':['Seated Calf Raise','Leg Press Calf Raise','Donkey Calf Raise'],'Standing / Seated Calf Raise':['Leg Press Calf Raise','Donkey Calf Raise','Calf Raise Machine'],'Romanian Deadlift':['45° Back Extension','Good Morning','Leg Curl'],'Bulgarian Split Squat':['Reverse Lunge','Leg Press','Smith Split Squat'],'Leg Extension':['Single-Leg Extension','Reverse Nordic','Sissy Squat']};let currentDay=ulStorage.getItem('ul_current_day')||'upperA',optionalMode=currentDay==='optional',timerSec=120,timerId=null,chartPoints=[],swapContext=null;const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];const loadHistory=()=>{try{return JSON.parse(ulStorage.getItem('ul_history')||'[]')}catch{return[]}};const saveHistory=h=>ulStorage.setItem('ul_history',JSON.stringify(h.slice(0,250)));const draftKey=()=>optionalMode?'optional':currentDay;function getDraft(){try{return JSON.parse(ulStorage.getItem('ul_draft')||'{}')}catch{return{}}}function setDraft(d){ulStorage.setItem('ul_draft',JSON.stringify(d))}function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2200)}function range(s){const m=s.match(/(\d+).*?(\d+)/);return m?[+m[1],+m[2]]:[0,999]}function fmt(n){return Number.isInteger(n)?String(n):n.toFixed(2).replace(/0+$/,'').replace(/\.$/,'')}function e1rm(w,r){return w*(1+r/30)}function lastExercise(name,day=draftKey()){return loadHistory().find(s=>s.day===day&&s.exercises.some(e=>e.name===name))?.exercises.find(e=>e.name===name)||null}function recommendation(x,prev){if(!$('#autoRec').checked||!prev)return '';const [lo,hi]=range(x[2]);if(prev.sets.length!==x[1])return '';const valid=prev.sets.every(s=>Number.isFinite(+s.weight)&&Number.isFinite(+s.reps)&&Number.isFinite(+s.rir));if(!valid)return '';const weights=prev.sets.map(s=>+s.weight),rirs=prev.sets.map(s=>+s.rir),reps=prev.sets.map(s=>+s.reps);const avgRir=rirs.reduce((a,b)=>a+b,0)/rirs.length,minRir=Math.min(...rirs),maxRir=Math.max(...rirs),maxWeight=Math.max(...weights),inc=maxWeight>=60?2.5:1.25;const allTop=reps.every(r=>r>=hi);if(minRir<x[3])return `<div class="recommend warning">🔴 <b>Laske hieman.</b> RIR kävi liian matalalla (${fmt(minRir)}). Kokeile noin <b>${fmt(Math.max(0,maxWeight-inc))} kg</b>.</div>`;if(allTop&&minRir>=x[3]&&maxRir<=x[4]+.5)return `<div class="recommend">🟢 <b>Lisää painoa.</b> Kaikki sarjat ylsivät ${hi} toistoon tavoite-RIR:llä. Seuraava noin <b>${fmt(maxWeight+inc)} kg</b>.</div>`;if(avgRir>x[4]&&Math.min(...reps)<hi)return `<div class="recommend warning">🟡 <b>Pidä paino.</b> RIR jäi vielä korkeaksi. Hae lisää toistoja samalla painolla.</div>`;return `<div class="recommend warning">🟡 <b>Pidä paino.</b> Pyri seuraavalla kerralla lähemmäs rep-rangen yläpäätä tavoite-RIR:llä.</div>`}function renderDayTabs(){$('#daytabs').innerHTML=Object.entries(DAYS).filter(([k])=>Array.isArray(WORKOUTS[k])&&WORKOUTS[k].length>0).map(([k,v])=>`<button class="${k===currentDay&&!optionalMode?'active':''}" data-day="${k}">${v}</button>`).join('')+`<button class="${optionalMode?'active':''}" data-day="optional">Optional</button>`;$$('#daytabs button').forEach(b=>b.onclick=()=>{optionalMode=b.dataset.day==='optional';if(!optionalMode)currentDay=b.dataset.day;ulStorage.setItem('ul_current_day',optionalMode?'optional':currentDay);renderWorkout()})}function updateWorkoutProgress(){
   const rows=Array.from(document.querySelectorAll('#workoutContent .set'));
   const total=rows.length,done=rows.filter(function(row){const weight=row.querySelector('[data-k="weight"]'),reps=row.querySelector('[data-k="reps"]');return !!weight&&!!reps&&weight.value!==''&&reps.value!==''});
   rows.forEach(function(row){const weight=row.querySelector('[data-k="weight"]'),reps=row.querySelector('[data-k="reps"]');row.classList.toggle('is-logged',!!weight&&!!reps&&weight.value!==''&&reps.value!=='')});
@@ -122,7 +123,29 @@ function legacyRenderWorkout(){renderDayTabs();const data=optionalMode?OPTIONAL:
   }
   const previous=prev?.sets?.length?'<div class="previous"><span class="section-overline">LAST TIME</span><strong>'+prev.sets.map(function(s){return esc(s.weight)+' kg × '+esc(s.reps)+' reps'}).join(' <i>·</i> ')+'</strong></div>':'<div class="previous previous-empty"><span class="section-overline">LAST TIME</span><strong>No saved performance yet</strong></div>';
   return '<article class="card exercise '+(i===0?'exercise-featured':'')+'"><div class="exercise-head"><div><div class="exercise-index">EXERCISE '+String(i+1).padStart(2,'0')+(i===0?' · UP NEXT':'')+'</div><h3 class="exercise-name">'+esc(name)+'</h3><div class="target">'+sets+' working sets <span>·</span> '+esc(reps)+' reps <span>·</span> '+min+'–'+max+' RIR</div></div><button class="timer-btn" data-timer="'+rest+'" aria-label="Open '+rest+' minute rest timer">'+rest+'<small>MIN REST</small></button></div>'+previous+recommendation(x,prev)+'<div class="set-labels"><span>SET</span><span>LOAD · KG</span><span>REPS</span><span>RIR</span><span></span></div><div class="sets">'+rows+'</div><div class="exercise-actions"><button class="btn" data-copy="'+i+'">Copy last</button><button class="btn" data-fill="'+i+'">Fill reps</button><button class="btn ghost" data-swap="'+i+'">Swap exercise</button></div></article>';
-}function readWorkout(){const data=optionalMode?OPTIONAL:WORKOUTS[currentDay];return data.map((x,i)=>({name:x[0],sets:x.slice(1),data:$$(`[data-e="${i}"]`).filter(el=>el.dataset.k).reduce((a,el)=>{const s=+el.dataset.s;if(!a[s])a[s]={};a[s][el.dataset.k]=el.value;return a},[])}))}function persistDraft(){const data=readWorkout();const draft=getDraft();data.forEach(e=>draft[`${draftKey()}|${e.name}`]={sets:e.data});setDraft(draft)}function restoreDraft(){const draft=getDraft(),data=optionalMode?OPTIONAL:WORKOUTS[currentDay];data.forEach((x,i)=>{const old=draft[`${draftKey()}|${x[0]}`]?.sets||[];$$(`[data-e="${i}"]`).forEach(inp=>{const v=old[+inp.dataset.s]?.[inp.dataset.k];if(v!=null)inp.value=v})})}function validate(ex){return ex.every(e=>e.data.every(s=>s.weight!==''&&s.reps!==''&&s.rir!==''))}function saveWorkout(){const ex=readWorkout();if(!validate(ex)){toast('Täytä jokaisesta sarjasta kg, reps ja RIR.');return}const h=loadHistory();h.unshift({id:crypto.randomUUID(),date:new Date().toISOString(),day:draftKey(),exercises:ex.map(e=>({name:e.name,sets:e.data}))});saveHistory(h);const d=getDraft();ex.forEach(e=>delete d[`${draftKey()}|${e.name}`]);setDraft(d);toast('Treeni tallennettu ✓');renderProgress();renderHistory();renderWorkout()}function openSwap(i){const data=optionalMode?OPTIONAL:WORKOUTS[currentDay],name=data[i][0],opts=SWAPS[name]||['Vapaa paino -versio','Koneversio','Kaapeliversio'];$('#modalTitle').textContent='Vaihda liike';$('#modalBody').innerHTML=`<div class="small">Nykyinen: <b>${esc(name)}</b><br>Valitse korvaava liike. Ohjelman sarjat ja rep-range säilyvät.</div><div class="swap-list">${opts.map((o,n)=>`<button class="btn swap-option" data-swap-option="${i}" data-name="${esc(o)}"><b>${esc(o)}</b><span>${n===0?'suositeltu vaihtoehto':'vaihtoehto'}</span></button>`).join('')}</div>`;$('#modal').classList.add('show')}function applySwap(i,name){const data=optionalMode?OPTIONAL:WORKOUTS[currentDay];const oldName=data[i][0],oldKey=`${draftKey()}|${oldName}`,newKey=`${draftKey()}|${name}`;const d=getDraft();if(d[oldKey]&&!d[newKey])d[newKey]=d[oldKey];delete d[oldKey];setDraft(d);data[i][0]=name;$('#modal').classList.remove('show');renderWorkout();toast(`Liike vaihdettu: ${name}`)}function handleWorkoutClick(e){const b=e.target.closest('button');if(!b)return;if(b.dataset.clear){const row=b.closest('.set');row.querySelectorAll('input').forEach(i=>i.value='');persistDraft();return}if(b.dataset.copy!==undefined){const i=+b.dataset.copy,data=optionalMode?OPTIONAL:WORKOUTS[currentDay],p=lastExercise(data[i][0],draftKey());if(!p){toast('Ei aiempaa dataa.');return}$$(`[data-e="${i}"]`).forEach(inp=>{const s=+inp.dataset.s,k=inp.dataset.k;if(p.sets[s]?.[k]!=null)inp.value=p.sets[s][k]});persistDraft();toast('Viimeisin treeni kopioitu.');return}if(b.dataset.fill!==undefined){const i=+b.dataset.fill,data=optionalMode?OPTIONAL:WORKOUTS[currentDay],lo=range(data[i][2])[0];$$(`[data-e="${i}"][data-k="reps"]`).forEach(inp=>inp.value=lo);persistDraft();return}if(b.dataset.timer){openTimer(+b.dataset.timer*60);return}if(b.dataset.swap!==undefined){openSwap(+b.dataset.swap);return}}$('#workoutContent').addEventListener('click',handleWorkoutClick);$('#workoutContent').addEventListener('input',function(){persistDraft();updateWorkoutProgress()});function switchView(id){$$('.view').forEach(v=>v.classList.toggle('hidden',v.id!==id));$$('.mainnav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));if(id==='progressView')renderProgress();if(id==='historyView')renderHistory()}$$('.mainnav button').forEach(b=>b.onclick=()=>switchView(b.dataset.view));function allExercises(){const a=[];Object.values(WORKOUTS).flat().forEach(x=>{if(!a.includes(x[0]))a.push(x[0])});OPTIONAL.forEach(x=>{if(!a.includes(x[0]))a.push(x[0])});return a}function progressMuscleGroup(name){
+}function readWorkout(){const data=optionalMode?OPTIONAL:WORKOUTS[currentDay];return data.map((x,i)=>({name:x[0],muscle:x[6]||null,sets:x.slice(1),data:$$('[data-e="'+i+'"]').filter(el=>el.dataset.k).reduce((a,el)=>{const j=+el.dataset.s;if(!a[j])a[j]={};a[j][el.dataset.k]=el.value;return a},[])}))}function persistDraft(){const data=readWorkout();const draft=getDraft();data.forEach(e=>draft[`${draftKey()}|${e.name}`]={sets:e.data});setDraft(draft)}function restoreDraft(){const draft=getDraft(),data=optionalMode?OPTIONAL:WORKOUTS[currentDay];data.forEach((x,i)=>{const old=draft[`${draftKey()}|${x[0]}`]?.sets||[];$$(`[data-e="${i}"]`).forEach(inp=>{const v=old[+inp.dataset.s]?.[inp.dataset.k];if(v!=null)inp.value=v})})}function validate(ex){return ex.every(e=>e.data.every(s=>s.weight!==''&&s.reps!==''&&s.rir!==''))}function saveWorkout(){const ex=readWorkout();if(!validate(ex)){toast('Täytä jokaisesta sarjasta kg, reps ja RIR.');return}const h=loadHistory();h.unshift({id:crypto.randomUUID(),date:new Date().toISOString(),day:draftKey(),exercises:ex.map(e=>({name:e.name,sets:e.data,...(e.muscle?{muscle:e.muscle}:{})}))});saveHistory(h);const d=getDraft();ex.forEach(e=>delete d[draftKey()+'|'+e.name]);setDraft(d);toast('Treeni tallennettu ✓');renderProgress();renderHistory();renderWorkout()}function swapMuscleOptions(selected){return '<option value="">No muscle group</option>'+[['back','Back'],['chest','Chest'],['arms','Arms'],['legs','Legs'],['front','Shoulders / front'],['posterior','Glutes / posterior']].map(function(x){return '<option value="'+x[0]+'" '+(selected===x[0]?'selected':'')+'>'+x[1]+'</option>'}).join('')}
+function renderSwapChoices(query,customOpen){
+  const context=swapContext;if(!context)return;
+  const term=String(query||'').trim().toLocaleLowerCase(),seen=new Set(),options=[];
+  (SWAPS[context.oldName]||[]).concat(allExercises()).forEach(function(name){const key=String(name).trim().toLocaleLowerCase();if(!key||key===context.oldName.toLocaleLowerCase()||seen.has(key))return;seen.add(key);if(!term||key.includes(term))options.push(String(name))});
+  const list=options.length?options.map(function(name){return '<button type="button" class="btn swap-option" data-swap-name="'+esc(name)+'"><b>'+esc(name)+'</b><span>Use existing exercise</span></button>'}).join(''):'<div class="small swap-no-results">No matching exercises. Add it as a custom exercise.</div>';
+  const form=customOpen?'<form id="customExerciseForm" class="swap-custom-form"><label class="small" for="customExerciseName">Exercise name</label><input id="customExerciseName" class="input" maxlength="60" placeholder="e.g. Single-arm cable press" required><label class="small" for="customExerciseMuscle">Muscle group (optional)</label><select id="customExerciseMuscle" class="input">'+swapMuscleOptions('')+'</select><div class="row"><button type="button" class="btn" data-swap-cancel-custom>Cancel</button><button type="submit" class="btn primary">Add exercise</button></div><div id="customExerciseError" class="small" role="status" aria-live="polite"></div></form>':'<button type="button" class="btn" data-swap-add-custom>+ Add custom exercise</button>';
+  $('#modalBody').innerHTML='<div class="small">Current: <b>'+esc(context.oldName)+'</b><br>Choose a replacement. Sets and rep targets stay the same.</div><label class="small" for="swapSearch">Search exercises</label><input id="swapSearch" class="input" type="search" autocomplete="off" placeholder="Search exercises"><div class="swap-list" id="swapChoices">'+list+'</div><div class="swap-custom">'+form+'</div>';
+  const search=$('#swapSearch');search.value=query||'';search.oninput=function(){renderSwapChoices(search.value,false);const replacement=$('#swapSearch');replacement.focus();replacement.setSelectionRange(replacement.value.length,replacement.value.length)};
+}
+function openSwap(i){const data=optionalMode?OPTIONAL:WORKOUTS[currentDay],exercise=data?.[i];if(!exercise)return;swapContext={index:i,dayId:optionalMode?'optional':currentDay,oldName:exercise[0],owner:window.ulCurrentUserId};$('#modalTitle').textContent='Swap exercise';renderSwapChoices('',false);$('#modalBody').onclick=async function(e){const option=e.target.closest('[data-swap-name]');if(option){await applySwap(option.dataset.swapName,null);return}if(e.target.closest('[data-swap-add-custom]')){renderSwapChoices($('#swapSearch')?.value||'',true);$('#customExerciseName')?.focus();return}if(e.target.closest('[data-swap-cancel-custom]')){renderSwapChoices($('#swapSearch')?.value||'',false)}};$('#modalBody').onsubmit=async function(e){if(e.target.id!=='customExerciseForm')return;e.preventDefault();const name=$('#customExerciseName').value.trim(),muscle=$('#customExerciseMuscle').value,duplicate=allExercises().some(function(item){return exerciseNameKey(item)===exerciseNameKey(name)});const error=$('#customExerciseError');if(name.length<2||name.length>60){error.textContent='Enter an exercise name between 2 and 60 characters.';return}if(duplicate){error.textContent='That exercise already exists. Search for it above.';return}await applySwap(name,muscle||null)};$('#modal').classList.add('show')}
+async function applySwap(name,muscle){
+  const context=swapContext;if(!context||context.owner!==window.ulCurrentUserId){toast('The active account changed. Reopen the exercise swap.');return}
+  const oldKey=context.dayId+'|'+context.oldName,newKey=context.dayId+'|'+name;
+  const result=await window.ulReplaceProgramExercise?.({dayId:context.dayId,index:context.index,replacement:{name:name,muscle:muscle}});
+  if(context.owner!==window.ulCurrentUserId)return;
+  if(!result?.ok){const error=$('#customExerciseError');if(error)error.textContent=result?.reason==='save-failed'?'Could not save this change. Check your connection and try again.':'Could not replace this exercise. Please try again.';toast('Exercise change was not saved.');return}
+  const draft=getDraft();if(draft[oldKey]&&!draft[newKey])draft[newKey]=draft[oldKey];delete draft[oldKey];setDraft(draft);
+  swapContext=null;$('#modal').classList.remove('show');renderWorkout();renderWorkoutHome();renderProgramView();renderProgress();renderHistory();toast('Exercise updated: '+name);
+}function handleWorkoutClick(e){const b=e.target.closest('button');if(!b)return;if(b.dataset.clear){const row=b.closest('.set');row.querySelectorAll('input').forEach(i=>i.value='');persistDraft();return}if(b.dataset.copy!==undefined){const i=+b.dataset.copy,data=optionalMode?OPTIONAL:WORKOUTS[currentDay],p=lastExercise(data[i][0],draftKey());if(!p){toast('Ei aiempaa dataa.');return}$$('[data-e="'+i+'"]').forEach(inp=>{const j=+inp.dataset.s,k=inp.dataset.k;if(p.sets[j]?.[k]!=null)inp.value=p.sets[j][k]});persistDraft();toast('Viimeisin treeni kopioitu.');return}if(b.dataset.fill!==undefined){const i=+b.dataset.fill,data=optionalMode?OPTIONAL:WORKOUTS[currentDay],lo=range(data[i][2])[0];$$('[data-e="'+i+'"][data-k="reps"]').forEach(inp=>inp.value=lo);persistDraft();return}if(b.dataset.timer){openTimer(+b.dataset.timer*60);return}if(b.dataset.swap!==undefined){openSwap(+b.dataset.swap);return}}$('#workoutContent').addEventListener('click',handleWorkoutClick);$('#workoutContent').addEventListener('input',function(){persistDraft();updateWorkoutProgress()});function switchView(id){$$('.view').forEach(v=>v.classList.toggle('hidden',v.id!==id));$$('.mainnav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));if(id==='progressView')renderProgress();if(id==='historyView')renderHistory()}$$('.mainnav button').forEach(b=>b.onclick=()=>switchView(b.dataset.view));function exerciseNameKey(name){return String(name||'').normalize('NFKC').trim().replace(/\s+/g,' ').toLocaleLowerCase()}function allExercises(){const names=[];Object.values(WORKOUTS).flat().forEach(function(x){if(x?.[0])names.push(x[0])});OPTIONAL.forEach(function(x){if(x?.[0])names.push(x[0])});Object.values(SWAPS).flat().forEach(function(name){names.push(name)});const seen=new Set();return names.filter(function(name){const key=exerciseNameKey(name);if(!key||seen.has(key))return false;seen.add(key);return true})}function progressMuscleGroup(name,muscle){
+  const meta=String(muscle||'').trim().toLowerCase();
+  const mapped={back:'Back',chest:'Chest',arms:'Arms',legs:'Legs',front:'Shoulders',posterior:'Glutes / posterior'}[meta];
+  if(mapped)return mapped;
   const n=String(name||'').toLowerCase();
   if(/curl|triceps|pushdown|biceps/.test(n))return 'Arms';
   if(/leg|squat|calf|hamstring|quad|bulgarian|romanian deadlift|rdl/.test(n))return 'Legs';
@@ -132,10 +155,13 @@ function legacyRenderWorkout(){renderDayTabs();const data=optionalMode?OPTIONAL:
   if(/abs|crunch|core|plank/.test(n))return 'Core';
   return 'Other';
 }
-function historyExerciseNames(){
+function historyExerciseMuscle(name){
+  const sessions=loadHistory();
+  for(let i=0;i<sessions.length;i++){const item=(sessions[i].exercises||[]).find(function(ex){return ex.name===name&&ex.muscle});if(item)return item.muscle}
+  return null;
+}function historyExerciseNames(){
   return Array.from(new Set(loadHistory().flatMap(function(s){return (s.exercises||[]).map(function(e){return e.name}).filter(function(n){return typeof n==='string'&&n.trim()})}))).sort(function(a,b){return a.localeCompare(b)});
-}
-function renderStats(){
+}function renderStats(){
   const history=loadHistory(),sets=history.reduce(function(n,s){return n+(s.exercises||[]).reduce(function(m,e){return m+(e.sets||[]).length},0)},0);
   const names=historyExerciseNames();
   $('#stats').innerHTML='<div class="stat"><strong>'+history.length+'</strong><span>SAVED SESSIONS</span></div><div class="stat"><strong>'+sets+'</strong><span>SETS LOGGED</span></div><div class="stat"><strong>'+names.length+'</strong><span>EXERCISES TRACKED</span></div>';
@@ -160,13 +186,12 @@ function signed(value,digits){
 }
 function renderProgramView(){
   const root=$('#programOverview');if(!root)return;
-  const entries=Object.entries(WORKOUTS),days=entries.map(function(entry){return {id:entry[0],name:DAYS[entry[0]]||entry[0],exercises:entry[1]}});
-  const totalExercises=days.reduce(function(n,d){return n+d.exercises.length},0),totalSets=days.reduce(function(n,d){return n+d.exercises.reduce(function(m,x){return m+x[1]},0)},0);
-  const logged=loadHistory().length;
-  let html='<div class="program-summary"><div><span class="section-overline">WEEKLY PLAN</span><strong>'+days.length+'<small> days</small></strong></div><div><span class="section-overline">PROGRAMMED WORK</span><strong>'+totalExercises+'<small> movements</small></strong></div><div><span class="section-overline">TRAINING LOG</span><strong>'+logged+'<small> sessions</small></strong></div><button class="btn primary" id="openProgramEditor">Edit program <b>↗</b></button></div><div class="program-days">';
+  const days=getProgramDays().filter(function(day){return day.id!=='optional'}),training=days.filter(function(day){return !day.rest});
+  const totalExercises=training.reduce(function(n,d){return n+d.exercises.length},0),logged=loadHistory().length;
+  let html='<div class="program-summary"><div><span class="section-overline">PROGRAM DAYS</span><strong>'+days.length+'<small> days</small></strong></div><div><span class="section-overline">PROGRAMMED WORK</span><strong>'+totalExercises+'<small> movements</small></strong></div><div><span class="section-overline">TRAINING LOG</span><strong>'+logged+'<small> sessions</small></strong></div><button class="btn primary" id="openProgramEditor">Edit program <b>↗</b></button></div><div class="program-days">';
   days.forEach(function(day,index){
-    const sets=day.exercises.reduce(function(n,x){return n+x[1]},0),last=loadHistory().filter(function(s){return s.day===day.id}).sort(function(x,y){return new Date(y.date)-new Date(x.date)})[0];
-    html+='<article class="program-day '+(index===0?'program-day-featured':'')+'">'+workoutArtworkImg(day.exercises,'program-day-artwork')+'<div class="program-day-head"><div><span class="section-overline">DAY '+String(index+1).padStart(2,'0')+' · '+day.exercises.length+' MOVEMENTS</span><h3>'+esc(day.name)+'</h3><span class="program-day-meta">'+sets+' working sets <i>·</i> '+workoutDuration(day.exercises)+' min</span></div><button class="btn btn-secondary" data-start-day="'+esc(day.id)+'">Start <b>→</b></button></div><div class="program-exercises">'+day.exercises.map(function(x,i){return '<div class="program-exercise"><span class="program-exercise-index">'+String(i+1).padStart(2,'0')+'</span><span class="program-exercise-name">'+esc(x[0])+'</span><span>'+x[1]+' × '+esc(x[2])+'</span></div>'}).join('')+'</div><div class="program-day-foot">'+(last?'LAST TRAINED <b>'+new Date(last.date).toLocaleDateString('en-US',{month:'short',day:'numeric'})+'</b>':'NOT YET LOGGED')+'<span>'+day.exercises.length+' exercises</span></div></article>';
+    const sets=day.exercises.reduce(function(n,x){return n+x[1]},0),last=loadHistory().filter(function(session){return session.day===day.id}).sort(function(x,y){return new Date(y.date)-new Date(x.date)})[0],isRest=day.rest;
+    html+='<article class="program-day '+(index===0?'program-day-featured':'')+(isRest?' program-rest-day':'')+'">'+(isRest?'':workoutArtworkImg(day.exercises,'program-day-artwork'))+'<div class="program-day-head"><div><span class="section-overline">DAY '+String(index+1).padStart(2,'0')+' · '+(isRest?'REST':' '+day.exercises.length+' MOVEMENTS')+'</span><h3>'+esc(day.name)+'</h3><span class="program-day-meta">'+(isRest?'Recovery day':' '+sets+' working sets · '+workoutDuration(day.exercises)+' min')+'</span></div>'+(isRest?'':'<button class="btn btn-secondary" data-start-day="'+esc(day.id)+'">Start <b>→</b></button>')+'</div>'+(isRest?'':'<div class="program-exercises">'+day.exercises.map(function(x,i){return '<div class="program-exercise"><span class="program-exercise-index">'+String(i+1).padStart(2,'0')+'</span><span class="program-exercise-name">'+esc(x[0])+'</span><span>'+x[1]+' × '+esc(x[2])+'</span></div>'}).join('')+'</div>')+'<div class="program-day-foot">'+(last?'LAST TRAINED <b>'+new Date(last.date).toLocaleDateString('en-US',{month:'short',day:'numeric'})+'</b>':(isRest?'REST DAY':'NOT YET LOGGED'))+'<span>'+day.exercises.length+' exercises</span></div></article>';
   });
   if(OPTIONAL.length)html+='<article class="program-day program-optional"><div class="program-day-head"><div><span class="section-overline">OPTIONAL SESSION</span><h3>Optional</h3><span class="program-day-meta">'+OPTIONAL.length+' movements</span></div></div><div class="program-exercises">'+OPTIONAL.map(function(x,i){return '<div class="program-exercise"><span class="program-exercise-index">'+String(i+1).padStart(2,'0')+'</span><span class="program-exercise-name">'+esc(x[0])+'</span><span>'+x[1]+' × '+esc(x[2])+'</span></div>'}).join('')+'</div></article>';
   html+='</div>';root.innerHTML=html;
@@ -174,7 +199,7 @@ function renderProgramView(){
 function renderProgress(){
   renderStats();
   const names=historyExerciseNames(),muscle=$('#progressMuscle'),exercise=$('#chartExercise');
-  const groups=Array.from(new Set(names.map(progressMuscleGroup))).sort(function(a,b){return a.localeCompare(b)});
+  const groups=Array.from(new Set(names.map(function(name){return progressMuscleGroup(name,historyExerciseMuscle(name))}))).sort(function(a,b){return a.localeCompare(b)});
   if(!names.length){
     muscle.innerHTML='<option value="">No history yet</option>';exercise.innerHTML='<option value="">Log a workout first</option>';muscle.disabled=true;exercise.disabled=true;
     $('#progressExerciseTitle').textContent='Your first session is waiting';$('#progressPointCount').textContent='NO DATA';
@@ -184,7 +209,7 @@ function renderProgress(){
   muscle.disabled=false;exercise.disabled=false;
   const selectedGroup=groups.includes(muscle.value)?muscle.value:groups[0];
   muscle.innerHTML=groups.map(function(group){return '<option value="'+esc(group)+'" '+(group===selectedGroup?'selected':'')+'>'+esc(group)+'</option>'}).join('');
-  const filtered=names.filter(function(name){return progressMuscleGroup(name)===selectedGroup});
+  const filtered=names.filter(function(name){return progressMuscleGroup(name,historyExerciseMuscle(name))===selectedGroup});
   const selectedExercise=filtered.includes(exercise.value)?exercise.value:filtered[0];
   exercise.innerHTML=filtered.map(function(name){return '<option value="'+esc(name)+'" '+(name===selectedExercise?'selected':'')+'>'+esc(name)+'</option>'}).join('');
   muscle.onchange=renderProgress;exercise.onchange=function(){drawChart();updateProgressArtwork()};$('#progressRange').onchange=drawChart;
@@ -241,7 +266,7 @@ $('#chart').addEventListener('click',function(e){
     const exercises=session.exercises||[],sets=exercises.reduce(function(n,e){return n+(e.sets||[]).length},0),date=new Date(session.date);
     const dateText=Number.isFinite(date.getTime())?date.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}):'Saved session';
     const details=exercises.map(function(exercise){return '<div class="history-exercise"><div><strong>'+esc(exercise.name)+'</strong><span>'+(exercise.sets||[]).length+' sets</span></div><p>'+(exercise.sets||[]).map(function(set){return esc(set.weight)+' kg × '+esc(set.reps)+(set.rir!==undefined&&set.rir!==''?' <i>@ '+esc(set.rir)+' RIR</i>':'')}).join(' <b>·</b> ')+'</p></div>'}).join('');
-    return '<article class="history-session">'+workoutArtworkImg(exercises.map(function(item){return {name:item.name,sets:item.sets||[]}}),'history-artwork')+'<div class="history-rail"><span>'+String(index+1).padStart(2,'0')+'</span></div><div class="history-body"><div class="history-main"><div><span class="section-overline">'+dateText+'</span><h3>'+esc(DAYS[session.day]||'Optional session')+'</h3><div class="history-session-meta">'+exercises.length+' exercises <i>·</i> '+sets+' sets</div></div><button class="btn danger history-delete" data-delete="'+esc(session.id)+'" aria-label="Delete '+esc(DAYS[session.day]||'session')+'">Delete</button></div><details class="history-details"><summary>Session detail <span>+</span></summary><div class="history-exercises">'+details+'</div></details></div></article>';
+    return '<article class="history-session">'+workoutArtworkImg(exercises.map(function(item){return {name:item.name,sets:item.sets||[],muscle:item.muscle||null}}),'history-artwork')+'<div class="history-rail"><span>'+String(index+1).padStart(2,'0')+'</span></div><div class="history-body"><div class="history-main"><div><span class="section-overline">'+dateText+'</span><h3>'+esc(DAYS[session.day]||'Optional session')+'</h3><div class="history-session-meta">'+exercises.length+' exercises <i>·</i> '+sets+' sets</div></div><button class="btn danger history-delete" data-delete="'+esc(session.id)+'" aria-label="Delete '+esc(DAYS[session.day]||'session')+'">Delete</button></div><details class="history-details"><summary>Session detail <span>+</span></summary><div class="history-exercises">'+details+'</div></details></div></article>';
   }).join('');
 }
 $('#historyList').addEventListener('click',e=>{const b=e.target.closest('[data-delete]');if(!b)return;if(!confirm('Poistetaanko tämä treeni?'))return;saveHistory(loadHistory().filter(x=>x.id!==b.dataset.delete));renderHistory();renderProgress();toast('Treeni poistettu.')});$('#clearHistory').onclick=()=>{if(confirm('Poistetaanko KAIKKI treenihistoria?')){ulStorage.removeItem('ul_history');renderHistory();renderProgress();toast('Historia poistettu.')}};$('#exportData').onclick=()=>{const blob=new Blob([JSON.stringify({version:2,history:loadHistory(),draft:getDraft(),currentDay:ulStorage.getItem('ul_current_day')},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ul-tracker-backup.json';a.click();URL.revokeObjectURL(a.href)};$('#importData').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!Array.isArray(x.history))throw Error();saveHistory(x.history);if(x.draft)ulStorage.setItem('ul_draft',JSON.stringify(x.draft));if(x.currentDay)ulStorage.setItem('ul_current_day',x.currentDay);renderHistory();renderProgress();toast('Data tuotu ✓')}catch{toast('Virheellinen backup-tiedosto.')}};r.readAsText(f)};$('#autoRec').onchange=()=>ulStorage.setItem('ul_autoRec',$('#autoRec').checked?'1':'0');$('#installHelp').onclick=()=>alert('iPhone: avaa sivusto Safarissa → Jaa → Lisää Koti-valikkoon → valitse Avaa verkkosovelluksena → Lisää.');if(ulStorage.getItem('ul_autoRec')==='0')$('#autoRec').checked=false;function openTimer(sec){timerSec=sec;updateTimer();$('#modalTitle').textContent='Lepoajastin';$('#modalBody').innerHTML='<div class="timer" id="timer">00:00</div><div class="row"><button class="btn primary" id="startTimer">Aloita</button><button class="btn" id="resetTimer">Nollaa</button><button class="btn" id="plus30">+30 s</button></div>';updateTimer();$('#modal').classList.add('show');$('#startTimer').onclick=()=>{clearInterval(timerId);timerId=setInterval(()=>{timerSec--;updateTimer();if(timerSec<=0){clearInterval(timerId);timerId=null;toast('Lepo loppui ✓');navigator.vibrate?.([150,80,150])}},1000)};$('#resetTimer').onclick=()=>{timerSec=sec;updateTimer()};$('#plus30').onclick=()=>{timerSec+=30;updateTimer()}}function updateTimer(){const el=$('#timer');if(!el)return;const m=Math.floor(timerSec/60).toString().padStart(2,'0'),s=(timerSec%60).toString().padStart(2,'0');el.textContent=`${m}:${s}`}$('#closeModal').onclick=()=>{$('#modal').classList.remove('show');clearInterval(timerId);timerId=null};$('#restBtn').onclick=()=>openTimer(120);$('#saveBtn').onclick=()=>saveWorkout();window.addEventListener('resize',()=>{if(!$('#progressView').classList.contains('hidden'))drawChart()});
@@ -257,26 +282,41 @@ const workoutArtworkImg=function(workout,className,eager){
 const updateProgressArtwork=function(name){
   const root=$('#progressArtwork');if(!root)return;
   const selected=typeof name==='string'?name:$('#chartExercise')?.value;
-  root.innerHTML=workoutArtworkImg(selected?[[selected,1]]:[],'progress-artwork-image');
+  const muscle=selected?historyExerciseMuscle(selected):null;
+  root.innerHTML=workoutArtworkImg(selected?[[selected,1,undefined,undefined,undefined,undefined,muscle]]:[],'progress-artwork-image');
 };
 const getProgramDays=function(){
-  const out=[];
-  Object.entries(WORKOUTS).forEach(function(entry){
-    const id=entry[0],data=entry[1];
-    if(id==='optional'||!Array.isArray(data)||!data.length)return;
-    out.push({id:id,name:DAYS[id]||id,exercises:data});
-  });
-  return out;
+  const isRestName=function(name){return /^(rest|rest day|recovery|off)$/i.test(String(name||'').trim())};
+  const toTuple=function(e){return [String(e.name||'Exercise'),Math.max(1,+e.sets||1),e.reps||'8–12',+e.minRir||0,+e.maxRir||1,+e.rest||2,...(e.muscle?[e.muscle]:[])]};
+  try{
+    const saved=JSON.parse(ulStorage.getItem('ul_program')||'null');
+    if(saved&&Array.isArray(saved.days)&&saved.days.length)return saved.days.map(function(day,index){const exercises=(day.exercises||[]).map(toTuple);return {id:String(day.id||('day'+(index+1))),name:String(day.name||('Day '+(index+1))),exercises:exercises,rest:!exercises.length}});
+  }catch{}
+  return Object.entries(WORKOUTS).filter(function(entry){return entry[0]!=='optional'&&Array.isArray(entry[1])}).map(function(entry){const data=entry[1];return {id:entry[0],name:DAYS[entry[0]]||entry[0],exercises:data,rest:!data.length||isRestName(DAYS[entry[0]])}});
 };
 const getTodayProgramDay=function(){
-  const days=getProgramDays(),saved=ulStorage.getItem('ul_home_day');
-  return days.find(function(d){return d.id===saved})||days[0]||null;
+  const days=getProgramDays(),training=days.filter(function(day){return !day.rest&&day.exercises.length});
+  if(!training.length)return days.find(function(day){return day.rest})||null;
+  const byId=new Map(days.map(function(day,index){return [day.id,{day:day,index:index}]}));
+  const completed=loadHistory().filter(function(session){const date=new Date(session.date);return Number.isFinite(date.getTime())&&Array.isArray(session.exercises)&&session.exercises.length&&byId.has(session.day)&&!byId.get(session.day).day.rest}).sort(function(a,b){return new Date(b.date)-new Date(a.date)});
+  if(!completed.length)return training[0];
+  const current=byId.get(completed[0].day),sequence=days;
+  for(let offset=1;offset<=sequence.length;offset++){const candidate=sequence[(current.index+offset)%sequence.length];if(candidate)return candidate}
+  return training[0];
 };
+const nextTrainingAfter=function(day){
+  const days=getProgramDays(),index=days.findIndex(function(item){return item.id===day?.id});
+  for(let offset=1;offset<=days.length;offset++){const item=days[(Math.max(0,index)+offset)%days.length];if(item&&!item.rest&&item.exercises.length)return item}
+  return days.find(function(item){return !item.rest&&item.exercises.length})||null;
+};
+const usernamePattern=/^[a-z0-9_]{3,20}$/;
+const normalizeUsername=function(value){return String(value||'').trim().replace(/^@/,'').toLowerCase()};
 const profileName=function(){return ulStorage.getItem('ul_profile_name')||''};
 const renderProfileSettings=function(){
   const p=window.ulGetProfile?window.ulGetProfile():{};
-  const name=$('#profileName'),age=$('#profileAge'),height=$('#profileHeight'),weight=$('#profileWeight'),goal=$('#profileGoal'),sex=$('#profileSex');
+  const name=$('#profileName'),username=$('#profileUsername'),age=$('#profileAge'),height=$('#profileHeight'),weight=$('#profileWeight'),goal=$('#profileGoal'),sex=$('#profileSex');
   if(name&&document.activeElement!==name)name.value=p.name||'';
+  if(username&&document.activeElement!==username)username.value=p.username||'';
   if(age&&document.activeElement!==age)age.value=p.age??'';
   if(height&&document.activeElement!==height)height.value=p.height??p.heightCm??'';
   if(weight&&document.activeElement!==weight)weight.value=p.weight??p.weightKg??'';
@@ -285,19 +325,26 @@ const renderProfileSettings=function(){
 };
 window.renderProfileSettings=renderProfileSettings;
 const saveProfileSetting=async element=>{
-  const key={profileAge:'age',profileHeight:'height',profileWeight:'weight',profileGoal:'goal',profileSex:'sex'}[element.id];
+  const key={profileUsername:'username',profileAge:'age',profileHeight:'height',profileWeight:'weight',profileGoal:'goal',profileSex:'sex'}[element.id];
   if(!key)return;
-  const numeric=['age','height','weight'].includes(key),value=numeric?Number(element.value):element.value;
+  const previous=window.ulGetProfile?window.ulGetProfile():{},oldValue=previous[key];
+  const value=key==='username'?normalizeUsername(element.value):(['age','height','weight'].includes(key)?Number(element.value):element.value);
   const ranges={age:[13,120],height:[50,260],weight:[20,500]};
-  if(numeric&&(!Number.isFinite(value)||value<ranges[key][0]||value>ranges[key][1])){toast('Enter a valid '+key+'.');renderProfileSettings();return}
+  if(key==='username'&&!usernamePattern.test(value)){const status=$('#profileUsernameStatus');if(status)status.textContent='Use 3–20 letters, numbers or underscores.';toast('Choose a valid username.');renderProfileSettings();return}
+  if(['age','height','weight'].includes(key)&&(!Number.isFinite(value)||value<ranges[key][0]||value>ranges[key][1])){toast('Enter a valid '+key+'.');renderProfileSettings();return}
   if(key==='goal'&&!['build_muscle','lose_fat','get_stronger','maintain'].includes(value)){toast('Choose a goal.');renderProfileSettings();return}
   if(key==='sex'&&!['male','female'].includes(value)){toast('Choose a profile sex.');renderProfileSettings();return}
-  const profile=window.ulGetProfile?window.ulGetProfile():{};
-  profile[key]=value;
+  const profile={...previous,[key]:value};
   try{
     window.ulSaveProfile(profile);
-    if(await window.ulSyncNow?.()!==true)toast('Profile could not be saved. Please try again.');
-    else toast('Profile saved ✓');
+    const saved=await window.ulSyncNow?.();
+    if(saved!==true){
+      const error=window.ulGetLastSyncError?.(),status=$('#profileUsernameStatus');
+      if(key==='username'&&error?.code==='23505'){
+        const restored={...window.ulGetProfile(),username:oldValue};if(oldValue==null)delete restored.username;
+        window.ulSaveProfile(restored);element.value=oldValue||'';if(status)status.textContent='That username is already taken. Choose another.';
+      }else{toast('Profile could not be saved. Please try again.');if(key==='username'&&status)status.textContent='Username could not be saved. Check your connection and try again.'}
+    }else{const status=$('#profileUsernameStatus');if(status)status.textContent=key==='username'?'Username saved ✓':'';toast('Profile saved ✓')}
   }catch(e){toast('Profile could not be saved. Please try again.')}
   renderProfileSettings();
   if(key==='sex'){renderWorkoutHome();updateProgressArtwork();if(workoutActive)legacyRenderWorkout();if(!$('#programView')?.classList.contains('hidden'))renderProgramView();if(!$('#historyView')?.classList.contains('hidden'))renderHistory()}
@@ -308,22 +355,17 @@ const renderWorkoutHome=function(){
   const days=getProgramDays(),today=getTodayProgramDay();
   if(!today){root.innerHTML='<div class="empty-state"><span class="eyebrow">YOUR TRAINING</span><h2>Your next session starts here.</h2><p>Build a plan to see your workouts on Home.</p><button class="btn primary" data-go-program>View program</button></div>';return;}
   const history=loadHistory(),name=profileName().trim(),greeting=name?'<h2>Ready, '+esc(name)+'<span class="accent-dot">.</span></h2>':'<h2>Ready to train<span class="accent-dot">?</span></h2>';
-  const todayArtwork=resolveArtwork(today.exercises),todaySets=today.exercises.reduce(function(n,x){return n+x[1]},0);
-  const others=days.filter(function(d){return d.id!==today.id});
+  const todayArtwork=resolveArtwork(today.exercises),todaySets=today.exercises.reduce(function(n,x){return n+x[1]},0),others=days.filter(function(day){return day.id!==today.id&&!day.rest&&day.exercises.length});
   const now=new Date(),weekStart=new Date(now);weekStart.setHours(0,0,0,0);weekStart.setDate(weekStart.getDate()-((weekStart.getDay()+6)%7));
-  const thisWeek=history.filter(function(s){const date=new Date(s.date);return Number.isFinite(date.getTime())&&date>=weekStart}).length;
-  const recent=history.slice().sort(function(a,b){return new Date(b.date)-new Date(a.date)})[0];
-  const todayStart=new Date(now);todayStart.setHours(0,0,0,0);const todayDone=history.some(function(s){const date=new Date(s.date);return s.day===today.id&&Number.isFinite(date.getTime())&&date>=todayStart});
-  const recentExercise=recent&&recent.exercises&&recent.exercises.find(function(e){return e.sets&&e.sets.length});
-  const recentSet=recentExercise&&recentExercise.sets[recentExercise.sets.length-1];
-
-  var html='<div class="workout-home"><div class="home-greeting"><div class="eyebrow">UL TRACKER <span class="eyebrow-rule"></span> TRAINING, WITH INTENT</div>'+greeting+'<p>Your plan is ready when you are.</p></div>';
-  html+='<div class="home-section-label"><span>TODAY’S SESSION</span><span>'+today.exercises.length+' MOVEMENTS</span></div>';
-  html+='<button class="today-card" data-start-day="'+esc(today.id)+'" aria-label="Start '+esc(today.name)+' workout"><div class="muscle-visual" data-type="'+todayArtwork.category+'">'+workoutArtworkImg(today.exercises,'today-artwork',true)+'</div><div class="hero-scrim"></div><div class="hero-topline"><span class="today-tag"><i></i> '+(todayDone?'READY AGAIN':'TODAY')+'</span><span class="hero-duration">'+workoutDuration(today.exercises)+' MIN</span></div><div class="today-content"><span class="hero-kicker">'+(todayDone?'YOUR SESSION, WHENEVER YOU ARE READY':'BUILT AROUND YOUR PROGRAM')+'</span><h3>'+esc(today.name)+'</h3><div class="today-meta">'+today.exercises.length+' exercises <span>·</span> '+todaySets+' working sets <span>·</span> '+workoutDuration(today.exercises)+' min</div></div><span class="today-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></span></button>';
+  const thisWeek=history.filter(function(session){const date=new Date(session.date);return Number.isFinite(date.getTime())&&date>=weekStart}).length;
+  const recent=history.slice().sort(function(a,b){return new Date(b.date)-new Date(a.date)})[0],recentExercise=recent&&recent.exercises&&recent.exercises.find(function(item){return item.sets&&item.sets.length}),recentSet=recentExercise&&recentExercise.sets[recentExercise.sets.length-1];
+  const isRest=today.rest||!today.exercises.length,nextTraining=isRest?nextTrainingAfter(today):today;
+  const cardAction=isRest?'<button class="today-card" data-go-program aria-label="View your next training day">':'<button class="today-card" data-start-day="'+esc(today.id)+'" aria-label="Start '+esc(today.name)+' workout">';
+  let html='<div class="workout-home"><div class="home-greeting"><div class="eyebrow">UL TRACKER <span class="eyebrow-rule"></span> TRAINING, WITH INTENT</div>'+greeting+'</div>';
+  html+='<div class="home-section-label"><span>TODAY&#39;S WORKOUT</span><span>'+(isRest?'RECOVERY':today.exercises.length+' MOVEMENTS')+'</span></div>';
+  html+=cardAction+'<div class="muscle-visual" data-type="'+todayArtwork.category+'">'+(isRest?'':workoutArtworkImg(today.exercises,'today-artwork',true))+'</div><div class="hero-scrim"></div><div class="hero-topline"><span class="today-tag"><i></i> '+(isRest?'REST DAY':'UP NEXT')+'</span><span class="hero-duration">'+(isRest?'':workoutDuration(today.exercises)+' MIN')+'</span></div><div class="today-content"><span class="hero-kicker">'+(isRest?'YOUR NEXT TRAINING DAY: '+esc(nextTraining?.name||'OPEN PROGRAM'):'START WORKOUT →')+'</span><h3>'+esc(isRest?(today.name||'Rest day'):today.name)+'</h3><div class="today-meta">'+(isRest?'Recovery before your next session':today.exercises.length+' exercises <span>·</span> '+todaySets+' working sets <span>·</span> '+workoutDuration(today.exercises)+' min')+'</div></div><span class="today-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></span></button>';
   html+='<div class="home-intel"><div class="home-intel-item"><span class="section-overline">THIS WEEK</span><strong>'+thisWeek+'</strong><span>saved sessions</span></div><div class="home-intel-item home-recent"><span class="section-overline">RECENT WORK</span>'+(recentExercise&&recentSet?'<strong>'+esc(recentExercise.name)+'</strong><span>'+esc(recentSet.weight)+' kg <i>×</i> '+esc(recentSet.reps)+' reps</span>':'<strong class="quiet-value">Your training log</strong><span>Progress appears as you train.</span>')+'</div></div>';
-  if(others.length){html+='<div class="home-section-label other-heading"><span>YOUR OTHER DAYS</span><span>'+others.length+' IN THE ROTATION</span></div><div class="other-workouts">';
-    html+=others.map(function(d){const art=resolveArtwork(d.exercises),exp=expandedHomeDay===d.id,sets=d.exercises.reduce(function(n,x){return n+x[1]},0);return '<div class="workout-choice '+(exp?'expanded':'')+'" data-expand-day="'+esc(d.id)+'" role="button" tabindex="0" aria-expanded="'+(exp?'true':'false')+'"><div class="muscle-visual" data-type="'+art.category+'">'+workoutArtworkImg(d.exercises,'choice-artwork')+'</div><div class="choice-content"><span class="section-overline">'+d.exercises.length+' MOVEMENTS · '+sets+' SETS</span><div class="choice-name">'+esc(d.name)+'</div><span class="choice-meta">'+workoutDuration(d.exercises)+' min estimated</span></div><span class="choice-arrow" aria-hidden="true">'+(exp?'−':'↗')+'</span><button class="choice-start" data-start-day="'+esc(d.id)+'">Start this session <b>→</b></button></div>'}).join('');
-    html+='</div>'}
+  if(others.length){html+='<div class="home-section-label other-heading"><span>YOUR OTHER DAYS</span><span>'+others.length+' IN THE ROTATION</span></div><div class="other-workouts">';html+=others.map(function(day){const art=resolveArtwork(day.exercises),expanded=expandedHomeDay===day.id,sets=day.exercises.reduce(function(n,x){return n+x[1]},0);return '<div class="workout-choice '+(expanded?'expanded':'')+'" data-expand-day="'+esc(day.id)+'" role="button" tabindex="0" aria-expanded="'+(expanded?'true':'false')+'"><div class="muscle-visual" data-type="'+art.category+'">'+workoutArtworkImg(day.exercises,'choice-artwork')+'</div><div class="choice-content"><span class="section-overline">'+day.exercises.length+' MOVEMENTS · '+sets+' SETS</span><div class="choice-name">'+esc(day.name)+'</div><span class="choice-meta">'+workoutDuration(day.exercises)+' min estimated</span></div><span class="choice-arrow" aria-hidden="true">'+(expanded?'−':'↗')+'</span><button class="choice-start" data-start-day="'+esc(day.id)+'">Start this session <b>→</b></button></div>'}).join('');html+='</div>'}
   html+='</div>';root.innerHTML=html;
 };
 const setSessionVisibility=function(){
@@ -335,7 +377,7 @@ const setSessionVisibility=function(){
   $('.savebar')?.classList.toggle('session-visible',workoutActive);
 };
 const startWorkout=function(day){
-  const id=String(day||'');if(!WORKOUTS[id])return;
+  const id=String(day||''),item=getProgramDays().find(function(entry){return entry.id===id});if(!WORKOUTS[id]||!WORKOUTS[id].length||item?.rest)return;
   optionalMode=false;currentDay=id;expandedHomeDay=null;workoutActive=true;
   ulStorage.setItem('ul_current_day',id);ulStorage.setItem('ul_home_day',id);
   legacyRenderWorkout();setSessionVisibility();switchView('workout');window.scrollTo({top:0,behavior:'smooth'});
@@ -375,7 +417,7 @@ $('#programOverview')?.addEventListener('click',function(e){
   const start=e.target.closest('[data-start-day]');if(start)startWorkout(start.dataset.startDay);
 });$('#profileName')?.addEventListener('input',function(e){const p=window.ulGetProfile?window.ulGetProfile():{};p.name=e.target.value.slice(0,30);ulStorage.setItem('ul_profile_name',p.name);ulStorage.setItem('ul_profile',JSON.stringify(p));window.dispatchEvent(new CustomEvent('ul-profile-changed',{detail:p}));renderWorkoutHome();});
 $('#profileName')?.addEventListener('change',async function(e){const p=window.ulGetProfile?window.ulGetProfile():{};p.name=e.target.value.slice(0,30);ulStorage.setItem('ul_profile_name',p.name);ulStorage.setItem('ul_profile',JSON.stringify(p));window.dispatchEvent(new CustomEvent('ul-profile-changed',{detail:p}));renderWorkoutHome();try{if(await window.ulSyncNow?.()!==true)toast('Profile could not be saved. Please try again.')}catch(err){toast('Profile could not be saved. Please try again.')}});
-['profileAge','profileHeight','profileWeight','profileGoal','profileSex'].forEach(id=>$('#'+id)?.addEventListener('change',function(){void saveProfileSetting(this)}));
+['profileUsername','profileAge','profileHeight','profileWeight','profileGoal','profileSex'].forEach(id=>$('#'+id)?.addEventListener('change',function(){void saveProfileSetting(this)}));$('#profileUsername')?.addEventListener('input',function(){const status=$('#profileUsernameStatus');if(status)status.textContent=''});
 $('#logoutBtn')?.addEventListener('click',async function(){
   const btn=this; if(btn.disabled)return; btn.disabled=true; btn.textContent='Logging out...';
   try{ localStorage.setItem('ul_logged_out','1'); const r=window.ulSignOut?await window.ulSignOut():null; if(r?.error)throw r.error; }
@@ -386,7 +428,7 @@ $('#logoutBtn')?.addEventListener('click',async function(){
 });
 if($('#profileName'))$('#profileName').value=profileName();
 
-renderWorkout();renderProgress();renderHistory();</script><script src="./autosave.js?v=4"></script><script src="./backend.js?v=8"></script><script src="./program.js?v=8"></script><script>
+renderWorkout();renderProgress();renderHistory();</script><script src="./autosave.js?v=4"></script><script src="./backend.js?v=9"></script><script src="./program.js?v=9"></script><script>
 (()=>{
   const readProfile=()=>{try{const p=JSON.parse(ulStorage.getItem('ul_profile')||'null');if(p&&typeof p==='object'&&!Array.isArray(p))return p}catch{}const name=ulStorage.getItem('ul_profile_name')||'';return name?{name}:{}};
   const goals=new Set(['build_muscle','lose_fat','get_stronger','maintain']);
@@ -409,8 +451,13 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
     return p;
   };
   window.ulGetProfile=readProfile;window.ulSaveProfile=saveProfile;
+  const usernamePattern=/^[a-z0-9_]{3,20}$/;
+  const normalizeUsername=value=>String(value||'').trim().replace(/^@/,'').toLowerCase();
+  const usernameIndex=1;
+  let usernameError='';
   const steps=[
     {key:'name',title:'What should we call you?',type:'text',placeholder:'Your name'},
+    {key:'username',title:'Choose your username',type:'username',placeholder:'your_name'},
     {key:'age',title:'How old are you?',type:'number',placeholder:'25',min:13,max:120,suffix:'years'},
     {key:'height',title:'How tall are you?',type:'number',placeholder:'175',min:50,max:260,suffix:'cm'},
     {key:'weight',title:"What's your current weight?",type:'number',placeholder:'83',min:20,max:500,suffix:'kg'},
@@ -425,7 +472,7 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
   const show=()=>{
     if(!readyUserId||readyUserId!==window.ulCurrentUserId||modal||completedProfile(state))return;
     modal=document.createElement('div');modal.className='onboarding-modal';modal.id='onboardingModal';
-    modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-labelledby','onboardingTitle');modal.innerHTML='<div class="onboarding-box"><div class="onboarding-kicker">UL TRACKER</div><h2 class="onboarding-title" id="onboardingTitle">Make it yours.</h2><div class="onboarding-sub">A few details, then your training program.</div><div class="onboarding-progress" id="onboardingProgress" role="progressbar" aria-label="Onboarding progress" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1"><span id="onboardingBar"></span></div><div id="onboardingStepStatus" class="onboarding-step-status" aria-live="polite">Step 1 of 7</div><div id="onboardingSteps" aria-live="polite"></div><div class="onboarding-nav"><button class="btn" id="onboardingBack" type="button">Back</button><button class="btn primary" id="onboardingNext" type="button">Continue</button></div></div>';
+    modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-labelledby','onboardingTitle');modal.innerHTML='<div class="onboarding-box"><div class="onboarding-kicker">UL TRACKER</div><h2 class="onboarding-title" id="onboardingTitle">Make it yours.</h2><div class="onboarding-sub">A few details, then your training program.</div><div class="onboarding-progress" id="onboardingProgress" role="progressbar" aria-label="Onboarding progress" aria-valuemin="1" aria-valuemax="8" aria-valuenow="1"><span id="onboardingBar"></span></div><div id="onboardingStepStatus" class="onboarding-step-status" aria-live="polite">Step 1 of 8</div><div id="onboardingSteps" aria-live="polite"></div><div class="onboarding-nav"><button class="btn" id="onboardingBack" type="button">Back</button><button class="btn primary" id="onboardingNext" type="button">Continue</button></div></div>';
     document.body.appendChild(modal);
     modal.addEventListener('keydown',event=>{
       if(event.key==='Enter'&&!event.isComposing&&event.target?.id==='onboardValue'){event.preventDefault();void next();return}
@@ -440,13 +487,13 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
     $('#onboardingNext').onclick=next;
     render();
   };
-  const valid=()=>{
-    if(index===programIndex)return true;
-    const s=steps[index];
-    if(s.type==='text')return typeof state.name==='string'&&state.name.trim().length>=2;
-    if(s.type==='number')return numberInRange(state[s.key],s.min,s.max);
-    return s.key==='goal'?goals.has(state[s.key]):sexes.has(state[s.key]);
+  const stepValid=(profile,step)=>{
+    if(step.key==='name')return typeof profile.name==='string'&&profile.name.trim().length>=2;
+    if(step.key==='username')return usernamePattern.test(normalizeUsername(profile.username));
+    if(step.type==='number')return numberInRange(profile[step.key],step.min,step.max);
+    return step.key==='goal'?goals.has(profile[step.key]):sexes.has(profile[step.key]);
   };
+  const valid=()=>index===programIndex||stepValid(state,steps[index]);
   const render=()=>{
     if(!modal)return;
     const stepNumber=index+1,pct=Math.round(stepNumber/totalOnboardingSteps*100);
@@ -462,6 +509,7 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
     }
     const s=steps[index];
     if(s.type==='text')root.innerHTML='<div class="onboarding-step active"><h3 class="onboarding-question">'+s.title+'</h3><input id="onboardValue" class="input" style="width:100%" maxlength="30" autocomplete="name" aria-label="'+s.title+'" placeholder="'+s.placeholder+'" value="'+String(state[s.key]||'').replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;')+'"></div>';
+    else if(s.type==='username')root.innerHTML='<div class="onboarding-step active"><h3 class="onboarding-question">'+s.title+'</h3><div class="setting-field" style="width:100%"><span aria-hidden="true">@</span><input id="onboardValue" class="input" style="flex:1" maxlength="20" autocomplete="nickname" autocapitalize="none" spellcheck="false" aria-label="'+s.title+'" placeholder="'+s.placeholder+'" value="'+String(state.username||'').replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;')+'"></div><div class="small">3–20 letters, numbers or underscores.</div><div id="onboardUsernameError" class="small" role="status" aria-live="polite">'+usernameError+'</div></div>';
     else if(s.type==='number')root.innerHTML='<div class="onboarding-step active"><h3 class="onboarding-question">'+s.title+'</h3><div style="display:flex;align-items:center;gap:9px"><input id="onboardValue" class="input" style="flex:1" inputmode="decimal" type="number" min="'+s.min+'" max="'+s.max+'" step="'+(s.key==='age'?'1':'0.1')+'" aria-label="'+s.title+'" placeholder="'+s.placeholder+'" value="'+(state[s.key]??'')+'"><b style="color:#8e9aaa">'+s.suffix+'</b></div></div>';
     else root.innerHTML='<div class="onboarding-step active"><h3 class="onboarding-question">'+s.title+'</h3><div class="onboarding-options">'+s.options.map(o=>'<button type="button" class="onboarding-option '+(state[s.key]===o[0]?'selected':'')+'" data-value="'+o[0]+'">'+o[1]+'</button>').join('')+'</div></div>';
     const input=$('#onboardValue');if(input){input.focus();input.oninput=()=>{state[s.key]=input.value;};}
@@ -480,10 +528,10 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
         current.exercises.push({name:match[1].trim().replace(/[—–:-]+$/,'').trim(),sets:Number(match[2]),reps,minRir:1,maxRir:2,rest:2});
         exerciseCount++;continue;
       }
-      current={id:'day-'+(days.length+1),name:line.slice(0,50),exercises:[]};days.push(current);
+      current={id:'day-'+(days.length+1),name:line.slice(0,50),exercises:[],rest:/^(rest|rest day|recovery|off)$/i.test(line)};days.push(current);
     }
-    const populated=days.filter(d=>d.exercises.length);
-    if(!exerciseCount||!populated.length)return null;
+    const populated=days.filter(d=>d.exercises.length||d.rest);
+    if(!exerciseCount||!populated.some(d=>d.exercises.length))return null;
     const seen=new Set();populated.forEach((d,i)=>{let id=slug(d.name),base=id,n=2;while(seen.has(id))id=base+'-'+n++;seen.add(id);d.id=id});
     return {days:populated,optional:[]};
   };
@@ -499,6 +547,7 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
       if(readyUserId!==window.ulCurrentUserId)return;
       const completed={...state,onboardingComplete:true,completedAt:new Date().toISOString()};
       if(!sexes.has(completed.sex)){toast('Choose Male or Female before finishing setup.');return}
+      if(!usernamePattern.test(normalizeUsername(completed.username))){index=usernameIndex;usernameError='Choose a valid username before finishing setup.';setIdle();render();return}
       if(!completedProfile(completed)){toast('Please check your profile answers.');return}
       setBusy('Finishing setup…');saveProfile(completed);
       const profileSaved=await window.ulSyncNow?.();
@@ -512,12 +561,21 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
     const s=steps[index];
     if(s.type==='number'&&$('#onboardValue'))state[s.key]=Number($('#onboardValue').value);
     if(s.type==='text'&&$('#onboardValue'))state[s.key]=$('#onboardValue').value.trim();
+    if(s.type==='username'&&$('#onboardValue')){state.username=normalizeUsername($('#onboardValue').value);usernameError=''}
     if(!valid()){toast('Complete this answer to continue.');return}
     if(index<steps.length-1){index++;render();return}
     const profilePending={...state,onboardingComplete:false};
     setBusy('Saving profile…');saveProfile(profilePending);
     const profileSaved=await window.ulSyncNow?.();
-    if(profileSaved!==true){setIdle();toast('Profile could not be saved. Check your connection and try again.');return}
+    if(profileSaved!==true){
+      if(window.ulGetLastSyncError?.()?.code==='23505'&&usernamePattern.test(state.username||'')){
+        usernameError='That username is already taken. Choose another.';
+        delete state.username;
+        saveProfile({...state,onboardingComplete:false});
+        index=usernameIndex;setIdle();render();return;
+      }
+      setIdle();toast('Profile could not be saved. Check your connection and try again.');return
+    }
     if(readyUserId!==window.ulCurrentUserId){saving=false;return}
     index=programIndex;setIdle();render();
   };
@@ -533,7 +591,11 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
       window.renderProfileSettings?.();return;
     }
     // Resume saved onboarding details; collect sex if this profile predates the new step.
-    if(profileFieldsValid(profile)&&profile.onboardingComplete!==true){state={...profile,onboardingComplete:false};index=sexes.has(profile.sex)?programIndex:steps.findIndex(step=>step.key==='sex')}
+    if(profileFieldsValid(profile)&&profile.onboardingComplete!==true){
+      state={...profile,onboardingComplete:false};
+      index=steps.findIndex(function(step){return !stepValid(state,step)});
+      if(index<0)index=programIndex;
+    }
     else{state={onboardingComplete:false};index=0}
     ulStorage.setItem('ul_profile',JSON.stringify(state));
     if(state.name)ulStorage.setItem('ul_profile_name',state.name);
