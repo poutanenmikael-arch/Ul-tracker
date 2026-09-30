@@ -76,12 +76,15 @@
   }
   function profileSex(profile){
     const value=profile&&(profile.sex||profile.gender||profile.profileSex);
-    return String(value||'').trim().toLowerCase()==='female'?'female':'male';
+    const normalized=String(value||'').trim().toLowerCase();
+    if(normalized==='male'||normalized==='female')return normalized;
+    // Existing completed profiles predate sex selection; keep their stable male fallback.
+    return profile&&profile.onboardingComplete===true?'male':null;
   }
   function getWorkoutArtwork(workout,profile){
     const sex=profileSex(profile);
     const category=dominantCategory(workout);
-    return Object.freeze({sex:sex,category:category,key:sex+'-'+category,src:ASSET_ROOT+'/'+sex+'/'+category+'.webp'});
+    return Object.freeze({sex:sex,category:category,key:sex?sex+'-'+category:null,src:sex?ASSET_ROOT+'/'+sex+'/'+category+'.webp':null});
   }
 
   root.getWorkoutArtwork=getWorkoutArtwork;

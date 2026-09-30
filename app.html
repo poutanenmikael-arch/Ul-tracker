@@ -251,6 +251,7 @@ const artworkProfile=function(){try{return window.ulGetProfile?window.ulGetProfi
 const resolveArtwork=function(workout){return window.getWorkoutArtwork(workout,artworkProfile())};
 const workoutArtworkImg=function(workout,className,eager){
   const art=resolveArtwork(workout);
+  if(!art.src)return '';
   return '<img class="workout-art-image '+esc(className||'')+'" src="'+esc(art.src)+'" data-artwork-category="'+esc(art.category)+'" alt="" aria-hidden="true" loading="'+(eager?'eager':'lazy')+'" decoding="async"'+(eager?' fetchpriority="high"':'')+'>';
 };
 const updateProgressArtwork=function(name){
@@ -389,6 +390,7 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
 (()=>{
   const readProfile=()=>{try{const p=JSON.parse(ulStorage.getItem('ul_profile')||'null');if(p&&typeof p==='object'&&!Array.isArray(p))return p}catch{}const name=ulStorage.getItem('ul_profile_name')||'';return name?{name}:{}};
   const goals=new Set(['build_muscle','lose_fat','get_stronger','maintain']);
+  const sexes=new Set(['male','female']);
   const numberInRange=(v,min,max)=>Number.isFinite(Number(v))&&Number(v)>=min&&Number(v)<=max;
   const named=p=>typeof p?.name==='string'&&p.name.trim().length>=2;
   const profileFieldsValid=p=>named(p)&&numberInRange(p.age,13,120)&&numberInRange(p.height,50,260)&&numberInRange(p.weight,20,500)&&goals.has(p.goal);
@@ -412,16 +414,18 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
     {key:'age',title:'How old are you?',type:'number',placeholder:'25',min:13,max:120,suffix:'years'},
     {key:'height',title:'How tall are you?',type:'number',placeholder:'175',min:50,max:260,suffix:'cm'},
     {key:'weight',title:"What's your current weight?",type:'number',placeholder:'83',min:20,max:500,suffix:'kg'},
-    {key:'goal',title:"What's your main goal?",options:[['build_muscle','Build Muscle'],['lose_fat','Lose Fat'],['get_stronger','Get Stronger'],['maintain','Maintain']]}
+    {key:'goal',title:"What's your main goal?",options:[['build_muscle','Build Muscle'],['lose_fat','Lose Fat'],['get_stronger','Get Stronger'],['maintain','Maintain']]},
+    {key:'sex',title:"What's your sex?",options:[['male','Male'],['female','Female']]}
   ];
+  const programIndex=steps.length,totalOnboardingSteps=steps.length+1;
   let state={},index=0,modal=null,readyUserId=null,saving=false;
   const setBusy=label=>{saving=true;modal?.setAttribute('aria-busy','true');modal?.querySelectorAll('input,textarea,select,.onboarding-option').forEach(el=>{el.disabled=true});const n=$('#onboardingNext'),b=$('#onboardingBack');if(n){n.disabled=true;n.textContent=label}if(b)b.disabled=true};
-  const setIdle=()=>{saving=false;modal?.setAttribute('aria-busy','false');modal?.querySelectorAll('input,textarea,select,.onboarding-option').forEach(el=>{el.disabled=false});const n=$('#onboardingNext'),b=$('#onboardingBack');if(n){n.disabled=false;n.textContent=index===5?'Save program':'Continue'}if(b)b.disabled=false};
+  const setIdle=()=>{saving=false;modal?.setAttribute('aria-busy','false');modal?.querySelectorAll('input,textarea,select,.onboarding-option').forEach(el=>{el.disabled=false});const n=$('#onboardingNext'),b=$('#onboardingBack');if(n){n.disabled=false;n.textContent=index===programIndex?'Save program':'Continue'}if(b)b.disabled=false};
   const close=()=>{if(modal)modal.remove();modal=null;saving=false};
   const show=()=>{
     if(!readyUserId||readyUserId!==window.ulCurrentUserId||modal||completedProfile(state))return;
     modal=document.createElement('div');modal.className='onboarding-modal';modal.id='onboardingModal';
-    modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-labelledby','onboardingTitle');modal.innerHTML='<div class="onboarding-box"><div class="onboarding-kicker">UL TRACKER</div><h2 class="onboarding-title" id="onboardingTitle">Make it yours.</h2><div class="onboarding-sub">A few details, then your training program.</div><div class="onboarding-progress" id="onboardingProgress" role="progressbar" aria-label="Onboarding progress" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1"><span id="onboardingBar"></span></div><div id="onboardingStepStatus" class="onboarding-step-status" aria-live="polite">Step 1 of 6</div><div id="onboardingSteps" aria-live="polite"></div><div class="onboarding-nav"><button class="btn" id="onboardingBack" type="button">Back</button><button class="btn primary" id="onboardingNext" type="button">Continue</button></div></div>';
+    modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-labelledby','onboardingTitle');modal.innerHTML='<div class="onboarding-box"><div class="onboarding-kicker">UL TRACKER</div><h2 class="onboarding-title" id="onboardingTitle">Make it yours.</h2><div class="onboarding-sub">A few details, then your training program.</div><div class="onboarding-progress" id="onboardingProgress" role="progressbar" aria-label="Onboarding progress" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1"><span id="onboardingBar"></span></div><div id="onboardingStepStatus" class="onboarding-step-status" aria-live="polite">Step 1 of 7</div><div id="onboardingSteps" aria-live="polite"></div><div class="onboarding-nav"><button class="btn" id="onboardingBack" type="button">Back</button><button class="btn primary" id="onboardingNext" type="button">Continue</button></div></div>';
     document.body.appendChild(modal);
     modal.addEventListener('keydown',event=>{
       if(event.key==='Enter'&&!event.isComposing&&event.target?.id==='onboardValue'){event.preventDefault();void next();return}
@@ -437,22 +441,22 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
     render();
   };
   const valid=()=>{
-    if(index===5)return true;
+    if(index===programIndex)return true;
     const s=steps[index];
     if(s.type==='text')return typeof state.name==='string'&&state.name.trim().length>=2;
     if(s.type==='number')return numberInRange(state[s.key],s.min,s.max);
-    return goals.has(state[s.key]);
+    return s.key==='goal'?goals.has(state[s.key]):sexes.has(state[s.key]);
   };
   const render=()=>{
     if(!modal)return;
-    const stepNumber=index+1,pct=Math.round(stepNumber/6*100);
+    const stepNumber=index+1,pct=Math.round(stepNumber/totalOnboardingSteps*100);
     $('#onboardingBar').style.width=pct+'%';
     $('#onboardingProgress').setAttribute('aria-valuenow',String(stepNumber));
-    $('#onboardingStepStatus').textContent='Step '+stepNumber+' of 6';
+    $('#onboardingStepStatus').textContent='Step '+stepNumber+' of '+totalOnboardingSteps;
     $('#onboardingBack').style.visibility=index?'visible':'hidden';
-    $('#onboardingNext').textContent=index===5?'Save program':index===4?'Continue':'Continue';
+    $('#onboardingNext').textContent=index===programIndex?'Save program':'Continue';
     const root=$('#onboardingSteps');
-    if(index===5){
+    if(index===programIndex){
       root.innerHTML='<div class="onboarding-step active"><h3 class="onboarding-question">Add your training program</h3><div class="onboarding-sub" style="margin:0 0 12px">Paste your training program here and we\'ll set it up in UL Tracker.</div><textarea id="onboardProgram" class="input" aria-label="Training program" placeholder="Upper A\nIncline DB Press — 3x8-10\nLat Pulldown — 3x8-12\n\nLower A\nSquat — 3x6-8" rows="7" maxlength="12000" style="width:100%;min-height:200px;resize:vertical;line-height:1.55"></textarea><div id="onboardProgramError" role="status" style="min-height:20px;margin-top:8px;color:#ff9b91;font-size:12px"></div></div>';
       $('#onboardProgram')?.focus();return;
     }
@@ -485,7 +489,7 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
   };
   const next=async()=>{
     if(saving||!readyUserId||readyUserId!==window.ulCurrentUserId)return;
-    if(index===5){
+    if(index===programIndex){
       const program=parseProgram($('#onboardProgram')?.value||'');
       if(!program){$('#onboardProgramError').textContent='We couldn’t read any exercises. Use lines like “Squat — 3x6-8”.';return}
       setBusy('Saving program…');
@@ -494,6 +498,7 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
       if(programSaved!==true){setIdle();$('#onboardProgramError').textContent='The program could not be saved. Check your connection and try again.';return}
       if(readyUserId!==window.ulCurrentUserId)return;
       const completed={...state,onboardingComplete:true,completedAt:new Date().toISOString()};
+      if(!sexes.has(completed.sex)){toast('Choose Male or Female before finishing setup.');return}
       if(!completedProfile(completed)){toast('Please check your profile answers.');return}
       setBusy('Finishing setup…');saveProfile(completed);
       const profileSaved=await window.ulSyncNow?.();
@@ -514,7 +519,7 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
     const profileSaved=await window.ulSyncNow?.();
     if(profileSaved!==true){setIdle();toast('Profile could not be saved. Check your connection and try again.');return}
     if(readyUserId!==window.ulCurrentUserId){saving=false;return}
-    index=5;setIdle();render();
+    index=programIndex;setIdle();render();
   };
   window.addEventListener('ul-cloud-ready',e=>{
     const uid=e.detail?.userId;
@@ -527,8 +532,8 @@ renderWorkout();renderProgress();renderHistory();</script><script src="./autosav
       const profileNameInput=$('#profileName');if(profileNameInput)profileNameInput.value=profile.name;
       window.renderProfileSettings?.();return;
     }
-    // A saved, incomplete five-answer profile means only program setup remains.
-    if(profileFieldsValid(profile)&&profile.onboardingComplete!==true){state={...profile,onboardingComplete:false};index=5}
+    // Resume saved onboarding details; collect sex if this profile predates the new step.
+    if(profileFieldsValid(profile)&&profile.onboardingComplete!==true){state={...profile,onboardingComplete:false};index=sexes.has(profile.sex)?programIndex:steps.findIndex(step=>step.key==='sex')}
     else{state={onboardingComplete:false};index=0}
     ulStorage.setItem('ul_profile',JSON.stringify(state));
     if(state.name)ulStorage.setItem('ul_profile_name',state.name);
