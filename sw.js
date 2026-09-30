@@ -1,5 +1,5 @@
-const CACHE='ul-tracker-v17';
-const ASSETS=['./manifest.json','./logo.svg','./app.css?v=2'];
+const CACHE='ul-tracker-v18';
+const ASSETS=['./manifest.json','./logo.svg','./app.css?v=3'];
 const LIVE_PATHS=new Set(['/','/index.html','/app.html','/landing.js','/backend.js','/program.js','/autosave.js']);
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('ul-tracker-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));

@@ -1,4 +1,4 @@
-(()=>{const URL='https://zjwunducqyvueapqdeqx.supabase.co',KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn',APP='./app.html?v=11'+(new URLSearchParams(location.search).has('authDebug')?'&authDebug=1':'');
+(()=>{const URL='https://zjwunducqyvueapqdeqx.supabase.co',KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn',APP='./app.html?v=12'+(new URLSearchParams(location.search).has('authDebug')?'&authDebug=1':'');
 const recoveryHash=new URLSearchParams(location.hash.replace(/^#/,''));
 const recoveryQuery=new URLSearchParams(location.search);
 const recoveryRequested=recoveryHash.get('type')==='recovery'||recoveryQuery.get('type')==='recovery';
