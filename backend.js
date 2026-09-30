@@ -3,7 +3,7 @@
   const SUPABASE_KEY='sb_publishable_sOKL5gFe82ZsEemL_FbpfA_iQGen5Qn';
   const CDN='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
   const DATA_KEYS=['ul_profile','ul_profile_name','ul_history','ul_program','ul_draft','ul_current_day','ul_home_day'];
-  let sb=null,user=null,activeUserId=null,epoch=0,syncTimer=null,syncQueue=Promise.resolve(),hydrated=false,recoveryPromptShown=false;
+  let sb=null,user=null,activeUserId=null,epoch=0,syncTimer=null,syncQueue=Promise.resolve(),hydrated=false,recoveryPromptShown=false,lastSyncError=null;
   const $=s=>document.querySelector(s);
   const authDebug=new URLSearchParams(window.location.search).has('authDebug');
   const passwordRecoveryRequested=new URLSearchParams(window.location.search).has('passwordRecovery');
@@ -71,12 +71,13 @@
       try{
         const {error}=await sb.from('user_data').upsert({user_id:uid,history_json:history(),program_json:program(),profile_json:profile(),updated_at:new Date().toISOString()},{onConflict:'user_id'});
         if(requestEpoch!==epoch||activeUserId!==uid)return false;
-        if(error){debugAuth('sync error',{authenticatedUserId:uid,error:error.message});toast('Pilvitallennus epäonnistui');return false;}
+        if(error){lastSyncError={code:error.code||null};debugAuth('sync error',{authenticatedUserId:uid,error:error.message,code:error.code||null});toast('Pilvitallennus epäonnistui');return false;}
+        lastSyncError=null;
         toast('☁️ Tallennettu pilveen');return true;
       }catch(e){
         if(requestEpoch!==epoch||activeUserId!==uid)return false;
         debugAuth('sync request failed',{authenticatedUserId:uid,error:e?.message||String(e)});
-        toast('Pilvitallennus epäonnistui');return false;
+        lastSyncError={code:e?.code||null};toast('Pilvitallennus epäonnistui');return false;
       }
     };
     const pending=syncQueue.then(write,write);
@@ -113,7 +114,8 @@
         },0);
       });
       document.addEventListener('click',e=>{if(e.target.closest('#saveBtn'))setTimeout(()=>sync(true),900)},true);
-      window.ulSyncNow=()=>sync(true);
+      window.ulSyncNow=()=>{lastSyncError=null;return sync(true)};
+      window.ulGetLastSyncError=()=>lastSyncError?{...lastSyncError}:null;
       window.ulSignOut=async()=>{
         const r=await sb.auth.signOut({scope:'global'});
         if(r.error)throw r.error;

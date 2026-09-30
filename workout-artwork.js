@@ -5,6 +5,7 @@
   const FALLBACK_CATEGORY='front';
   const CATEGORY_SET=new Set(['back','chest','arms','legs','front','posterior']);
   const MUSCLE_CATEGORY=new Map([
+    ['front','front'],['posterior','posterior'],
     ['back','back'],['lats','back'],['latissimus dorsi','back'],['traps','back'],['trapezius','back'],['rhomboids','back'],['upper back','back'],['mid back','back'],
     ['chest','chest'],['pecs','chest'],['pectorals','chest'],['pectoralis','chest'],['pectoralis major','chest'],
     ['biceps','arms'],['triceps','arms'],['brachialis','arms'],['forearms','arms'],['arms','arms'],
@@ -47,12 +48,20 @@
   function categoryForMuscle(muscle){
     return MUSCLE_CATEGORY.get(String(muscle||'').trim().toLowerCase())||null;
   }
+  function entryMuscle(entry){
+    if(Array.isArray(entry))return entry[6]||null;
+    if(entry&&typeof entry==='object')return entry.muscle||entry.muscleGroup||entry.muscle_group||entry.muscles||null;
+    return null;
+  }
   function dominantCategory(workout){
     const scores={back:0,chest:0,arms:0,legs:0,front:0,posterior:0};
     let matched=false;
     exerciseRows(workout).forEach(function(entry){
       const name=exerciseName(entry);
       if(!name)return;
+      const metadata=entryMuscle(entry),muscles=Array.isArray(metadata)?metadata:[metadata];
+      const explicit=Array.from(new Set(muscles.map(categoryForMuscle).filter(function(category){return category&&CATEGORY_SET.has(category)})));
+      if(explicit.length){matched=true;const volume=setWeight(entry);explicit.forEach(function(category){scores[category]+=volume});return;}
       const rule=EXERCISE_RULES.find(function(candidate){return candidate.pattern.test(name)});
       if(!rule)return;
       matched=true;
