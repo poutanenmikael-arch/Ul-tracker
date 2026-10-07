@@ -525,7 +525,23 @@ canvas{max-width:100%}
 .history-session{position:relative;isolation:isolate}
 .history-artwork{position:absolute;z-index:0;top:8px;right:1px;width:78px;height:104px;object-position:center top;border:1px solid rgba(223,249,233,.12);border-radius:13px;opacity:.27;mix-blend-mode:screen;mask-image:linear-gradient(to left,#000 0%,rgba(0,0,0,.7) 62%,transparent 100%);pointer-events:none}
 .history-rail,.history-body{position:relative;z-index:1}
-@media(max-width:560px){.today-card .muscle-visual .workout-art-image{width:65%;object-position:center 18%}.program-day-artwork{width:46%;height:142px;opacity:.46}.history-artwork{width:62px;height:84px;opacity:.22}}.progress-artwork{position:relative;display:block;width:44px;height:62px;flex:0 0 44px;overflow:hidden;border:1px solid rgba(223,249,233,.14);border-radius:11px;background:rgba(9,15,11,.6);opacity:.84}
-.progress-artwork-image{position:absolute;inset:0;width:100%;height:100%;object-position:center 18%;mix-blend-mode:screen}
-@media(max-width:560px){.progress-artwork{width:37px;height:54px;flex-basis:37px}}
+@media(max-width:560px){.today-card .muscle-visual .workout-art-image{width:65%;object-position:center 18%}.program-day-artwork{width:46%;height:142px;opacity:.46}.history-artwork{width:62px;height:84px;opacity:.22}}
 @media(prefers-reduced-motion:reduce){.nav-liquid-indicator{transition:opacity .12s ease!important}.nav-liquid-indicator::before,.nav-liquid-indicator::after{animation:none!important}}
+
+/* Progress: foreground the session-to-session metric and keep its details quiet. */
+.progress-insight{grid-template-columns:minmax(0,1fr);align-items:start;gap:12px;min-height:0;margin:0 0 16px;padding:20px 22px}
+.progress-insight-metric{gap:7px}
+.progress-insight-metric strong{font-size:clamp(58px,15vw,88px);font-weight:520;letter-spacing:-5px;line-height:.92}
+.progress-insight-metric span{font-size:8px;letter-spacing:1.15px}
+.progress-insight-copy .section-overline{font-size:8px}
+.progress-insight-copy p{margin:5px 0 3px;font-size:13px;line-height:1.5}
+.progress-insight-copy>span:last-child{font-size:8px;letter-spacing:.2px;line-height:1.5}
+.progress-insight.positive .progress-insight-metric strong{color:#8ce8b5}
+.progress-insight.positive::before{background:radial-gradient(ellipse,rgba(82,208,139,.075),transparent 70%)}
+.progress-records{grid-template-columns:repeat(2,minmax(0,1fr));margin:15px 0 6px}
+.progress-records .record-cell{padding:12px 10px}
+.progress-records .record-cell+.record-cell{border-left:1px solid var(--line-soft)}
+.progress-records .record-cell strong{white-space:normal;font-size:15px;line-height:1.25}
+.progress-records .record-cell>span:last-child{font-size:8px;line-height:1.5}
+@media(min-width:700px){.progress-insight{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:end;gap:18px;padding:23px 26px}.progress-insight-metric strong{font-size:clamp(68px,8vw,92px)}}
+@media(max-width:500px){.progress-insight{gap:9px;margin-bottom:13px;padding:16px 17px;border-radius:18px}.progress-insight-metric strong{font-size:clamp(56px,17vw,72px);letter-spacing:-3.5px}.progress-insight-copy p{font-size:12px}.progress-records{grid-template-columns:repeat(2,minmax(0,1fr))}.progress-records .record-cell{display:flex;align-items:flex-start;gap:5px;padding:10px 8px}.progress-records .record-cell+.record-cell{border-top:0;border-left:1px solid var(--line-soft)}.progress-records .record-cell strong{font-size:13px}.progress-records .record-cell>span:last-child{font-size:7px}}
