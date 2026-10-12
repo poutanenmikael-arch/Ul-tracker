@@ -357,6 +357,24 @@ canvas{max-width:100%}
 .prog-note{margin:8px 0 12px;color:var(--muted);font-size:10px}
 .prog-modal[aria-busy="true"]{cursor:progress}
 .prog-modal input:disabled,.prog-modal button:disabled{opacity:.55}
+.program-empty{position:relative;overflow:hidden;margin:10px 0 14px;padding:clamp(26px,7vw,48px);border:1px solid rgba(226,246,233,.12);border-radius:24px;background:linear-gradient(145deg,rgba(27,39,31,.82),rgba(9,15,11,.92));box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 20px 55px rgba(0,0,0,.24)}
+.program-empty h2{margin:12px 0 7px;font-size:clamp(27px,7vw,38px);font-weight:570;letter-spacing:-1.15px}
+.program-empty p{max-width:38ch;margin:0 0 22px;color:var(--muted);font-size:13px;line-height:1.7}
+.program-empty .btn{min-height:48px;padding-inline:19px;font-size:11px;font-weight:650;letter-spacing:.15px}
+.program-log-summary{display:flex;align-items:center;justify-content:space-between;margin-top:17px;padding:15px 2px;border-top:1px solid var(--line-soft);color:var(--muted)}
+.program-log-summary strong{color:var(--text);font-size:17px;font-weight:600}.program-log-summary small{color:var(--muted);font-size:10px;font-weight:500}
+.prog-choices{display:grid;gap:10px;margin-top:17px}.prog-import-label{display:block;margin:15px 0 7px;color:#b5c5ba;font-size:10px;font-weight:620;letter-spacing:.25px}
+.prog-import-text{display:block;width:100%;min-height:160px;resize:vertical;padding:12px;border:1px solid rgba(230,247,237,.12);border-radius:13px;background:rgba(4,9,6,.72);color:var(--text);font-family:inherit;font-size:12px;font-weight:500;line-height:1.6}
+.prog-import-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.prog-import-actions .btn{flex:1;min-width:140px}
+.prog-import-preview{display:grid;gap:8px;max-height:34dvh;overflow:auto;overscroll-behavior:contain}
+.prog-preview-day{padding:12px;border:1px solid rgba(226,246,233,.09);border-radius:13px;background:rgba(255,255,255,.025)}
+.prog-preview-day h3{margin:0 0 7px;color:#dce9df;font-size:12px;font-weight:650;letter-spacing:.1px}
+.prog-preview-exercise{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid rgba(226,246,233,.055);color:#c6d2ca;font-size:10px}
+.prog-preview-exercise span:last-child{flex:none;color:#8f9d93;font-variant-numeric:tabular-nums}
+.prog-import-issues{display:grid;gap:7px;padding:11px;border:1px solid rgba(255,148,137,.21);border-radius:12px;background:rgba(164,62,55,.09)}
+.prog-import-issue{display:grid;gap:3px;color:#f1aca2;font-size:10px}.prog-import-issue span{color:#d0aaa5;overflow-wrap:anywhere}
+.prog-import-valid{margin:1px 0 8px;color:#88e5b1;font-size:10px;font-weight:600}
+.prog-box :focus-visible{outline:2px solid rgba(100,226,169,.72);outline-offset:2px}
 /* Floating native-feeling tab rail. */
 .bottom-nav{position:fixed;z-index:25;right:50%;bottom:calc(13px + env(safe-area-inset-bottom));display:grid;width:min(620px,calc(100% - 34px));grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;padding:7px 8px;transform:translateX(50%);isolation:isolate;border:1px solid rgba(226,246,233,.17);border-radius:22px;background:linear-gradient(180deg,rgba(27,35,30,.82),rgba(8,13,10,.88));box-shadow:0 17px 48px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.13),inset 0 -1px 0 rgba(255,255,255,.035);-webkit-backdrop-filter:blur(30px) saturate(1.55);backdrop-filter:blur(30px) saturate(1.55)}
 .bottom-nav::before{position:absolute;z-index:0;inset:1px 1px auto;height:48%;border-radius:21px 21px 50% 50% / 20px 20px 35% 35%;background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,0));content:"";pointer-events:none}
@@ -428,6 +446,8 @@ canvas{max-width:100%}
  .prog-box{max-height:calc(100dvh - env(safe-area-inset-top));padding:12px 16px calc(17px + env(safe-area-inset-bottom));border-radius:22px 22px 0 0}
  .prog-ex{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
  .prog-field:first-child{grid-column:1/-1}
+ .program-empty{padding:25px 21px;border-radius:20px}.program-empty p{font-size:12px}
+ .prog-import-actions{display:grid;grid-template-columns:1fr}.prog-import-actions .btn{min-height:44px}
  .prog-field .prog-label{margin-bottom:3px}
  .prog-input{min-height:40px}
  .prog-ex>.btn{min-height:40px;align-self:end}
@@ -515,9 +535,6 @@ canvas{max-width:100%}
 .workout-choice .muscle-visual .workout-art-image{right:-3%;bottom:-19%;width:51%;height:138%;opacity:.76}
 .workout-choice.expanded .muscle-visual{opacity:.82}
 .today-card .muscle-visual .workout-art-image{width:min(66%,490px);height:100%;object-position:center 18%}
-.workout-focus-art{position:relative;height:clamp(140px,38vw,190px);margin:0 0 14px;overflow:hidden;border:1px solid rgba(223,249,233,.15);border-radius:20px;background:linear-gradient(145deg,rgba(15,25,19,.86),rgba(6,10,8,.9));box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
-.workout-focus-art::after{position:absolute;inset:0;content:"";background:linear-gradient(90deg,rgba(4,8,6,.14),transparent 70%),linear-gradient(0deg,rgba(4,8,6,.5),transparent 80%);pointer-events:none}
-.workout-focus-image{position:absolute;inset:0;width:100%;height:100%;object-position:center 22%;opacity:.86;mix-blend-mode:screen}
 .program-day{position:relative;isolation:isolate;overflow:hidden}
 .program-day::after{position:absolute;z-index:0;inset:0;content:"";background:linear-gradient(90deg,rgba(9,15,11,.02) 40%,rgba(9,15,11,.46)),linear-gradient(0deg,rgba(9,15,11,.24),transparent 70%);pointer-events:none}
 .program-day-artwork{position:absolute;z-index:0;top:0;right:0;width:45%;height:164px;object-position:center 14%;opacity:.52;mix-blend-mode:screen;mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.65) 62%,transparent 100%);pointer-events:none}
@@ -545,3 +562,74 @@ canvas{max-width:100%}
 .progress-records .record-cell>span:last-child{font-size:8px;line-height:1.5}
 @media(min-width:700px){.progress-insight{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:end;gap:18px;padding:23px 26px}.progress-insight-metric strong{font-size:clamp(68px,8vw,92px)}}
 @media(max-width:500px){.progress-insight{gap:9px;margin-bottom:13px;padding:16px 17px;border-radius:18px}.progress-insight-metric strong{font-size:clamp(56px,17vw,72px);letter-spacing:-3.5px}.progress-insight-copy p{font-size:12px}.progress-records{grid-template-columns:repeat(2,minmax(0,1fr))}.progress-records .record-cell{display:flex;align-items:flex-start;gap:5px;padding:10px 8px}.progress-records .record-cell+.record-cell{border-top:0;border-left:1px solid var(--line-soft)}.progress-records .record-cell strong{font-size:13px}.progress-records .record-cell>span:last-child{font-size:7px}}
+
+/* Workout live session: compact sticky progress, clear of the bottom controls. */
+.workout-session{padding-bottom:calc(190px + env(safe-area-inset-bottom))}
+.session-head{display:block;padding:9px 10px 8px}
+.session-head-row{display:flex;align-items:center;gap:13px}
+.session-meter{margin:8px 0 0;padding:7px 10px;border-radius:12px;background:linear-gradient(105deg,rgba(255,255,255,.025),rgba(72,147,99,.06));box-shadow:none}
+.session-meter-copy{margin-bottom:6px}
+.session-meter-copy span{font-size:7px;letter-spacing:.85px}
+.session-meter-copy b{font-size:9px}
+.session-meter-track{height:4px}
+.savebar.session-visible{bottom:calc(93px + env(safe-area-inset-bottom));padding-bottom:11px}
+@media(max-width:560px){
+ .workout-session{padding-bottom:calc(165px + env(safe-area-inset-bottom))}
+ .session-head{margin-right:-6px;margin-left:-6px;padding:8px 7px}
+ .session-head-row{gap:9px}
+ .session-head .icon-btn{width:38px;height:38px}
+ .session-copy h2{font-size:22px}
+ .session-copy .sub{font-size:9px}
+ .session-meter{margin-top:7px;padding:6px 8px}
+ .savebar.session-visible{bottom:calc(80px + env(safe-area-inset-bottom));padding:9px 11px 10px}
+}
+@media(max-width:380px){.session-head-row{gap:7px}.session-head .icon-btn{width:35px;height:35px}.session-copy h2{font-size:20px}.session-meter-copy span{font-size:6.5px}}
+
+/* Progress: keep the insight personal and let the value lead. */
+.progress-insight{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:14px}
+.progress-insight-metric strong{font-size:clamp(58px,13vw,82px);letter-spacing:-4px}
+.progress-insight-copy p{margin:0;color:#edf3ee;font-size:14px;font-weight:560;line-height:1.45}
+.progress-insight.negative .progress-insight-copy p{color:#e3c2b9}
+.progress-insight.steady .progress-insight-copy p{color:#d4e1d8}
+.progress-insight.insufficient .progress-insight-copy p{color:#c1ccc4}
+.progress-records{grid-template-columns:repeat(2,minmax(0,1fr));margin:14px 0 6px}
+.progress-records .record-cell{padding:12px 10px}
+.progress-records .record-cell+.record-cell{border-left:1px solid var(--line-soft)}
+.progress-records .record-cell strong{white-space:normal;font-size:16px;line-height:1.25}
+@media(max-width:500px){
+ .progress-insight{grid-template-columns:minmax(0,1fr);gap:7px;padding:16px 17px}
+ .progress-insight-metric strong{font-size:clamp(58px,17vw,72px);letter-spacing:-3.5px}
+ .progress-insight-copy p{font-size:12px}
+ .progress-records .record-cell{padding:10px 8px}
+ .progress-records .record-cell strong{font-size:13px}
+}
+
+/* The confirmation and end-state dialogs use the existing glass modal. */
+.workout-save-copy{margin:18px 0 16px;color:#dce8df;font-size:14px;line-height:1.5}
+.workout-save-copy p{margin:0 0 9px}
+.workout-save-copy strong{color:#f2faf4;font-variant-numeric:tabular-nums}
+.workout-save-note{color:#a6b5aa;font-size:11px}
+.workout-save-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);margin-top:16px}
+.workout-save-actions .btn{white-space:normal;line-height:1.25}
+.modal:has(.workout-result){align-items:center;padding:calc(12px + env(safe-area-inset-top)) 14px calc(12px + env(safe-area-inset-bottom))}
+.modalbox:has(.workout-result){display:flex;width:min(620px,100%);min-height:min(390px,calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));flex-direction:column;justify-content:center;padding:clamp(20px,4vw,34px);border-color:rgba(203,237,215,.17);border-radius:26px;background:linear-gradient(155deg,rgba(19,29,22,.98),rgba(7,12,9,.985));box-shadow:0 26px 72px rgba(0,0,0,.56),inset 0 1px 0 rgba(255,255,255,.07)}
+.modalbox:has(.workout-result)>.row{flex:0 0 auto;margin:0 0 clamp(15px,3vh,24px);padding-bottom:12px;border-bottom:1px solid rgba(223,246,230,.09)}
+.modalbox:has(.workout-result) #modalTitle{color:#b9c9bd;font-size:12px;font-weight:690;letter-spacing:.13em}
+.workout-result{display:flex;min-height:250px;flex:1;flex-direction:column;align-items:stretch;text-align:center}
+.workout-result h3{margin:0 0 clamp(16px,3vh,26px);color:#eef6f0;font-size:clamp(20px,3vw,25px);font-weight:570;letter-spacing:-.55px}
+.workout-result-summary{margin:auto 0 14px}
+.workout-result-count{display:flex;align-items:baseline;justify-content:center;gap:clamp(10px,2vw,18px);color:#f2f8f3;font-size:clamp(58px,12vw,82px);font-weight:570;line-height:.98;letter-spacing:-.075em;font-variant-numeric:tabular-nums}
+.workout-result-count i{color:rgba(203,221,209,.42);font-size:.58em;font-style:normal;font-weight:420;letter-spacing:-.04em}
+.workout-result-label{margin-top:9px;color:#c2d0c6;font-size:12px;font-weight:670;letter-spacing:.13em}
+.workout-result-progress{height:6px;overflow:hidden;margin:0 0 12px;border:1px solid rgba(221,245,228,.09);border-radius:99px;background:rgba(224,241,229,.085)}
+.workout-result-progress span{display:block;width:var(--result-progress);height:100%;border-radius:inherit;background:linear-gradient(90deg,#43c98e,#72e5ac);box-shadow:inset 0 1px 0 rgba(255,255,255,.24)}
+.workout-result-exercises{margin:0 0 clamp(18px,3vh,26px);color:#a7b7ac;font-size:13px;font-weight:520;letter-spacing:.005em}
+.workout-result-done{width:min(100%,320px);min-height:46px;align-self:center;border-radius:14px;font-size:10px;font-weight:760;letter-spacing:.05px;box-shadow:0 6px 18px rgba(46,174,108,.13),inset 0 1px 0 rgba(255,255,255,.26)}
+.workout-result-done:hover{box-shadow:0 7px 19px rgba(46,174,108,.16),inset 0 1px 0 rgba(255,255,255,.28)}
+.workout-result-done:active:not(:disabled){box-shadow:0 3px 12px rgba(46,174,108,.18),inset 0 1px 0 rgba(255,255,255,.22)}
+@media(max-width:500px){.modal:has(.workout-result){padding:calc(10px + env(safe-area-inset-top)) 10px calc(10px + env(safe-area-inset-bottom))}.modalbox:has(.workout-result){min-height:min(390px,calc(100dvh - 20px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));padding:20px 22px calc(18px + env(safe-area-inset-bottom));border-radius:24px}.workout-result{min-height:235px}.workout-result-count{font-size:clamp(58px,18vw,76px)}.workout-result-done{width:100%;min-height:48px}}
+@media(max-width:360px){.modalbox:has(.workout-result){padding-right:18px;padding-left:18px}.modalbox:has(.workout-result)>.row{margin-bottom:15px;padding-bottom:10px}.workout-result h3{margin-bottom:17px}.workout-result-count{font-size:clamp(55px,17vw,64px)}.workout-result-label{font-size:11px}.workout-result-exercises{font-size:12px}}
+#closeModal[hidden]{display:none!important}
+.history-completion{display:inline-block;margin-top:4px;color:#8edfb0;font-size:8px;font-weight:680;letter-spacing:.5px}
+.history-completion.saved{color:#d0bd8d}
+.history-set-result{display:inline-flex;align-items:baseline;margin-right:5px;white-space:nowrap}
