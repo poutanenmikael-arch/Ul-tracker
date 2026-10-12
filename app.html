@@ -485,7 +485,7 @@ window.addEventListener('resize',function(){const active=$('#bottomNav button.ac
 $('.profile-orb')?.addEventListener('click',function(){switchView('settingsView')});
 $('#programOverview')?.addEventListener('click',function(e){
   if(e.target.closest('#addProgramBtn')){window.ulOpenProgramChoices?.();return}
-  if(e.target.closest('#openProgramEditor')){window.ulOpenProgramEditor?.();return}
+  if(e.target.closest('#openProgramEditor')){window.ulOpenProgramChoices?.();return}
   const start=e.target.closest('[data-start-day]');if(start)startWorkout(start.dataset.startDay);
 });$('#profileName')?.addEventListener('input',function(e){const p=window.ulGetProfile?window.ulGetProfile():{};p.name=e.target.value.slice(0,30);ulStorage.setItem('ul_profile_name',p.name);ulStorage.setItem('ul_profile',JSON.stringify(p));window.dispatchEvent(new CustomEvent('ul-profile-changed',{detail:p}));renderWorkoutHome();});
 $('#profileName')?.addEventListener('change',async function(e){const p=window.ulGetProfile?window.ulGetProfile():{};p.name=e.target.value.slice(0,30);ulStorage.setItem('ul_profile_name',p.name);ulStorage.setItem('ul_profile',JSON.stringify(p));window.dispatchEvent(new CustomEvent('ul-profile-changed',{detail:p}));renderWorkoutHome();try{if(await window.ulSyncNow?.()!==true)toast('Profile could not be saved. Please try again.')}catch(err){toast('Profile could not be saved. Please try again.')}});
